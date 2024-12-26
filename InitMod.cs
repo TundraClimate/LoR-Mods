@@ -5,7 +5,13 @@ namespace WarpClassFive
 {
     public class WarpClassFiveMod : ModInitializer
     {
-        public static string packageId { get; } = "WarpClassFiveMod";
+        public static string packageId
+        {
+            get
+            {
+                return "WarpClassFive";
+            }
+        }
 
         public override void OnInitializeMod()
         {
