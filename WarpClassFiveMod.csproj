@@ -67,6 +67,12 @@
     <Compile Include="PassiveAbility_MoreCharge.cs" />
     <Compile Include="PassiveAbility_FasterCharge.cs" />
     <Compile Include="PassiveAbility_JumpForce.cs" />
+    <Compile Include="DiceCardSelfAbility_GainCharge12.cs" />
+    <Compile Include="DiceCardSelfAbility_GainCharge8.cs" />
+    <Compile Include="DiceCardSelfAbility_GainChargeAndLight.cs" />
+    <Compile Include="DiceCardSelfAbility_SwapChargeMode.cs" />
+    <Compile Include="DiceCardSelfAbility_UseAllChargeAndGainPower.cs" />
+    <Compile Include="DiceCardSelfAbility_UseCharge5.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
