@@ -6,7 +6,7 @@ namespace WarpClassFive_Passive
         {
             base.OnRoundStart();
             BattleUnitBuf activatedBuf = this.owner.bufListDetail.GetActivatedBuf(KeywordBuf.WarpCharge);
-            if (activatedBuf != null && activatedBuf.stack >= 11)
+            if (activatedBuf != null && activatedBuf.stack >= 20)
             {
                 this.owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Quickness, 3, this.owner);
             }
