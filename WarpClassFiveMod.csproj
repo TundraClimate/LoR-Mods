@@ -73,6 +73,14 @@
     <Compile Include="DiceCardSelfAbility_SwapChargeMode.cs" />
     <Compile Include="DiceCardSelfAbility_UseAllChargeAndGainPower.cs" />
     <Compile Include="DiceCardSelfAbility_UseCharge5.cs" />
+    <Compile Include="DiceCardAbility_ApplyBleed2.cs" />
+    <Compile Include="DiceCardAbility_ApplyDamage.cs" />
+    <Compile Include="DiceCardAbility_Gain2Light.cs" />
+    <Compile Include="DiceCardAbility_GainCharge3.cs" />
+    <Compile Include="DiceCardAbility_GainQuick.cs" />
+    <Compile Include="DiceCardAbility_UseChargeAndApplyDamage.cs" />
+    <Compile Include="DiceCardAbility_UseChargeAndApplyFewDamage.cs" />
+    <Compile Include="DiceCardAbility_UseChargeAndApplyWeak.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
