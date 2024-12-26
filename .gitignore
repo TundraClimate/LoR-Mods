@@ -1,3 +1,5 @@
-./build.sh
-./obj
-./bin
+build.sh
+obj
+bin
+libs
+Assembly-CSharp.dll
