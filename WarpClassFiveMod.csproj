@@ -48,6 +48,10 @@
       <HintPath>./libs/System.Xml.dll</HintPath>
     </Reference>
 
+    <Reference Include="mscorlib">
+      <HintPath>./libs/mscorlib.dll</HintPath>
+    </Reference>
+
     <Reference Include="Assembly-CSharp">
       <HintPath>./libs/Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -59,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InitMod.cs" />
+    <Compile Include="PatchClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
