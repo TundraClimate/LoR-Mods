@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="InitMod.cs" />
     <Compile Include="PatchClass.cs" />
+    <Compile Include="PassiveAbility_MoreCharge.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>

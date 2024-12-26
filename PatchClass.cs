@@ -1,4 +1,5 @@
 using HarmonyLib;
+using WarpClassFive_Passive;
 
 namespace WarpClassFive
 {
@@ -9,15 +10,19 @@ namespace WarpClassFive
         {
             public static bool Prefix(BattleUnitBuf_warpCharge __instance, BattleUnitModel ____owner)
             {
-                if (__instance.stack > 80)
+                if (____owner != null && ____owner.passiveDetail.HasPassive<PassiveAbility_MoreCharge>())
                 {
-                    __instance.stack = 80;
+                    if (__instance.stack > 40)
+                    {
+                        __instance.stack = 40;
+                    }
+                    if (____owner.IsImmune(__instance.bufType))
+                    {
+                        __instance.stack = 0;
+                    }
+                    return false;
                 }
-                if (____owner.IsImmune(__instance.bufType))
-                {
-                    __instance.stack = 0;
-                }
-                return false;
+                return true;
             }
         }
     }
