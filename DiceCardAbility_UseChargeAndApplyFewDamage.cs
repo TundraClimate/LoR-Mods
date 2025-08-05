@@ -15,5 +15,18 @@ namespace WarpClassFive_Card
                 }
             }
         }
+
+        public static string Desc = "[的中] 充電8を消耗し、相手に10ダメージ";
+
+        public override string[] Keywords
+        {
+            get
+            {
+                return new string[]
+                {
+                    "Charge_Keyword"
+                };
+            }
+        }
     }
 }

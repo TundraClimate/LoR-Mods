@@ -7,5 +7,7 @@ namespace WarpClassFive_Card
         {
             base.owner.cardSlotDetail.RecoverPlayPoint(2);
         }
+
+        public static string Desc = "[的中] 光を2回復";
     }
 }

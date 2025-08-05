@@ -10,5 +10,19 @@ namespace WarpClassFive_Card
             activatedBuf.UseStack(stack, true);
             base.card.ApplyDiceStatBonus(DiceMatch.AllAttackDice, new DiceStatBonus { power = buff });
         }
+
+        public static string Desc = 
+          "[使用時] 充電を全て消費し、消費した充電÷2(少数以下切り捨て)だけこのページの全ダイスの威力が増加";
+
+        public override string[] Keywords
+        {
+            get
+            {
+                return new string[]
+                {
+                    "Charge_Keyword",
+                };
+            }
+        }
     }
 }

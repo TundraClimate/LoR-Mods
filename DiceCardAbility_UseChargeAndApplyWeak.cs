@@ -15,5 +15,19 @@ namespace WarpClassFive_Card
                 }
             }
         }
+
+        public static string Desc = "[的中] 充電9を消費し、次の幕に虚弱2を付与する";
+
+        public override string[] Keywords
+        {
+            get
+            {
+                return new string[]
+                {
+                    "Charge_Keyword",
+                    "Weak_Keyword",
+                };
+            }
+        }
     }
 }

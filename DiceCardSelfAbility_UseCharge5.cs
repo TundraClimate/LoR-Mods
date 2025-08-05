@@ -7,5 +7,18 @@ namespace WarpClassFive_Card
             (base.owner.bufListDetail.GetActivatedBuf(KeywordBuf.WarpCharge) as BattleUnitBuf_warpCharge)
                 .UseStack(5, true);
         }
+
+        public static string Desc = "[使用時] 充電5を消耗";
+
+        public override string[] Keywords
+        {
+            get
+            {
+                return new string[]
+                {
+                    "Charge_Keyword"
+                };
+            }
+        }
     }
 }

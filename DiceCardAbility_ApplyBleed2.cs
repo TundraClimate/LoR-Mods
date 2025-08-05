@@ -9,5 +9,18 @@ namespace WarpClassFive_Card
                 target.bufListDetail.AddKeywordBufByCard(KeywordBuf.Bleeding, 2, base.owner);
             }
         }
+
+        public static string Desc = "[的中] 次の幕に出血2を付与";
+
+        public override string[] Keywords
+        {
+            get
+            {
+                return new string[]
+                {
+                    "Bleed_Keyword"
+                };
+            }
+        }
     }
 }
