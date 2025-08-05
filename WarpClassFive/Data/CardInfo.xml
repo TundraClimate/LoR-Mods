@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiceCardXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version>1.1</Version>
+  <Card ID="1">
+    <Name>エネルギー調達</Name>
+    <TextId>-1</TextId>
+    <Artwork />
+    <Rarity>Common</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>energy1</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="4" Dice="6" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="recoverHp1atk" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="7" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="UseChargeAndApplyWeak" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>2</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="2">
+    <Name>素早く</Name>
+    <TextId>-1</TextId>
+    <Artwork />
+    <Rarity>Common</Rarity>
+    <Spec Range="Near" Cost="1" Affection="One" EmotionLimit="0" />
+    <Script>UseCharge5</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="4" Dice="10" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="GainCharge3" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>1</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="3">
+    <Name>次元跳躍</Name>
+    <TextId>-1</TextId>
+    <Artwork />
+    <Rarity>Uncommon</Rarity>
+    <Spec Range="Near" Cost="2" Affection="One" EmotionLimit="0" />
+    <Script>GainCharge8</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="8" Dice="12" Type="Atk" Detail="Penetrate" Motion="Z" MotionDefault="N" EffectRes="" Script="ApplyBleed2" ActionScript="" Desc="" />
+      <Behaviour Min="5" Dice="7" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="UseChargeAndApplyDamage" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="7" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>3</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="4">
+    <Name>高速切断</Name>
+    <TextId>-1</TextId>
+    <Artwork />
+    <Rarity>Rare</Rarity>
+    <Spec Range="Near" Cost="2" Affection="One" EmotionLimit="0" />
+    <Script>GainCharge12</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="12" Dice="16" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="UseChargeAndApplyFewDamage" ActionScript="" Desc="" />
+      <Behaviour Min="12" Dice="16" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="UseChargeAndApplyFewDamage" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="8" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GainQuick" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>4</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="5">
+    <Name>充電開始</Name>
+    <TextId>-1</TextId>
+    <Artwork />
+    <Rarity>Uncommon</Rarity>
+    <Spec Range="Near" Cost="3" Affection="One" EmotionLimit="0" />
+    <Script>SwapChargeMode</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="3" Dice="7" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>5</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="6">
+    <Name>斬って蹴る</Name>
+    <TextId>-1</TextId>
+    <Artwork />
+    <Rarity>Unique</Rarity>
+    <Spec Range="Near" Cost="5" Affection="One" EmotionLimit="0" />
+    <Script>UseAllChargeAndGainPower</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="ApplyDamage" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="ApplyDamage" ActionScript="" Desc="" />
+      <Behaviour Min="2" Dice="5" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="Gain2Light" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>6</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+</DiceCardXmlRoot>

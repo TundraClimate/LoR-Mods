@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BookXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version>1.1</Version>
+  <Book ID="1">
+    <Name>Warp社 5級整理要員</Name>
+    <TextId>-1</TextId>
+    <BookIcon />
+    <EquipEffect>
+      <HpReduction>0</HpReduction>
+      <HP>302</HP>
+      <DeadLine>0</DeadLine>
+      <Break>136</Break>
+      <SpeedMin>4</SpeedMin>
+      <Speed>6</Speed>
+      <SpeedDiceNum>0</SpeedDiceNum>
+      <SResist>Endure</SResist>
+      <PResist>Normal</PResist>
+      <HResist>Resist</HResist>
+      <SBResist>Endure</SBResist>
+      <PBResist>Endure</PBResist>
+      <HBResist>Resist</HBResist>
+      <MaxPlayPoint>4</MaxPlayPoint>
+      <StartPlayPoint>4</StartPlayPoint>
+      <AddedStartDraw>0</AddedStartDraw>
+      <Passive>4</Passive>
+      <Passive>1</Passive>
+      <Passive>2</Passive>
+      <Passive>3</Passive>
+      <Passive Pid="@origin">250010</Passive>
+      <Passive Pid="@origin">250110</Passive>
+      <Passive Pid="@origin">250210</Passive>
+    </EquipEffect>
+    <Rarity>Unique</Rarity>
+    <CharacterSkin>Rose</CharacterSkin>
+    <CharacterSkinType>Lor</CharacterSkinType>
+    <SkinGender>N</SkinGender>
+    <Chapter>7</Chapter>
+    <Episode>-1</Episode>
+    <RangeType>Melee</RangeType>
+    <NotEquip>false</NotEquip>
+    <RandomFace>false</RandomFace>
+    <SpeedDiceNum>1</SpeedDiceNum>
+    <SuccessionPossibleNumber>9</SuccessionPossibleNumber>
+  </Book>
+</BookXmlRoot>
