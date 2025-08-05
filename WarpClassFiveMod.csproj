@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="InitMod.cs" />
     <Compile Include="PatchClass.cs" />
+    <Compile Include="PassiveAbility_Class5.cs" />
     <Compile Include="PassiveAbility_MoreCharge.cs" />
     <Compile Include="PassiveAbility_FasterCharge.cs" />
     <Compile Include="PassiveAbility_JumpForce.cs" />

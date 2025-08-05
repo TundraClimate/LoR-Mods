@@ -9,7 +9,7 @@ namespace WarpClassFive
         {
             get
             {
-                return "WarpClassFive";
+                return "WarpClassFiveMod";
             }
         }
 
