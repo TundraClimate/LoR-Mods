@@ -10,7 +10,7 @@
     <Script>energy1</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="4" Dice="6" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="recoverHp1atk" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="6" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
       <Behaviour Min="3" Dice="7" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="UseChargeAndApplyWeak" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>7</Chapter>
