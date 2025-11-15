@@ -6,7 +6,7 @@ namespace WarpClassFive
     public class PatchClass
     {
         [HarmonyPatch(typeof(BattleUnitBuf_warpCharge), "OnAddBuf")]
-        public class PrefixPatch_SetMaxmimChargeCount
+        public class PrefixPatch_SetMaximumChargeCount
         {
             public static bool Prefix(BattleUnitBuf_warpCharge __instance, BattleUnitModel ____owner)
             {
