@@ -4,9 +4,9 @@
   <Workshop>
     <ID>Butterfly2FixMod</ID>
     <Title>Butterfly2Fix</Title>
-    <Description>幻想体ページ: 哀悼を表示に合わせて修正します</Description>
+    <Description>Fix a lament abnormality page.</Description>
     <Tag />
-    <PreviewImage>thumbnail.png</PreviewImage>
+    <PreviewImage>Z:\home\tundra\MyStorage\IdeaProjects\LoR-Mods\Butterfly2Fix\thumbnail.png</PreviewImage>
   </Workshop>
   <InvitationFile>
     <Stage Exist="true">
