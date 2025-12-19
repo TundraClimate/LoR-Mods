@@ -11,6 +11,12 @@ namespace CanChangeWasTargetMod
             {
                 BattlePlayingCardDataInUnitModel targetModel = target.view.speedDiceSetterUI.GetSpeedDiceByIndex(targetIndex).CardInDice;
                 BattlePlayingCardDataInUnitModel selfModel = __instance.view.speedDiceSetterUI.GetSpeedDiceByIndex(myIndex).CardInDice;
+
+                if (targetModel == null || selfModel == null)
+                {
+                    return;
+                }
+
                 bool was_target = targetModel.earlyTargetOrder == selfModel.slotOrder && targetModel.earlyTarget == __instance;
 
                 __result = __result || was_target;
