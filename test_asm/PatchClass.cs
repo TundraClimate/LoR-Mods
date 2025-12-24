@@ -1,19 +1,61 @@
 using HarmonyLib;
+using System.Collections.Generic;
 
 namespace TestMod
 {
     public class PatchClass
     {
-        [HarmonyPatch(typeof(BattleUnitModel), "CanChangeAttackTarget")]
-        public class PostfixPatch_CanChangeAttackTarget
+        [HarmonyPatch(typeof(StageController), "SetCurrentDiceActionPhase")]
+        public class Patch_Postfix_SetCurrentDiceActionPhase
         {
-            public static void Postfix(BattleUnitModel __instance, ref bool __result, BattleUnitModel target, int myIndex, int targetIndex)
+            public static void Postfix(ref List<BattlePlayingCardDataInUnitModel> ____allCardList, ref StageController.StagePhase ____phase)
             {
-                BattlePlayingCardDataInUnitModel targetModel = target.view.speedDiceSetterUI.GetSpeedDiceByIndex(targetIndex).CardInDice;
-                BattlePlayingCardDataInUnitModel selfModel = __instance.view.speedDiceSetterUI.GetSpeedDiceByIndex(myIndex).CardInDice;
-                bool was_target = targetModel.earlyTargetOrder == selfModel.slotOrder && targetModel.earlyTarget == __instance;
+                if (____phase != StageController.StagePhase.RoundEndPhase) return;
 
-                __result = __result || was_target;
+                List<BattleUnitModel> alives = BattleObjectManager.instance.GetAliveList(Faction.Enemy);
+
+                List<BattleUnitModel> stagger = alives.FindAll((BattleUnitModel model) => model.breakDetail.IsBreakLifeZero());
+
+                if (stagger.Count == 0) return;
+
+                List<BattleUnitModel> pl_alives = BattleObjectManager.instance.GetAliveList(Faction.Player);
+
+                foreach (BattleUnitModel model in stagger)
+                {
+                    foreach (BattleUnitModel pl in pl_alives)
+                    {
+                        BattleDiceCardModel card =
+                                BattleDiceCardModel.CreatePlayingCard(
+                                    ItemXmlDataList.instance.GetCardItem(new LorId(Test.PackageId, 1))
+                                );
+
+                        BattlePlayingCardDataInUnitModel playcard = new BattlePlayingCardDataInUnitModel()
+                        {
+                            owner = pl,
+                            card = card,
+                            target = model,
+                            targetSlotOrder = 0,
+                            earlyTarget = model,
+                            earlyTargetOrder = 0,
+                            cardAbility = card.CreateDiceCardSelfAbilityScript(),
+                            speedDiceResultValue = 1,
+                            slotOrder = 0,
+                        };
+
+                        card.CreateDiceCardBehaviorList().ForEach((BattleDiceBehavior beh) =>
+                        {
+                            beh.card = playcard;
+                            beh.card.card = card;
+                            playcard.cardBehaviorQueue.Enqueue(beh);
+                        });
+
+                        pl.currentDiceAction = playcard;
+
+                        ____allCardList.Add(playcard);
+                    }
+                }
+
+                ____phase = StageController.StagePhase.SetCurrentDiceAction;
             }
         }
     }

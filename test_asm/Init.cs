@@ -1,5 +1,7 @@
 using System;
 using HarmonyLib;
+using System.Collections.Generic;
+using LOR_DiceSystem;
 
 namespace TestMod
 {
@@ -20,6 +22,35 @@ namespace TestMod
             {
                 harmony.CreateClassProcessor(type).Patch();
             }
+
+            ItemXmlDataList.instance.AddCardInfoByMod("Ah, id not here...", new List<DiceCardXmlInfo>()
+            {
+                new DiceCardXmlInfo(new LorId(Test.PackageId, 1))
+                {
+                    workshopName = "めるちぇ",
+                    /* Artwork = CardResourceManager.Instance.GetArtworkSpriteByCardID(612001).name, */
+                    Rarity = Rarity.Uncommon,
+                    optionList = new List<CardOption>() { CardOption.ExhaustOnUse, CardOption.NoInventory },
+                    Spec = new DiceCardSpec()
+                    {
+                        Cost = 0,
+                        Ranged = CardRange.Near,
+                    },
+                    DiceBehaviourList = new List<DiceBehaviour>()
+                    {
+                        new DiceBehaviour()
+                        {
+                            Min = 4,
+                            Dice = 8,
+                            Type = BehaviourType.Atk,
+                            Detail = BehaviourDetail.Penetrate,
+                            MotionDetail = MotionDetail.Z,
+                        },
+                    },
+                    Chapter = 5,
+                    Priority = 0,
+                }
+            });
         }
     }
 }

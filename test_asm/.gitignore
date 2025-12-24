@@ -1,6 +1,11 @@
-dev.sh
-build.sh
+.env
+.build.sh
+.dev.sh
+.upload.sh
+.update.sh
 
 bin/
 libs/
 obj/
+
+scripts.sh
