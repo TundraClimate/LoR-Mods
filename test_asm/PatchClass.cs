@@ -26,7 +26,7 @@ namespace TestMod
                     {
                         BattleDiceCardModel card =
                                 BattleDiceCardModel.CreatePlayingCard(
-                                    ItemXmlDataList.instance.GetCardItem(new LorId(Test.PackageId, 1))
+                                    ItemXmlDataList.instance.GetCardItem(new LorId(Test.packageId, 1))
                                 );
 
                         BattlePlayingCardDataInUnitModel playcard = new BattlePlayingCardDataInUnitModel()
