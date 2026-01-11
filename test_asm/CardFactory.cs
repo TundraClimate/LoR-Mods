@@ -196,8 +196,6 @@ public class CardFactory
         return info;
     }
 
-    private LorId _lorId;
-
     private string _name;
 
     private int _textId = -1;

@@ -1,11 +1,10 @@
 using HarmonyLib;
-using System.Collections.Generic;
 
 namespace TestMod
 {
     public class PatchClass
     {
-        [HarmonyPatch(typeof(StageController), "SetCurrentDiceActionPhase")]
+        /* [HarmonyPatch(typeof(StageController), "SetCurrentDiceActionPhase")]
         public class Patch_Postfix_SetCurrentDiceActionPhase
         {
             public static void Postfix(ref List<BattlePlayingCardDataInUnitModel> ____allCardList, ref StageController.StagePhase ____phase)
@@ -57,6 +56,6 @@ namespace TestMod
 
                 ____phase = StageController.StagePhase.SetCurrentDiceAction;
             }
-        }
+        } */
     }
 }
