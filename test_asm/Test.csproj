@@ -60,8 +60,16 @@
       <HintPath>./libs/0Harmony.dll</HintPath>
     </Reference>
 
+    <Reference Include="UnityEngine">
+      <HintPath>./libs/UnityEngine.dll</HintPath>
+    </Reference>
+
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>./libs/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>./libs/UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
