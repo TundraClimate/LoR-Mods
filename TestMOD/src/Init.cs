@@ -14,6 +14,7 @@ public class TestMOD : ModInitializer
     public override void OnInitializeMod()
     {
         TestMOD.ApplyHarmonyPatch();
+        DebugConsole.Open();
 
         ModResource.LoadAdditionals();
     }

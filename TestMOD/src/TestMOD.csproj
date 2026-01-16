@@ -68,6 +68,7 @@
     <Compile Include="Init.cs" />
     <Compile Include="PatchClass.cs" />
     <Compile Include="ModResource.cs" />
+    <Compile Include="DebugConsole.cs" />
     <Compile Include="BattleUnitBuf_TestCustomBuf.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
