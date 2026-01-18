@@ -68,6 +68,9 @@
     <Compile Include="Init.cs" />
     <Compile Include="PatchClass.cs" />
     <Compile Include="ModResource.cs" />
+    <Compile Include="PassiveAbility_RepairBody.cs" />
+    <Compile Include="PassiveAbility_DamageCount.cs" />
+    <Compile Include="PassiveAbility_Dummy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>

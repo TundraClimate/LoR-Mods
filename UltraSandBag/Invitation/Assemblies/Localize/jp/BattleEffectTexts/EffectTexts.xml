@@ -5,5 +5,9 @@
             <Name>体力減少量</Name>
             <Desc>前の幕で減少した体力</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="DamageShow">
+            <Name>体力減少量</Name>
+            <Desc>この幕で減少した体力</Desc>
+        </BattleEffectText>
     </effectTextList>
 </BattleEffectTextRoot>
