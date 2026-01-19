@@ -71,6 +71,7 @@
     <Compile Include="PassiveAbility_RepairBody.cs" />
     <Compile Include="PassiveAbility_DamageCount.cs" />
     <Compile Include="PassiveAbility_Dummy.cs" />
+    <Compile Include="PassiveAbility_DeckAddForEnemy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>

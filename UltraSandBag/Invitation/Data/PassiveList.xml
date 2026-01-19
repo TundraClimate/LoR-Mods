@@ -39,4 +39,17 @@
     <Name>サンドバッグ-頑健</Name>
     <Desc>混乱ダメージを受けない</Desc>
   </Passive>
+  <Passive ID="4">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>DeckAddForEnemy</Script>
+    <Name>サンドバッグ-提供</Name>
+    <Desc>敵の個人ページリストに特殊なページを追加する</Desc>
+  </Passive>
 </PassiveXmlRoot>
