@@ -74,6 +74,8 @@
     <Compile Include="PassiveAbility_DeckAddForEnemy.cs" />
     <Compile Include="DiceCardSelfAbility_LightFill.cs" />
     <Compile Include="DiceCardSelfAbility_DeathSandBag.cs" />
+    <Compile Include="DiceCardSelfAbility_BoostPositive.cs" />
+    <Compile Include="DiceCardSelfAbility_BoostNegative.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>

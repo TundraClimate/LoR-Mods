@@ -49,4 +49,52 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+  <Card ID="3">
+    <Name>感情増幅</Name>
+    <TextId>-1</TextId>
+    <Artwork>Positive.png</Artwork>
+    <Rarity>Common</Rarity>
+    <Option>ExhaustOnUse</Option>
+    <Option>Personal</Option>
+    <Spec Range="Instance" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>BoostPositive</Script>
+    <ScriptDesc />
+    <BehaviourList>
+    </BehaviourList>
+    <Chapter>1</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="4">
+    <Name>感情増幅</Name>
+    <TextId>-1</TextId>
+    <Artwork>Negative.png</Artwork>
+    <Rarity>Common</Rarity>
+    <Option>ExhaustOnUse</Option>
+    <Option>Personal</Option>
+    <Spec Range="Instance" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>BoostNegative</Script>
+    <ScriptDesc />
+    <BehaviourList>
+    </BehaviourList>
+    <Chapter>1</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
 </DiceCardXmlRoot>

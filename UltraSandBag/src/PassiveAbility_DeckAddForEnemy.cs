@@ -30,7 +30,9 @@ public class PassiveAbility_DeckAddForEnemy : PassiveAbilityBase
             return new int[]
             {
                 1,
-                2
+                2,
+                3,
+                4,
             };
         }
     }
