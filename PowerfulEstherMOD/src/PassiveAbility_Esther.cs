@@ -1,17 +1,15 @@
-using System.Collections.Generic;
-
 public class PassiveAbility_Esther : PassiveAbilityBase
 {
     public override void OnWaveStart()
     {
-        this.CleanupDeck();
+        base.owner.allyCardDetail.GetAllDeck().Clear();
 
         this.owner.bufListDetail.AddBuf(new BattleUnitBuf_GraceOfPrescript());
     }
 
     public override void OnRoundStart()
     {
-        this.CleanupHands();
+        base.owner.allyCardDetail.GetHand().Clear();
 
         this.AddCard(1);
         this.AddCard(1);
@@ -34,20 +32,6 @@ public class PassiveAbility_Esther : PassiveAbilityBase
     public override int SpeedDiceNumAdder()
     {
         return 4;
-    }
-
-    private void CleanupDeck()
-    {
-        List<BattleDiceCardModel> deck = base.owner.allyCardDetail.GetAllDeck();
-
-        deck.Clear();
-    }
-
-    private void CleanupHands()
-    {
-        List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
-
-        hands.Clear();
     }
 
     private void AddCard(int id, int priority = 0)
