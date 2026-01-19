@@ -5,5 +5,9 @@
             <Name>指令の加護</Name>
             <Desc>TODO</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="TargetOfPrescript">
+            <Name>指令対象</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
     </effectTextList>
 </BattleEffectTextRoot>

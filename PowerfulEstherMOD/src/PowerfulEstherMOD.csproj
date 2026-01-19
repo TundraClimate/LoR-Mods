@@ -68,6 +68,12 @@
     <Compile Include="Init.cs" />
     <Compile Include="PatchClass.cs" />
     <Compile Include="ModResource.cs" />
+    <Compile Include="PassiveAbility_Esther.cs" />
+    <Compile Include="PassiveAbility_IndexTarget.cs" />
+    <Compile Include="BattleUnitBuf_GraceOfPrescript.cs" />
+    <Compile Include="BattleUnitBuf_TargetOfPrescript.cs" />
+    <Compile Include="EnemyUnitAggroSetter_Esther.cs" />
+    <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
