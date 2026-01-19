@@ -9,5 +9,17 @@
             <Name>指令対象</Name>
             <Desc>TODO</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="Unlock">
+            <Name>解禁 - I</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="Unlock2">
+            <Name>解禁 - II</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="Unlock3">
+            <Name>解禁 - III</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
     </effectTextList>
 </BattleEffectTextRoot>

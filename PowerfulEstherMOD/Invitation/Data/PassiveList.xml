@@ -11,9 +11,22 @@
     <Cost>0</Cost>
     <Script>Esther</Script>
     <Name>全ては指令通り</Name>
-    <Desc>毎幕ごとに手元とデッキにある全てのページを消去し、使用するページを手元に追加。全てのページのコストが0になる。</Desc>
+    <Desc>毎幕ごとに手元とデッキにある全てのページを消去し、使用するページを手元に追加。全てのページのコストが0になる。ページを使用するとき、指令対象が付与されている相手を優先して使用する。</Desc>
   </Passive>
   <Passive ID="2">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>Prescript</Script>
+    <Name>指令の代行者：[紙片]</Name>
+    <Desc>指令と指令の加護得るやつ</Desc>
+  </Passive>
+  <Passive ID="3">
     <Negative>false</Negative>
     <IsHide>false</IsHide>
     <Rarity>Rare</Rarity>
@@ -25,5 +38,18 @@
     <Script>IndexTarget</Script>
     <Name>指令の向かう処</Name>
     <Desc>指令対象付与するやつ TODO</Desc>
+  </Passive>
+  <Passive ID="4">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>Unlock</Script>
+    <Name>解禁</Name>
+    <Desc>解禁管理するやつ TODO</Desc>
   </Passive>
 </PassiveXmlRoot>

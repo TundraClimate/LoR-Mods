@@ -5,6 +5,9 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         base.owner.allyCardDetail.GetAllDeck().Clear();
 
         this.owner.bufListDetail.AddBuf(new BattleUnitBuf_GraceOfPrescript());
+        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_Unlock());
+        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_Unlock2());
+        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_Unlock3());
     }
 
     public override void OnRoundStart()

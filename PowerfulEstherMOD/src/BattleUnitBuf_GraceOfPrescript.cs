@@ -1,3 +1,5 @@
+using System;
+
 public class BattleUnitBuf_GraceOfPrescript : BattleUnitBuf
 {
     protected override string keywordId
@@ -15,6 +17,6 @@ public class BattleUnitBuf_GraceOfPrescript : BattleUnitBuf
 
     public void AddStack(int stack = 1)
     {
-        base.stack += stack;
+        base.stack = Math.Min(base.stack + stack, 9);
     }
 }
