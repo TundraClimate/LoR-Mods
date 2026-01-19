@@ -9,7 +9,7 @@
     <Option>ExhaustOnUse</Option>
     <Option>Personal</Option>
     <Spec Range="Instance" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script>LightFill</Script>
     <ScriptDesc />
     <BehaviourList>
     </BehaviourList>
@@ -33,7 +33,7 @@
     <Option>ExhaustOnUse</Option>
     <Option>Personal</Option>
     <Spec Range="Instance" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script>DeathSandBag</Script>
     <ScriptDesc />
     <BehaviourList>
     </BehaviourList>
