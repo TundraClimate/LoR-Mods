@@ -81,7 +81,6 @@
     <Compile Include="BattleUnitBuf_Unlock.cs" />
     <Compile Include="BattleUnitBuf_Unlock2.cs" />
     <Compile Include="BattleUnitBuf_Unlock3.cs" />
-    <Compile Include="EnemyUnitAggroSetter_Esther.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
