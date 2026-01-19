@@ -56,6 +56,10 @@
       <HintPath>./libs/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
 
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>./libs/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+
     <Reference Include="UnityEngine.ImageConversionModule">
       <HintPath>./libs/UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
@@ -70,6 +74,8 @@
     <Compile Include="ModResource.cs" />
     <Compile Include="PassiveAbility_Esther.cs" />
     <Compile Include="PassiveAbility_IndexTarget.cs" />
+    <Compile Include="PassiveAbility_Prescript.cs" />
+    <Compile Include="PassiveAbility_Unlock.cs" />
     <Compile Include="BattleUnitBuf_GraceOfPrescript.cs" />
     <Compile Include="BattleUnitBuf_TargetOfPrescript.cs" />
     <Compile Include="BattleUnitBuf_Unlock.cs" />

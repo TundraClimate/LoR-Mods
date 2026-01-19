@@ -12,4 +12,9 @@ public class BattleUnitBuf_Unlock3 : BattleUnitBuf
     {
         base.stack = 0;
     }
+
+    public void Lock()
+    {
+        base._owner.bufListDetail.RemoveBuf(this);
+    }
 }

@@ -3,11 +3,6 @@ public class PassiveAbility_Esther : PassiveAbilityBase
     public override void OnWaveStart()
     {
         base.owner.allyCardDetail.GetAllDeck().Clear();
-
-        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_GraceOfPrescript());
-        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_Unlock());
-        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_Unlock2());
-        this.owner.bufListDetail.AddBuf(new BattleUnitBuf_Unlock3());
     }
 
     public override void OnRoundStart()
@@ -15,21 +10,6 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         base.owner.allyCardDetail.GetHand().Clear();
 
         this.AddCard(1);
-        this.AddCard(1);
-        this.AddCard(1);
-        this.AddCard(1);
-        this.AddCard(1);
-
-        BattleUnitBuf_GraceOfPrescript gps = (BattleUnitBuf_GraceOfPrescript)base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
-
-        if (gps == null)
-        {
-            UnityEngine.Debug.LogError("BattleUnitBuf_GraceOfPrescript is missing");
-
-            return;
-        }
-
-        gps.AddStack(1);
     }
 
     public override int SpeedDiceNumAdder()
