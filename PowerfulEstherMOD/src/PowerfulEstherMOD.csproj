@@ -81,6 +81,7 @@
     <Compile Include="BattleUnitBuf_Unlock.cs" />
     <Compile Include="BattleUnitBuf_Unlock2.cs" />
     <Compile Include="BattleUnitBuf_Unlock3.cs" />
+    <Compile Include="PrescriptBuf.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheTerminateAll.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>

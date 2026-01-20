@@ -8,9 +8,6 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             base.owner.bufListDetail.AddBuf(new BattleUnitBuf_GraceOfPrescript());
         }
-
-        this._isPassedByTarget = false;
-        this._isPrescriptPassed = true;
     }
 
     public override void OnRoundStart()
@@ -29,23 +26,39 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
         BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)bufList.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
 
-        if (this._isPrescriptPassed && this._isPassedByTarget)
+        if (this._prescript != null)
         {
-            grace.AddStack(3);
-        }
-        else if (this._isPrescriptPassed)
-        {
-            grace.AddStack(1);
-        }
+            if (this._prescript.IsPassedByTarget)
+            {
+                grace.AddStack(3);
+            }
+            else if (this._prescript.IsPassed)
+            {
+                grace.AddStack(1);
+            }
 
-        this._isPassedByTarget = false;
-        this._isPrescriptPassed = true;
+        }
 
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
         this.AddIndexMarks(hands);
 
-        this.AddPrescript(new BattleUnitBuf_TheTerminateAll());
+        if (3 > grace.stack && grace.stack >= 0)
+        {
+            this.SendLv0Prescript();
+        }
+        else if (6 > grace.stack && grace.stack >= 3)
+        {
+            this.SendLv1Prescript();
+        }
+        else if (9 > grace.stack && grace.stack >= 6)
+        {
+            this.SendLv2Prescript();
+        }
+        else
+        {
+            this.SendLv3Prescript();
+        }
     }
 
     private void AddIndexMarks(List<BattleDiceCardModel> cards)
@@ -84,7 +97,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         cards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
     }
 
-    private void AddPrescript(BattleUnitBuf prescript)
+    private void SetPrescript(PrescriptBuf prescript)
     {
         this._prescript = prescript;
 
@@ -93,14 +106,27 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        base.owner.bufListDetail.AddBuf(prescript);
+        base.owner.bufListDetail.AddBuf((BattleUnitBuf)prescript);
     }
 
-    private BattleUnitBuf _prescript;
+    private void SendLv0Prescript()
+    {
+    }
 
-    private bool _isPrescriptPassed;
+    private void SendLv1Prescript()
+    {
+    }
 
-    private bool _isPassedByTarget;
+    private void SendLv2Prescript()
+    {
+    }
+
+    private void SendLv3Prescript()
+    {
+        this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
+    }
+
+    private PrescriptBuf _prescript;
 
     public class BattleDiceCardBuf_IndexMark : BattleDiceCardBuf
     {

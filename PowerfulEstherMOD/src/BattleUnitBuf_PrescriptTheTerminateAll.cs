@@ -1,4 +1,4 @@
-public class BattleUnitBuf_TheTerminateAll : BattleUnitBuf
+public class BattleUnitBuf_TheTerminateAll : PrescriptBuf
 {
     protected override string keywordId
     {
@@ -6,15 +6,5 @@ public class BattleUnitBuf_TheTerminateAll : BattleUnitBuf
         {
             return "TheTerminateAll";
         }
-    }
-
-    public BattleUnitBuf_TheTerminateAll()
-    {
-        base.stack = 0;
-    }
-
-    public override void OnRoundEnd()
-    {
-        base.Destroy();
     }
 }

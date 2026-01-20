@@ -26,9 +26,54 @@
             <Desc>TODO</Desc>
         </BattleEffectText>
 
+        <!-- Level0 -->
+        <BattleEffectText ID="TheUseMarked">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページを使用する。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheHitMarked">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで一回以上攻撃を的中させる。</Desc>
+        </BattleEffectText>
+
+        <!-- Level1 -->
+        <BattleEffectText ID="TheOneAttack">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページでそれぞれ一回だけ攻撃を的中させる。
+
+[追伸] 合計で一回以上的中すればよい</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheOverWin">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで5以上威力を上回ってマッチに勝利する。</Desc>
+        </BattleEffectText>
+
+        <!-- Level2 -->
+
+        <!-- Level3 -->
         <BattleEffectText ID="TheTerminateAll">
             <Name>指令 : [紙片]</Name>
-            <Desc>TODO</Desc>
+            <Desc>全ての敵を倒す。
+
+期限は次の指令が来るまで。</Desc>
         </BattleEffectText>
+
+        <!-- Special -->
+        <BattleEffectText ID="TheKillPinocchio">
+            <Name>指令 : [紙片]</Name>
+            <Desc>嘘つきを殺せ。</Desc>
+            <!-- Kill the librarian of having pinocchio page -->
+        </BattleEffectText>
+        <BattleEffectText ID="TheGotoLantern">
+            <Name>指令 : [紙片]</Name>
+            <Desc>暖かい炎に飛び込め。</Desc>
+            <!-- Use all pages for bigbird's lantern -->
+        </BattleEffectText>
+        <BattleEffectText ID="TheRedMist">
+            <Name>指令 : [紙片]</Name>
+            <Desc>砕けた伝説に挑め。</Desc>
+            <!-- BREAK THE LEGEND OF REDMIST -->
+        </BattleEffectText>
+
     </effectTextList>
 </BattleEffectTextRoot>
