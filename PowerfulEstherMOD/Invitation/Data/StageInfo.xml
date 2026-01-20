@@ -8,7 +8,7 @@
       <Formation>13</Formation>
       <FormationType>Default</FormationType>
       <AvailableUnit>5</AvailableUnit>
-      <AggroScript>Esther</AggroScript>
+      <AggroScript></AggroScript>
       <emotionCardList />
     </Wave>
     <StageType>Invitation</StageType>

@@ -25,5 +25,10 @@
             <Name>解禁 - III</Name>
             <Desc>TODO</Desc>
         </BattleEffectText>
+
+        <BattleEffectText ID="TheTerminateAll">
+            <Name>指令 : [紙片]</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
     </effectTextList>
 </BattleEffectTextRoot>

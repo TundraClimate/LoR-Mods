@@ -44,6 +44,8 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
         this.AddIndexMarks(hands);
+
+        this.AddPrescript(new BattleUnitBuf_TheTerminateAll());
     }
 
     private void AddIndexMarks(List<BattleDiceCardModel> cards)
@@ -81,6 +83,20 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         cards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
         cards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
     }
+
+    private void AddPrescript(BattleUnitBuf prescript)
+    {
+        this._prescript = prescript;
+
+        if (base.owner == null)
+        {
+            return;
+        }
+
+        base.owner.bufListDetail.AddBuf(prescript);
+    }
+
+    private BattleUnitBuf _prescript;
 
     private bool _isPrescriptPassed;
 

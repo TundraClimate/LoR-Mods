@@ -17,6 +17,6 @@
     <DropTable Level="0">
       <DropItem Prob="1">-1</DropItem>
     </DropTable>
-    <AiScript></AiScript>
+    <AiScript>Esther</AiScript>
   </Enemy>
 </EnemyUnitClassRoot>
