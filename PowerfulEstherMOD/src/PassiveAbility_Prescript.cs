@@ -18,44 +18,18 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        BattleUnitBufListDetail bufList = base.owner.bufListDetail;
-
-        if (!bufList.HasBuf<BattleUnitBuf_GraceOfPrescript>())
-        {
-            bufList.AddBuf(new BattleUnitBuf_GraceOfPrescript());
-        }
-
-        BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)bufList.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
-
-        if (this._prescript != null)
-        {
-            if (this._prescript.IsPassedByTarget)
-            {
-                grace.AddStack(3);
-            }
-            else if (this._prescript.IsPassed)
-            {
-                grace.AddStack(1);
-            }
-            else
-            {
-                BattleUnitBuf_Karma karma = (BattleUnitBuf_Karma)bufList.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Karma);
-
-                if (karma == null)
-                {
-                    bufList.AddBuf(new BattleUnitBuf_Karma());
-                }
-                else
-                {
-                    karma.AddStack(1);
-                }
-            }
-
-        }
-
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
         this.AddIndexMarks(hands);
+
+        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+
+        if (grace == null)
+        {
+            grace = new BattleUnitBuf_GraceOfPrescript();
+
+            base.owner.bufListDetail.AddBuf(grace);
+        }
 
         if (3 > grace.stack && grace.stack >= 0)
         {
@@ -72,6 +46,45 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         else
         {
             this.SendLv3Prescript();
+        }
+    }
+
+    public override void OnRoundEnd()
+    {
+        if (base.owner == null)
+        {
+            return;
+        }
+
+        BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+
+        if (grace == null)
+        {
+            UnityEngine.Debug.LogWarning("GraceOfPrescript cannot obtain");
+
+            return;
+        }
+
+        if (this._prescript.IsPassedByTarget)
+        {
+            grace.AddStack(3);
+        }
+        else if (this._prescript.IsPassed)
+        {
+            grace.AddStack(1);
+        }
+        else
+        {
+            BattleUnitBuf_Karma karma = (BattleUnitBuf_Karma)base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Karma);
+
+            if (karma == null)
+            {
+                base.owner.bufListDetail.AddBuf(new BattleUnitBuf_Karma());
+            }
+            else
+            {
+                karma.AddStack(1);
+            }
         }
     }
 

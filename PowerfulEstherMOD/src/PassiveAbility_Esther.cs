@@ -1,42 +1,9 @@
 public class PassiveAbility_Esther : PassiveAbilityBase
 {
-    public override void OnWaveStart()
-    {
-        base.owner.allyCardDetail.GetAllDeck().Clear();
-    }
-
     public override void OnRoundStart()
     {
-        base.owner.allyCardDetail.GetHand().Clear();
-    }
-
-    public override void OnRoundStartAfter()
-    {
-        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
-
-        if (grace == null)
-        {
-            UnityEngine.Debug.LogWarning("GraceOfPrescript not found");
-
-            return;
-        }
-
-        if (3 > grace.stack && grace.stack >= 0)
-        {
-            this.UseLv0Pattern();
-        }
-        else if (6 > grace.stack && grace.stack >= 3)
-        {
-            this.UseLv1Pattern();
-        }
-        else if (9 > grace.stack && grace.stack >= 6)
-        {
-            this.UseLv2Pattern();
-        }
-        else
-        {
-            this.UseLv3Pattern();
-        }
+        this.ClearDeckAll();
+        this.ApplyPattern();
     }
 
     public override int SpeedDiceNumAdder()
@@ -71,7 +38,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     private void AddCard(LorId id, int priority = 0)
     {
-        BattleDiceCardModel card = base.owner.allyCardDetail.AddTempCard(id);
+        BattleDiceCardModel card = base.owner.allyCardDetail.AddNewCard(id);
 
         if (card == null)
         {
@@ -82,8 +49,72 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         card.SetPriorityAdder(priority);
     }
 
+    private void ClearDeckAll()
+    {
+        base.owner.allyCardDetail.GetAllDeck().Clear();
+        base.owner.allyCardDetail.GetHand().Clear();
+    }
+
+    private void ApplyPattern()
+    {
+        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+
+        if (grace == null)
+        {
+            UnityEngine.Debug.LogWarning("GraceOfPrescript not found");
+
+            return;
+        }
+
+        if (3 > grace.stack && grace.stack >= 0)
+        {
+            this.UseLv0Pattern();
+        }
+        else if (6 > grace.stack && grace.stack >= 3)
+        {
+            if (this._otf_1)
+            {
+                this._otf_1 = false;
+                this._elapsedTurn = 0;
+            }
+
+            this.UseLv1Pattern();
+        }
+        else if (9 > grace.stack && grace.stack >= 6)
+        {
+            if (this._otf_2)
+            {
+                this._otf_2 = false;
+                this._elapsedTurn = 0;
+            }
+
+            this.UseLv2Pattern();
+        }
+        else
+        {
+            if (this._otf_3)
+            {
+                this._otf_3 = false;
+                this._elapsedTurn = 0;
+            }
+
+            this.UseLv3Pattern();
+        }
+
+        this._elapsedTurn++;
+    }
+
     private void UseLv0Pattern()
     {
+        switch (this._elapsedTurn % 3)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
     }
 
     private void UseLv1Pattern()
@@ -97,4 +128,12 @@ public class PassiveAbility_Esther : PassiveAbilityBase
     private void UseLv3Pattern()
     {
     }
+
+    private int _elapsedTurn = 0;
+
+    private bool _otf_1 = true;
+
+    private bool _otf_2 = true;
+
+    private bool _otf_3 = true;
 }
