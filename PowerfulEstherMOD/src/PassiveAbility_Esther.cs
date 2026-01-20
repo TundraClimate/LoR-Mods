@@ -8,13 +8,35 @@ public class PassiveAbility_Esther : PassiveAbilityBase
     public override void OnRoundStart()
     {
         base.owner.allyCardDetail.GetHand().Clear();
+    }
 
-        this.AddCard(1);
+    public override void OnRoundStartAfter()
+    {
     }
 
     public override int SpeedDiceNumAdder()
     {
-        return 4;
+        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+
+        if (grace == null)
+        {
+            UnityEngine.Debug.LogWarning("GraceOfPrescript not found");
+
+            return 0;
+        }
+
+        if (3 > grace.stack && grace.stack >= 0)
+        {
+            return 2;
+        }
+        else if (9 > grace.stack && grace.stack >= 3)
+        {
+            return 3;
+        }
+        else
+        {
+            return 4;
+        }
     }
 
     private void AddCard(int id, int priority = 0)
