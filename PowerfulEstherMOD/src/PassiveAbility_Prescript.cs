@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class PassiveAbility_Prescript : PassiveAbilityBase
 {
     public override void OnWaveStart()
@@ -38,9 +40,68 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
         this._isPassedByTarget = false;
         this._isPrescriptPassed = true;
+
+        List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
+
+        this.AddIndexMarks(hands);
+    }
+
+    private void AddIndexMarks(List<BattleDiceCardModel> cards)
+    {
+        if (cards.Count == 0)
+        {
+            return;
+        }
+
+        if (cards.Count == 1)
+        {
+            cards[0].AddBuf(new BattleDiceCardBuf_IndexMark());
+
+            return;
+        }
+
+        int rangeMin = 0;
+        int rangeMax = cards.Count - 1;
+
+        int rand1 = RandomUtil.Range(rangeMin, rangeMax);
+        int rand2 = RandomUtil.Range(rangeMin, rangeMax);
+
+        if (rand1 == rand2)
+        {
+            if (rand1 == 0)
+            {
+                rand2 = 1;
+            }
+            else
+            {
+                rand2 = 0;
+            }
+        }
+
+        cards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
+        cards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
     }
 
     private bool _isPrescriptPassed;
 
     private bool _isPassedByTarget;
+
+    public class BattleDiceCardBuf_IndexMark : BattleDiceCardBuf
+    {
+        protected override string keywordId
+        {
+            get
+            {
+                return "IndexMark";
+            }
+        }
+
+        protected override string keywordIconId
+        {
+            get
+            {
+                return this.keywordId;
+            }
+        }
+    }
 }

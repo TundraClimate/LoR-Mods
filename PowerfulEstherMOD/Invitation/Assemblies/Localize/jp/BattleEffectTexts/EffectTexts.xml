@@ -9,6 +9,10 @@
             <Name>指令対象</Name>
             <Desc>TODO</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="CardBuf_IndexMark">
+            <Name>指令の印</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
         <BattleEffectText ID="Unlock">
             <Name>解禁 - I</Name>
             <Desc>TODO</Desc>
