@@ -25,6 +25,10 @@
             <Name>解禁 - III</Name>
             <Desc>TODO</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="Karma">
+            <Name>カルマ</Name>
+            <Desc>TODO</Desc>
+        </BattleEffectText>
 
         <!-- Level0 -->
         <BattleEffectText ID="TheUseMarked">

@@ -37,6 +37,19 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             {
                 grace.AddStack(1);
             }
+            else
+            {
+                BattleUnitBuf_Karma karma = (BattleUnitBuf_Karma)bufList.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Karma);
+
+                if (karma == null)
+                {
+                    bufList.AddBuf(new BattleUnitBuf_Karma());
+                }
+                else
+                {
+                    karma.AddStack(1);
+                }
+            }
 
         }
 
