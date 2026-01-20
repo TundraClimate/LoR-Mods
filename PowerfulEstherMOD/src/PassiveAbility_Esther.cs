@@ -10,8 +10,6 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         base.owner.allyCardDetail.GetHand().Clear();
 
         this.AddCard(1);
-        this.AddCard(1);
-        this.AddCard(1);
     }
 
     public override int SpeedDiceNumAdder()

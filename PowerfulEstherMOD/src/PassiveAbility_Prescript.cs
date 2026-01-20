@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LOR_DiceSystem;
 
 public class PassiveAbility_Prescript : PassiveAbilityBase
 {
@@ -106,19 +107,37 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        base.owner.bufListDetail.AddBuf((BattleUnitBuf)prescript);
+        base.owner.bufListDetail.AddBuf(prescript);
     }
 
     private void SendLv0Prescript()
     {
+        List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
+
+        bool hasAtkDice = !hands.TrueForAll((BattleDiceCardModel hand) =>
+                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.TrueForAll((DiceBehaviour dice) =>
+                    dice.Type == BehaviourType.Def || dice.Type == BehaviourType.Standby
+                )
+            );
+
+        if (hands.Count != 0 || hasAtkDice)
+        {
+            this.SetPrescript(PrescriptBuf.GetOne(new BattleUnitBuf_TheHitMarked(), new BattleUnitBuf_TheUseMarked()));
+        }
+        else
+        {
+            this.SetPrescript(new BattleUnitBuf_TheUseMarked());
+        }
     }
 
     private void SendLv1Prescript()
     {
+        this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
     }
 
     private void SendLv2Prescript()
     {
+        this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
     }
 
     private void SendLv3Prescript()

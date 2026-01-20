@@ -1,5 +1,23 @@
 public class PrescriptBuf : BattleUnitBuf
 {
+    public static PrescriptBuf GetOne(params PrescriptBuf[] prescripts)
+    {
+        if (prescripts.Length == 0)
+        {
+            return null;
+        }
+
+        if (prescripts.Length == 1)
+        {
+            return prescripts[0];
+        }
+
+        int min = 0;
+        int max = prescripts.Length - 1;
+
+        return prescripts[RandomUtil.Range(min, max)];
+    }
+
     public void Init()
     {
         base.stack = 0;
@@ -15,21 +33,9 @@ public class PrescriptBuf : BattleUnitBuf
         return prescript;
     }
 
-    public virtual bool IsPassed
-    {
-        get
-        {
-            return true;
-        }
-    }
+    public bool IsPassed = false;
 
-    public virtual bool IsPassedByTarget
-    {
-        get
-        {
-            return this.IsPassed && false;
-        }
-    }
+    public bool IsPassedByTarget = false;
 
     public override void OnRoundEnd()
     {
