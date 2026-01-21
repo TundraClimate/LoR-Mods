@@ -109,7 +109,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         switch (this._elapsedTurn % 3)
         {
             case 0:
-                AddCard(3);
+                AddCard(99);
                 break;
             case 1:
                 break;
