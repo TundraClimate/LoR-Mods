@@ -11,7 +11,7 @@
     <Script>ForceUnlock</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J2" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>6</Chapter>
     <SpecialEffect />
@@ -78,7 +78,7 @@
     <TextId>-1</TextId>
     <Artwork>ExecScript.png</Artwork>
     <Rarity>Uncommon</Rarity>
-    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Spec Range="Near" Cost="1" Affection="One" EmotionLimit="0" />
     <Script>ExecScript</Script>
     <ScriptDesc />
     <BehaviourList>
@@ -109,6 +109,31 @@
       <Behaviour Min="4" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
       <Behaviour Min="3" Dice="9" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
       <Behaviour Min="3" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="11">
+    <Name>遂行 : 一閃</Name>
+    <TextId>-1</TextId>
+    <Artwork>Unlock2.png</Artwork>
+    <Rarity>Rare</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>OneAttackSelf</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="15" Dice="22" Type="Atk" Detail="Slash" Motion="J2" MotionDefault="N" EffectRes="" Script="OneAttack" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="5" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="2" Dice="5" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>6</Chapter>
     <SpecialEffect />
