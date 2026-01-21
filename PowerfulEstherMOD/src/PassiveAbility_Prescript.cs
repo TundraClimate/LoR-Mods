@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using LOR_DiceSystem;
 
@@ -54,7 +55,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
     {
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
-        this.AddIndexMarks(hands);
+        this.AddIndexMarkByPrescript(hands, (PrescriptBuf)base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is PrescriptBuf));
     }
 
     public override void OnRoundEnd()
@@ -101,7 +102,28 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
     }
 
-    private void AddIndexMarks(List<BattleDiceCardModel> cards)
+    private void AddIndexMarkByPrescript(List<BattleDiceCardModel> cards, PrescriptBuf prescript)
+    {
+        if (prescript == null)
+        {
+            return;
+        }
+
+        if (prescript is BattleUnitBuf_TheUseMarked)
+        {
+            this.AddIndexMark(cards, _ => true);
+        }
+        else if (prescript is BattleUnitBuf_TheHitMarked)
+        {
+            this.AddIndexMark(cards, _ => true);
+        }
+        else
+        {
+            this.AddIndexMark(cards, _ => true);
+        }
+    }
+
+    private void AddIndexMark(List<BattleDiceCardModel> cards, Func<BattleDiceCardModel, bool> priority)
     {
         if (cards.Count == 0)
         {
@@ -115,67 +137,53 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        bool hasPrioritizeCard = !cards.TrueForAll((BattleDiceCardModel card) => !this._prioritizeCards.Contains(card.GetID()));
+        List<BattleDiceCardModel> compatCards = new List<BattleDiceCardModel>();
 
-        if (hasPrioritizeCard)
+        foreach (BattleDiceCardModel card in cards)
         {
-            this.AddIndexMarksBySpecialPrescript(cards);
+            if (card == null)
+            {
+                continue;
+            }
+
+            if (priority.Invoke(card))
+            {
+                compatCards.Add(card);
+            }
+        }
+
+        int limit = 2;
+
+        if (compatCards.Count <= limit)
+        {
+            foreach (BattleDiceCardModel card in compatCards)
+            {
+                card.AddBuf(new BattleDiceCardBuf_IndexMark());
+            }
 
             return;
         }
 
         int rangeMin = 0;
-        int rangeMax = cards.Count - 1;
+        int rangeMax = compatCards.Count - 1;
 
         int rand1 = RandomUtil.Range(rangeMin, rangeMax);
         int rand2 = RandomUtil.Range(rangeMin, rangeMax);
 
-        if (rand1 == rand2)
+        if (rand1 == rand2 && rand1 != rangeMax)
         {
-            if (rand1 == 0)
+            if (rand1 != rangeMax)
             {
-                rand2 = 1;
+                rand2 += 1;
             }
             else
             {
-                rand2 = 0;
+                rand2 -= 1;
             }
         }
 
-        cards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
-        cards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
-    }
-
-    private void AddIndexMarksBySpecialPrescript(List<BattleDiceCardModel> cards)
-    {
-        int limit = 2;
-
-        foreach (BattleDiceCardModel card in cards)
-        {
-            if (this._prioritizeCards.Contains(card.GetID()) && limit > 0)
-            {
-                limit--;
-
-                card.AddBuf(new BattleDiceCardBuf_IndexMark());
-            }
-        }
-
-        if (cards.Count - limit <= 0)
-        {
-            return;
-        }
-
-        for (int i = 0; limit != 0; i++)
-        {
-            if (this._prioritizeCards.Contains(cards[i].GetID()))
-            {
-                continue;
-            }
-
-            cards[i].AddBuf(new BattleDiceCardBuf_IndexMark());
-
-            limit--;
-        }
+        compatCards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
+        compatCards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
     }
 
     private void SetPrescript(PrescriptBuf prescript)
@@ -226,11 +234,6 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
     }
 
     private PrescriptBuf _prescript;
-
-    private List<LorId> _prioritizeCards = new List<LorId>()
-    {
-        new LorId(PowerfulEstherMOD.packageId, 11),
-    };
 
     public class BattleDiceCardBuf_IndexMark : BattleDiceCardBuf
     {
