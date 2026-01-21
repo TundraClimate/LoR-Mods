@@ -13,7 +13,7 @@
     <BehaviourList>
       <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>6</Chapter>
     <SpecialEffect />
     <SkinChange />
     <SkinChangeType>EGO</SkinChangeType>
@@ -37,7 +37,7 @@
     <BehaviourList>
       <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>6</Chapter>
     <SpecialEffect />
     <SkinChange />
     <SkinChangeType>EGO</SkinChangeType>
@@ -61,7 +61,56 @@
     <BehaviourList>
       <Behaviour Min="1" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="4">
+    <Name>指令遂行</Name>
+    <TextId>-1</TextId>
+    <Artwork>ExecScript.png</Artwork>
+    <Rarity>Uncommon</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>ExecScript</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="3" Dice="4" Type="Atk" Detail="Penetrate" Motion="Z" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="2" Dice="4" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
+  <Card ID="5">
+    <Name>輝く軌跡</Name>
+    <TextId>-1</TextId>
+    <Artwork>Unlock2.png</Artwork>
+    <Rarity>Common</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>GlowSlash</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="4" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="9" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
     <SpecialEffect />
     <SkinChange />
     <SkinChangeType>EGO</SkinChangeType>
@@ -88,7 +137,7 @@
       <Behaviour Min="12" Dice="16" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
       <Behaviour Min="12" Dice="16" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
     </BehaviourList>
-    <Chapter>1</Chapter>
+    <Chapter>6</Chapter>
     <SpecialEffect />
     <SkinChange />
     <SkinChangeType>EGO</SkinChangeType>

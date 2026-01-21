@@ -115,12 +115,12 @@ public class PassiveAbility_Esther : PassiveAbilityBase
             case 0:
                 this.AddCard(new LorId(605004), 999);
                 this.AddCard(new LorId(605006), 99);
-                this.AddCard(new LorId(605007), 9);
+                this.AddCard(4, 9);
                 break;
             case 1:
                 this.AddCard(new LorId(605004), 999);
-                this.AddCard(new LorId(605006), 99);
-                this.AddCard(new LorId(605007), 9);
+                this.AddCard(5, 99);
+                this.AddCard(new LorId(605006), 9);
                 break;
             case 2:
                 this.AddCard(new LorId(605006), 999);

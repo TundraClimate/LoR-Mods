@@ -89,6 +89,8 @@
     <Compile Include="DiceCardSelfAbility_ForceUnlock.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock2.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock3.cs" />
+    <Compile Include="DiceCardSelfAbility_ExecScript.cs" />
+    <Compile Include="DiceCardSelfAbility_GlowSlash.cs" />
     <Compile Include="DiceCardSelfAbility_VsRedMist.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
