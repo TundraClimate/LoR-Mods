@@ -1,6 +1,6 @@
 public class PassiveAbility_Esther : PassiveAbilityBase
 {
-    public override void OnRoundStart()
+    public override void OnRoundStartAfter()
     {
         if (base.owner == null)
         {

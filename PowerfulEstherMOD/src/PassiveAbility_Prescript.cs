@@ -23,10 +23,6 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
-
-        this.AddIndexMarks(hands);
-
         BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
@@ -52,6 +48,13 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             this.SendLv3Prescript();
         }
+    }
+
+    public override void OnRoundStartAfter()
+    {
+        List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
+
+        this.AddIndexMarks(hands);
     }
 
     public override void OnRoundEnd()
