@@ -209,7 +209,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
     private void SendLv1Prescript()
     {
-        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(new BattleUnitBuf_TheOneAttack())));
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(new BattleUnitBuf_TheOneAttack(), new BattleUnitBuf_TheOverWin())));
     }
 
     private void SendLv2Prescript()
