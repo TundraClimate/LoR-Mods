@@ -51,6 +51,37 @@
             <Name>指令 : [紙片]</Name>
             <Desc>指令の印が刻まれたページで5以上威力を上回ってマッチに勝利する。</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="TheThree">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで攻撃を3回以上的中させる。
+合計で4回以上的中させてもよいものとする。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheCounter">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページでカウンターをする。
+3枚以上のページでカウンターをすれば合格。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="ThePenetrate">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで2度以上敵を貫け。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheSlash">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで4度以上敵を切り裂け。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheBleed">
+            <Name>指令 : [紙片]</Name>
+            <Desc>出血で13以上の体力を失いなさい。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheOneside">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページでマッチをしないこと。
+動かない敵には無視してもよろしい。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheBreak">
+            <Name>指令 : [紙片]</Name>
+            <Desc>ふらついている相手に27以上のダメージを与えるか倒せ。</Desc>
+        </BattleEffectText>
 
         <!-- Level2 -->
 
