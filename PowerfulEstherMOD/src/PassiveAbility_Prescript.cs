@@ -83,7 +83,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             grace.AddStack(1);
         }
-        else
+        else if (grace.stack != 9)
         {
             BattleUnitBuf_Karma karma = (BattleUnitBuf_Karma)base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Karma);
 
