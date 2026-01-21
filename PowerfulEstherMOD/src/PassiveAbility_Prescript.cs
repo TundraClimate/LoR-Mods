@@ -148,11 +148,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
         if (hands.Count != 0 || hasAtkDice)
         {
-            this.SetPrescript(PrescriptBuf.GetOne(new BattleUnitBuf_TheHitMarked(), new BattleUnitBuf_TheUseMarked()));
+            this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(new BattleUnitBuf_TheHitMarked(), new BattleUnitBuf_TheUseMarked())));
         }
         else
         {
-            this.SetPrescript(new BattleUnitBuf_TheUseMarked());
+            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheUseMarked()));
         }
     }
 
