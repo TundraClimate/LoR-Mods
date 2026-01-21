@@ -15,6 +15,11 @@ public class BattleUnitBuf_Karma : BattleUnitBuf
         base.stack = 1;
     }
 
+    public BattleUnitBuf_Karma(int stack)
+    {
+        base.stack = stack;
+    }
+
     public void AddStack(int stack = 1)
     {
         base.stack = Math.Min(base.stack + stack, 10);
