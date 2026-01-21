@@ -24,7 +24,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
         {
@@ -70,7 +70,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+        BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
         {
@@ -89,7 +89,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
         else if (grace.stack != 9)
         {
-            BattleUnitBuf_Karma karma = (BattleUnitBuf_Karma)base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Karma);
+            BattleUnitBuf_Karma karma = (BattleUnitBuf_Karma)base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_Karma);
 
             if (karma == null)
             {
@@ -202,8 +202,8 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
     {
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
-        bool hasAtkDice = !hands.TrueForAll((BattleDiceCardModel hand) =>
-                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.TrueForAll((DiceBehaviour dice) =>
+        bool hasAtkDice = !hands.TrueForAll(hand =>
+                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.TrueForAll(dice =>
                     dice.Type == BehaviourType.Def || dice.Type == BehaviourType.Standby
                 )
             );

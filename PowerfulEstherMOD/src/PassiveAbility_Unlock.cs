@@ -20,11 +20,11 @@ public class PassiveAbility_Unlock : PassiveAbilityBase
 
         List<BattleUnitBuf> activeBufList = bufList.GetActivatedBufList();
 
-        BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)activeBufList.Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+        BattleUnitBuf_GraceOfPrescript grace = (BattleUnitBuf_GraceOfPrescript)activeBufList.Find(buf => buf is BattleUnitBuf_GraceOfPrescript);
 
-        BattleUnitBuf_Unlock unlock = (BattleUnitBuf_Unlock)activeBufList.Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Unlock);
-        BattleUnitBuf_Unlock2 unlock2 = (BattleUnitBuf_Unlock2)activeBufList.Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Unlock2);
-        BattleUnitBuf_Unlock3 unlock3 = (BattleUnitBuf_Unlock3)activeBufList.Find((BattleUnitBuf buf) => buf is BattleUnitBuf_Unlock3);
+        BattleUnitBuf_Unlock unlock = (BattleUnitBuf_Unlock)activeBufList.Find(buf => buf is BattleUnitBuf_Unlock);
+        BattleUnitBuf_Unlock2 unlock2 = (BattleUnitBuf_Unlock2)activeBufList.Find(buf => buf is BattleUnitBuf_Unlock2);
+        BattleUnitBuf_Unlock3 unlock3 = (BattleUnitBuf_Unlock3)activeBufList.Find(buf => buf is BattleUnitBuf_Unlock3);
 
         if (grace.stack == 9)
         {

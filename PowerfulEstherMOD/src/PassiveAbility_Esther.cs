@@ -13,7 +13,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     public override int SpeedDiceNumAdder()
     {
-        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
         {
@@ -61,7 +61,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
             return;
         }
 
-        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
+        BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
         {
