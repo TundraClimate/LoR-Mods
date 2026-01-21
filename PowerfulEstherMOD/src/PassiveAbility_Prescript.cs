@@ -112,6 +112,15 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
+        bool hasPrioritizeCard = !cards.TrueForAll((BattleDiceCardModel card) => !this._prioritizeCards.Contains(card.GetID()));
+
+        if (hasPrioritizeCard)
+        {
+            this.AddIndexMarksBySpecialPrescript(cards);
+
+            return;
+        }
+
         int rangeMin = 0;
         int rangeMax = cards.Count - 1;
 
@@ -132,6 +141,38 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
         cards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
         cards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
+    }
+
+    private void AddIndexMarksBySpecialPrescript(List<BattleDiceCardModel> cards)
+    {
+        int limit = 2;
+
+        foreach (BattleDiceCardModel card in cards)
+        {
+            if (this._prioritizeCards.Contains(card.GetID()) && limit > 0)
+            {
+                limit--;
+
+                card.AddBuf(new BattleDiceCardBuf_IndexMark());
+            }
+        }
+
+        if (cards.Count - limit <= 0)
+        {
+            return;
+        }
+
+        for (int i = 0; limit != 0; i++)
+        {
+            if (this._prioritizeCards.Contains(cards[i].GetID()))
+            {
+                continue;
+            }
+
+            cards[i].AddBuf(new BattleDiceCardBuf_IndexMark());
+
+            limit--;
+        }
     }
 
     private void SetPrescript(PrescriptBuf prescript)
@@ -168,7 +209,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
     private void SendLv1Prescript()
     {
-        this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(new BattleUnitBuf_TheOneAttack())));
     }
 
     private void SendLv2Prescript()
@@ -182,6 +223,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
     }
 
     private PrescriptBuf _prescript;
+
+    private List<LorId> _prioritizeCards = new List<LorId>()
+    {
+        new LorId(PowerfulEstherMOD.packageId, 11),
+    };
 
     public class BattleDiceCardBuf_IndexMark : BattleDiceCardBuf
     {
