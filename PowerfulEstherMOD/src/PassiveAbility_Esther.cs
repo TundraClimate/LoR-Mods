@@ -116,14 +116,22 @@ public class PassiveAbility_Esther : PassiveAbilityBase
                 this.AddCard(new LorId(605004), 999);
                 this.AddCard(new LorId(605006), 99);
                 this.AddCard(4, 9);
-                this.AddCard(1, 0);
+
+                if (base.owner.emotionDetail.EmotionLevel > 3)
+                {
+                    this.AddCard(1, 0);
+                }
 
                 break;
             case 1:
                 this.AddCard(new LorId(605004), 999);
                 this.AddCard(5, 99);
                 this.AddCard(new LorId(605006), 9);
-                this.AddCard(1, 0);
+
+                if (base.owner.emotionDetail.EmotionLevel > 3)
+                {
+                    this.AddCard(1, 0);
+                }
 
                 break;
             case 2:
