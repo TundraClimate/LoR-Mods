@@ -2,7 +2,12 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 {
     public override void OnRoundStart()
     {
-        this.ClearDeckAll();
+        if (base.owner == null)
+        {
+            return;
+        }
+
+        base.owner.allyCardDetail.ExhaustAllCards();
         this.ApplyPattern();
     }
 
@@ -49,14 +54,13 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         card.SetPriorityAdder(priority);
     }
 
-    private void ClearDeckAll()
-    {
-        base.owner.allyCardDetail.GetAllDeck().Clear();
-        base.owner.allyCardDetail.GetHand().Clear();
-    }
-
     private void ApplyPattern()
     {
+        if (base.owner.breakDetail.IsBreakLifeZero())
+        {
+            return;
+        }
+
         BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find((BattleUnitBuf buf) => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
@@ -109,11 +113,19 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         switch (this._elapsedTurn % 3)
         {
             case 0:
-                AddCard(99);
+                this.AddCard(new LorId(605004), 999);
+                this.AddCard(new LorId(605006), 99);
+                this.AddCard(new LorId(605007), 9);
                 break;
             case 1:
+                this.AddCard(new LorId(605004), 999);
+                this.AddCard(new LorId(605006), 99);
+                this.AddCard(new LorId(605007), 9);
                 break;
             case 2:
+                this.AddCard(new LorId(605006), 999);
+                this.AddCard(new LorId(605007), 99);
+                this.AddCard(1, 9);
                 break;
         }
     }
