@@ -18,6 +18,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
+        if (base.owner.breakDetail.IsBreakLifeZero())
+        {
+            return;
+        }
+
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
         this.AddIndexMarks(hands);
@@ -52,6 +57,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
     public override void OnRoundEnd()
     {
         if (base.owner == null)
+        {
+            return;
+        }
+
+        if (base.owner.breakDetail.IsBreakLifeZero())
         {
             return;
         }
