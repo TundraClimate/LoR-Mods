@@ -55,7 +55,12 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
     {
         List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
 
-        this.AddIndexMarkByPrescript(hands, (PrescriptBuf)base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is PrescriptBuf));
+        BattleUnitBuf prescript = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is PrescriptBuf);
+
+        if (prescript != null)
+        {
+            this.AddIndexMark(hands, ((PrescriptBuf)prescript).IsIndexMarkNeeds);
+        }
     }
 
     public override void OnRoundEnd()
@@ -102,28 +107,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
     }
 
-    private void AddIndexMarkByPrescript(List<BattleDiceCardModel> cards, PrescriptBuf prescript)
-    {
-        if (prescript == null)
-        {
-            return;
-        }
-
-        if (prescript is BattleUnitBuf_TheUseMarked)
-        {
-            this.AddIndexMark(cards, _ => true);
-        }
-        else if (prescript is BattleUnitBuf_TheHitMarked)
-        {
-            this.AddIndexMark(cards, _ => true);
-        }
-        else
-        {
-            this.AddIndexMark(cards, _ => true);
-        }
-    }
-
-    private void AddIndexMark(List<BattleDiceCardModel> cards, Func<BattleDiceCardModel, bool> priority)
+    private void AddIndexMark(List<BattleDiceCardModel> cards, Func<BattleDiceCardModel, bool> priority, int limit = 2)
     {
         if (cards.Count == 0)
         {
@@ -138,6 +122,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
 
         List<BattleDiceCardModel> compatCards = new List<BattleDiceCardModel>();
+        List<BattleDiceCardModel> otherCards = new List<BattleDiceCardModel>();
 
         foreach (BattleDiceCardModel card in cards)
         {
@@ -150,9 +135,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             {
                 compatCards.Add(card);
             }
+            else
+            {
+                otherCards.Add(card);
+            }
         }
-
-        int limit = 2;
 
         if (compatCards.Count <= limit)
         {
@@ -160,6 +147,8 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             {
                 card.AddBuf(new BattleDiceCardBuf_IndexMark());
             }
+
+            this.AddIndexMark(otherCards, _ => true, limit: limit - compatCards.Count);
 
             return;
         }

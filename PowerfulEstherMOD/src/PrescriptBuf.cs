@@ -41,4 +41,9 @@ public class PrescriptBuf : BattleUnitBuf
     {
         base.Destroy();
     }
+
+    public virtual bool IsIndexMarkNeeds(BattleDiceCardModel model)
+    {
+        return true;
+    }
 }
