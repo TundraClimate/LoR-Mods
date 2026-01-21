@@ -20,4 +20,14 @@ public class BattleUnitBuf_TheHitMarked : PrescriptBuf
             }
         }
     }
+
+    public override bool IsIndexMarkNeeds(BattleDiceCardModel model)
+    {
+        return base.SetIndexMarkForAtkDice(model);
+    }
+
+    public override bool IsSelectable(PassiveAbilityBase self)
+    {
+        return base.SelectAtkDiceNeeds(self);
+    }
 }

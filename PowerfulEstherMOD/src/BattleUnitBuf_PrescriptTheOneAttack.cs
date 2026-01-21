@@ -46,4 +46,14 @@ public class BattleUnitBuf_TheOneAttack : PrescriptBuf
     private bool _isFailed = false;
 
     private bool _using = false;
+
+    public override bool IsIndexMarkNeeds(BattleDiceCardModel model)
+    {
+        return base.SetIndexMarkForAtkDice(model);
+    }
+
+    public override bool IsSelectable(PassiveAbilityBase self)
+    {
+        return base.SelectAtkDiceNeeds(self);
+    }
 }

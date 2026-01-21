@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using LOR_DiceSystem;
 
 public class PassiveAbility_Prescript : PassiveAbilityBase
 {
@@ -20,6 +19,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
 
         if (base.owner.breakDetail.IsBreakLifeZero())
+        {
+            return;
+        }
+
+        if (base.owner.allyCardDetail.GetHand().Count == 0)
         {
             return;
         }
@@ -189,37 +193,52 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
     private void SendLv0Prescript()
     {
-        List<BattleDiceCardModel> hands = base.owner.allyCardDetail.GetHand();
-
-        bool hasAtkDice = !hands.TrueForAll(hand =>
-                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.TrueForAll(dice =>
-                    dice.Type == BehaviourType.Def || dice.Type == BehaviourType.Standby
-                )
-            );
-
-        if (hands.Count != 0 || hasAtkDice)
+        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
         {
-            this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(new BattleUnitBuf_TheHitMarked(), new BattleUnitBuf_TheUseMarked())));
-        }
-        else
-        {
-            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheUseMarked()));
-        }
+            new BattleUnitBuf_TheHitMarked(),
+            new BattleUnitBuf_TheUseMarked()
+        };
+
+        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
 
     private void SendLv1Prescript()
     {
-        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(new BattleUnitBuf_TheOneAttack(), new BattleUnitBuf_TheOverWin())));
+        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
+        {
+            new BattleUnitBuf_TheOneAttack(),
+            new BattleUnitBuf_TheOverWin()
+        };
+
+        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
 
     private void SendLv2Prescript()
     {
-        this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
+        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
+        {
+            new BattleUnitBuf_TheTerminateAll(),
+        };
+
+        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
 
     private void SendLv3Prescript()
     {
-        this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
+        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
+        {
+            new BattleUnitBuf_TheTerminateAll(),
+        };
+
+        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
 
     private PrescriptBuf _prescript;
