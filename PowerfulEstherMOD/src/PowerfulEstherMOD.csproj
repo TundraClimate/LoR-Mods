@@ -97,6 +97,7 @@
     <Compile Include="DiceCardSelfAbility_OneAttackSelf.cs" />
     <Compile Include="DiceCardSelfAbility_VsRedMist.cs" />
     <Compile Include="DiceCardAbility_OneAttack.cs" />
+    <Compile Include="DiceCardAbility_TheThree.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -145,7 +145,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     private void UseLv1Pattern()
     {
-        this.AddCard(12, 999);
+        this.AddCard(13, 999);
     }
 
     private void UseLv2Pattern()
