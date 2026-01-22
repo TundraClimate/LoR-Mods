@@ -1,10 +1,10 @@
-public class BattleUnitBuf_TheOverWin : PrescriptBuf
+public class BattleUnitBuf_TheOverWinMatch : PrescriptBuf
 {
     protected override string keywordId
     {
         get
         {
-            return "TheOverWin";
+            return "TheOverWinMatch";
         }
     }
 

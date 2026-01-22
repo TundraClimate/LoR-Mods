@@ -192,7 +192,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
                 ablePrescripts = new List<PrescriptBuf>
                 {
                     new BattleUnitBuf_TheOneAttack(),
-                    new BattleUnitBuf_TheOverWin(),
+                    new BattleUnitBuf_TheOverWinMatch(),
                     new BattleUnitBuf_TheThree(),
                 };
 
