@@ -23,11 +23,6 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
-        if (base.owner.allyCardDetail.GetHand().Count == 0)
-        {
-            return;
-        }
-
         BattleUnitBuf grace = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_GraceOfPrescript);
 
         if (grace == null)
@@ -199,7 +194,17 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             new BattleUnitBuf_TheUseMarked()
         };
 
-        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        }
+
+        if (ablePrescripts.Count == 0)
+        {
+            UnityEngine.Debug.LogWarning("Prescript was not sent");
+
+            return;
+        }
 
         this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
@@ -209,10 +214,21 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
         {
             new BattleUnitBuf_TheOneAttack(),
-            new BattleUnitBuf_TheOverWin()
+            new BattleUnitBuf_TheOverWin(),
+            new BattleUnitBuf_TheThree(),
         };
 
-        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        }
+
+        if (ablePrescripts.Count == 0)
+        {
+            UnityEngine.Debug.LogWarning("Prescript was not sent");
+
+            return;
+        }
 
         this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
@@ -224,7 +240,17 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             new BattleUnitBuf_TheTerminateAll(),
         };
 
-        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        }
+
+        if (ablePrescripts.Count == 0)
+        {
+            UnityEngine.Debug.LogWarning("Prescript was not sent");
+
+            return;
+        }
 
         this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
@@ -236,7 +262,17 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             new BattleUnitBuf_TheTerminateAll(),
         };
 
-        ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        }
+
+        if (ablePrescripts.Count == 0)
+        {
+            UnityEngine.Debug.LogWarning("Prescript was not sent");
+
+            return;
+        }
 
         this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
