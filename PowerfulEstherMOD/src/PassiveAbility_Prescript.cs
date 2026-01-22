@@ -34,19 +34,19 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
 
         if (3 > grace.stack && grace.stack >= 0)
         {
-            this.SendLv0Prescript();
+            this.SendPrescript(0);
         }
         else if (6 > grace.stack && grace.stack >= 3)
         {
-            this.SendLv1Prescript();
+            this.SendPrescript(1);
         }
         else if (9 > grace.stack && grace.stack >= 6)
         {
-            this.SendLv2Prescript();
+            this.SendPrescript(2);
         }
         else
         {
-            this.SendLv3Prescript();
+            this.SendPrescript(3);
         }
     }
 
@@ -174,6 +174,64 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         compatCards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
     }
 
+    private void SendPrescript(int level)
+    {
+        List<PrescriptBuf> ablePrescripts;
+
+        switch (level)
+        {
+            case 0:
+                ablePrescripts = new List<PrescriptBuf>
+                {
+                    new BattleUnitBuf_TheHitMarked(),
+                    new BattleUnitBuf_TheUseMarked()
+                };
+
+                break;
+            case 1:
+                ablePrescripts = new List<PrescriptBuf>
+                {
+                    new BattleUnitBuf_TheOneAttack(),
+                    new BattleUnitBuf_TheOverWin(),
+                    new BattleUnitBuf_TheThree(),
+                };
+
+                break;
+            case 2:
+                ablePrescripts = new List<PrescriptBuf>
+                {
+                    new BattleUnitBuf_TheTerminateAll(),
+                };
+
+                break;
+            case 3:
+                ablePrescripts = new List<PrescriptBuf>
+                {
+                    new BattleUnitBuf_TheTerminateAll(),
+                };
+
+                break;
+            default:
+                UnityEngine.Debug.LogError("A level the " + level + " is not valid");
+
+                return;
+        }
+
+        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
+        }
+
+        if (ablePrescripts.Count == 0)
+        {
+            UnityEngine.Debug.LogWarning("Prescript was not sent");
+
+            return;
+        }
+
+        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
+    }
+
     private void SetPrescript(PrescriptBuf prescript)
     {
         this._prescript = prescript;
@@ -184,97 +242,6 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
 
         base.owner.bufListDetail.AddBuf(prescript);
-    }
-
-    private void SendLv0Prescript()
-    {
-        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
-        {
-            new BattleUnitBuf_TheHitMarked(),
-            new BattleUnitBuf_TheUseMarked()
-        };
-
-        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
-        {
-            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
-        }
-
-        if (ablePrescripts.Count == 0)
-        {
-            UnityEngine.Debug.LogWarning("Prescript was not sent");
-
-            return;
-        }
-
-        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
-    }
-
-    private void SendLv1Prescript()
-    {
-        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
-        {
-            new BattleUnitBuf_TheOneAttack(),
-            new BattleUnitBuf_TheOverWin(),
-            new BattleUnitBuf_TheThree(),
-        };
-
-        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
-        {
-            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
-        }
-
-        if (ablePrescripts.Count == 0)
-        {
-            UnityEngine.Debug.LogWarning("Prescript was not sent");
-
-            return;
-        }
-
-        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
-    }
-
-    private void SendLv2Prescript()
-    {
-        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
-        {
-            new BattleUnitBuf_TheTerminateAll(),
-        };
-
-        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
-        {
-            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
-        }
-
-        if (ablePrescripts.Count == 0)
-        {
-            UnityEngine.Debug.LogWarning("Prescript was not sent");
-
-            return;
-        }
-
-        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
-    }
-
-    private void SendLv3Prescript()
-    {
-        List<PrescriptBuf> ablePrescripts = new List<PrescriptBuf>
-        {
-            new BattleUnitBuf_TheTerminateAll(),
-        };
-
-        if (!base.owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
-        {
-            ablePrescripts.RemoveAll(prescript => !prescript.IsSelectable(this));
-        }
-
-        if (ablePrescripts.Count == 0)
-        {
-            UnityEngine.Debug.LogWarning("Prescript was not sent");
-
-            return;
-        }
-
-        this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
     }
 
     private PrescriptBuf _prescript;
