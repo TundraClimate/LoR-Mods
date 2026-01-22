@@ -89,6 +89,7 @@
     <Compile Include="BattleUnitBuf_PrescriptTheOneAttack.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheOverWinMatch.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheThree.cs" />
+    <Compile Include="BattleUnitBuf_PrescriptTheCounter.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock2.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock3.cs" />
