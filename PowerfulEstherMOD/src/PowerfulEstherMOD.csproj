@@ -91,6 +91,7 @@
     <Compile Include="BattleUnitBuf_PrescriptTheThree.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheCounter.cs" />
     <Compile Include="BattleUnitBuf_PrescriptThePenetrate.cs" />
+    <Compile Include="BattleUnitBuf_PrescriptTheSlash.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock2.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock3.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="DiceCardAbility_TheThree.cs" />
     <Compile Include="DiceCardAbility_TheCounter.cs" />
     <Compile Include="DiceCardAbility_ThePenetrate.cs" />
+    <Compile Include="DiceCardAbility_TheSlash.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
