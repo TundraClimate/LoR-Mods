@@ -73,15 +73,6 @@
             <Name>指令 : [紙片]</Name>
             <Desc>出血で21以上の体力を失いなさい。</Desc>
         </BattleEffectText>
-        <BattleEffectText ID="TheOneside">
-            <Name>指令 : [紙片]</Name>
-            <Desc>指令の印が刻まれたページでマッチをしないこと。
-動かない敵には無視してもよろしい。</Desc>
-        </BattleEffectText>
-        <BattleEffectText ID="TheBreak">
-            <Name>指令 : [紙片]</Name>
-            <Desc>ふらついている相手に27以上のダメージを与えるか倒せ。</Desc>
-        </BattleEffectText>
 
         <!-- Level2 -->
 
