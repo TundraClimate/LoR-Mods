@@ -195,8 +195,9 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
                     new BattleUnitBuf_TheOverWinMatch(),
                     new BattleUnitBuf_TheThree(),
                     new BattleUnitBuf_TheCounter(),
-                    new BattleUnitBuf_ThePenetrate(), */
-                    new BattleUnitBuf_TheSlash(),
+                    new BattleUnitBuf_ThePenetrate(),
+                    new BattleUnitBuf_TheSlash(), */
+                    new BattleUnitBuf_TheBleed(),
                 };
 
                 break;
