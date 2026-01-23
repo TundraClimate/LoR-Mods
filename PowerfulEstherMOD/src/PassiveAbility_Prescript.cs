@@ -204,7 +204,16 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             case 2:
                 ablePrescripts = new List<PrescriptBuf>
                 {
-                    new BattleUnitBuf_TheTerminateAll(),
+                    new BattleUnitBuf_TheKillOrDamage(),
+                    new BattleUnitBuf_TheBreakOrKill(),
+                    new BattleUnitBuf_TheOneSpeedDice(),
+                    new BattleUnitBuf_TheWinAndLose(),
+                    new BattleUnitBuf_TheLoseMatch(),
+                    new BattleUnitBuf_TheFiveBuf(),
+                    new BattleUnitBuf_TheLoseByLow(),
+                    new BattleUnitBuf_TheNormalResist(),
+                    new BattleUnitBuf_TheHealBreakLife(),
+                    new BattleUnitBuf_TheRollAllRange(),
                 };
 
                 break;
