@@ -145,8 +145,73 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     private void UseLv1Pattern()
     {
-        this.AddCard(17, 999);
-        this.AddCard(17, 999);
+        BattleUnitBuf prescript = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is PrescriptBuf);
+
+        if (prescript is BattleUnitBuf_TheOneAttack)
+        {
+            this.AddCard(11, 9999);
+            this.AddCard(11, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheOverWinMatch)
+        {
+            this.AddCard(12, 9999);
+            this.AddCard(12, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheThree)
+        {
+            this.AddCard(13, 9999);
+            this.AddCard(13, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheCounter)
+        {
+            this.AddCard(14, 9999);
+            this.AddCard(14, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_ThePenetrate)
+        {
+            this.AddCard(15, 9999);
+            this.AddCard(15, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheSlash)
+        {
+            this.AddCard(16, 9999);
+            this.AddCard(16, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheBleed)
+        {
+            this.AddCard(17, 9999);
+            this.AddCard(17, 9999);
+        }
+
+        switch (this._elapsedTurn % 3)
+        {
+            case 0:
+                this.AddCard(new LorId(605004), 99);
+                this.AddCard(new LorId(605006), 9);
+
+                break;
+            case 1:
+                this.AddCard(5, 99);
+                this.AddCard(new LorId(605006), 9);
+
+                break;
+            case 2:
+                this.AddCard(new LorId(605004), 99);
+                this.AddCard(2, 9);
+
+                break;
+        }
+
+        if (base.owner.emotionDetail.EmotionLevel > 3 && this._elapsedTurn % 3 != 2)
+        {
+            this.AddCard(2, 0);
+        }
     }
 
     private void UseLv2Pattern()
