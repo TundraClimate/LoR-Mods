@@ -90,16 +90,19 @@
     <Compile Include="BattleUnitBuf_PrescriptTheOverWinMatch.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheThree.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheCounter.cs" />
+    <Compile Include="BattleUnitBuf_PrescriptThePenetrate.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock2.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock3.cs" />
     <Compile Include="DiceCardSelfAbility_ExecScript.cs" />
     <Compile Include="DiceCardSelfAbility_GlowSlash.cs" />
     <Compile Include="DiceCardSelfAbility_OneAttackSelf.cs" />
+    <Compile Include="DiceCardSelfAbility_ThePenetrateSelf.cs" />
     <Compile Include="DiceCardSelfAbility_VsRedMist.cs" />
     <Compile Include="DiceCardAbility_OneAttack.cs" />
     <Compile Include="DiceCardAbility_TheThree.cs" />
     <Compile Include="DiceCardAbility_TheCounter.cs" />
+    <Compile Include="DiceCardAbility_ThePenetrate.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
