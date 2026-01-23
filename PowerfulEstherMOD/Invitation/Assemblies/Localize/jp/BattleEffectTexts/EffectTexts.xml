@@ -75,6 +75,57 @@
         </BattleEffectText>
 
         <!-- Level2 -->
+        <BattleEffectText ID="TheKillOrDamage">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで29以上のダメージを与えるか誰かを倒す。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheBreakOrKill">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページで敵を混乱させるか倒す。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheOneSpeedDice">
+            <Name>指令 : [紙片]</Name>
+            <Desc>1つ目の速度ダイスで2回以上攻撃を的中させなさい。
+指令の印が刻まれていればボーナスポイント。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheWinAndLose">
+            <Name>指令 : [紙片]</Name>
+            <Desc>1つ目の速度ダイスでマッチに勝利して敗北する。
+敗北して勝利してもよいものとする。
+指令の印が刻まれていればボーナスポイント。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheLoseMatch">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページでマッチに負けなさい。
+
+[追伸] 使用したページ全てで一方攻撃を成功しても達成とする。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheFiveBuf">
+            <Name>指令 : [紙片]</Name>
+            <Desc>プラス効果を3種類以上持った状態で次の幕を迎える。
+指令対象に与えたマイナス効果も1種とする。
+
+[追伸] マイナス効果は見覚えがある種類のみ。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheLoseByLow">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページを使用し、マッチ敗北か一方攻撃をしなさい。
+
+[追伸] このページより低いコストのページでなければならない。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheNormalResist">
+            <Name>指令 : [紙片]</Name>
+            <Desc>普通以上に軽減されたダメージを与える。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheHealBreakLife">
+            <Name>指令 : [紙片]</Name>
+            <Desc>指令の印が刻まれたページの使用中に混乱抵抗値を18以上回復すること。</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="TheRollAllRange">
+            <Name>指令 : [紙片]</Name>
+            <Desc>最大値と最小値を1回ずつ出す。
+指令対象への的中かマッチ中に出たならどちらかでよろしい。</Desc>
+        </BattleEffectText>
 
         <!-- Level3 -->
         <BattleEffectText ID="TheTerminateAll">
