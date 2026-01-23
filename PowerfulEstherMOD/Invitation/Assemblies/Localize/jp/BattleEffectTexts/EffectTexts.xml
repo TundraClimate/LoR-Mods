@@ -98,7 +98,7 @@
             <Name>指令 : [紙片]</Name>
             <Desc>指令の印が刻まれたページでマッチに負けなさい。
 
-[追伸] 使用したページ全てで一方攻撃を成功しても達成とする。</Desc>
+[追伸] 使用したページ全てで攻撃を成功しても達成とする。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="TheFiveBuf">
             <Name>指令 : [紙片]</Name>
