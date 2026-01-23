@@ -99,7 +99,7 @@
     <Compile Include="BattleUnitBuf_PrescriptTheWinAndLose.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheLoseMatch.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheFiveBuf.cs" />
-    <Compile Include="BattleUnitBuf_PrescriptTheLoseByLow.cs" />
+    <Compile Include="BattleUnitBuf_PrescriptTheWinByHigh.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheNormalResist.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheHealBreakLife.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheRollAllRange.cs" />

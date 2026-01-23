@@ -107,11 +107,11 @@
 
 [追伸] マイナス効果は見覚えがある種類のみ。</Desc>
         </BattleEffectText>
-        <BattleEffectText ID="TheLoseByLow">
+        <BattleEffectText ID="TheWinByHigh">
             <Name>指令 : [紙片]</Name>
-            <Desc>指令の印が刻まれたページを使用し、マッチ敗北か一方攻撃をしなさい。
+            <Desc>指令の印が刻まれたページを使用し、そのページよりコストが高いページにマッチで勝利し、一方攻撃をしなさい。
 
-[追伸] このページより低いコストのページでなければならない。</Desc>
+[追伸] 本来のコストを参照するものとする。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="TheNormalResist">
             <Name>指令 : [紙片]</Name>

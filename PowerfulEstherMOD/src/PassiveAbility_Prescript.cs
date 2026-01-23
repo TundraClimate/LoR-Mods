@@ -210,7 +210,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
                     new BattleUnitBuf_TheWinAndLose(),
                     new BattleUnitBuf_TheLoseMatch(),
                     new BattleUnitBuf_TheFiveBuf(),
-                    new BattleUnitBuf_TheLoseByLow(),
+                    new BattleUnitBuf_TheWinByHigh(),
                     new BattleUnitBuf_TheNormalResist(),
                     new BattleUnitBuf_TheHealBreakLife(),
                     new BattleUnitBuf_TheRollAllRange(),
