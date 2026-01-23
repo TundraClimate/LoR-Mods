@@ -39,6 +39,13 @@ public class BattleUnitBuf_ThePenetrate : PrescriptBuf
 
     public override bool IsIndexMarkNeeds(BattleDiceCardModel model)
     {
+        if (base._owner != null && base._owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            LorId[] pids = new[] { new LorId(PowerfulEstherMOD.packageId, 15) };
+
+            return pids.Contains(model.GetID());
+        }
+
         List<DiceBehaviour> behs = ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList;
         int count = 0;
 
