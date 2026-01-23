@@ -33,12 +33,7 @@ public class BattleUnitBuf_TheOneAttack : PrescriptBuf
         }
     }
 
-    public override void OnEndOneSideAction(BattlePlayingCardDataInUnitModel curCard)
-    {
-        this._using = false;
-    }
-
-    public override void OnEndParrying()
+    public override void OnEndBattle(BattlePlayingCardDataInUnitModel curCard)
     {
         this._using = false;
     }
