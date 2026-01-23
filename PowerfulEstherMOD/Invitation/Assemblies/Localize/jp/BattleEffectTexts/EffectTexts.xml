@@ -102,8 +102,7 @@
         </BattleEffectText>
         <BattleEffectText ID="TheFiveBuf">
             <Name>指令 : [紙片]</Name>
-            <Desc>プラス効果を3種類以上持った状態で次の幕を迎える。
-指令対象に与えたマイナス効果も1種とする。
+            <Desc>指令対象にページによってマイナス効果を合計で5以上与える。
 
 [追伸] マイナス効果は見覚えがある種類のみ。</Desc>
         </BattleEffectText>
