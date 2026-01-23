@@ -140,7 +140,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             }
         }
 
-        if (compatCards.Count <= limit)
+        if (compatCards.Count < limit)
         {
             foreach (BattleDiceCardModel card in compatCards)
             {
@@ -158,7 +158,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         int rand1 = RandomUtil.Range(rangeMin, rangeMax);
         int rand2 = RandomUtil.Range(rangeMin, rangeMax);
 
-        if (rand1 == rand2 && rand1 != rangeMax)
+        if (rand1 == rand2)
         {
             if (rand1 != rangeMax)
             {
