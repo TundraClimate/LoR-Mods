@@ -20,7 +20,7 @@ public class BattleUnitBuf_TheSlash : PrescriptBuf
                 this._totalHit++;
             }
 
-            if (behavior.TargetDice.owner.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+            if (behavior.card.target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
             {
                 this._totalHitByTarget++;
             }
