@@ -28,10 +28,20 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         }
         else if (9 > grace.stack && grace.stack >= 3)
         {
+            if (base.owner.emotionDetail.EmotionLevel > 3)
+            {
+                return 2;
+            }
+
             return 3;
         }
         else
         {
+            if (base.owner.emotionDetail.EmotionLevel > 3)
+            {
+                return 3;
+            }
+
             return 4;
         }
     }
