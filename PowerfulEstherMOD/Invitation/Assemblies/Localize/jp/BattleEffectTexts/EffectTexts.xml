@@ -71,7 +71,7 @@
         </BattleEffectText>
         <BattleEffectText ID="TheBleed">
             <Name>指令 : [紙片]</Name>
-            <Desc>出血で13以上の体力を失いなさい。</Desc>
+            <Desc>出血で21以上の体力を失いなさい。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="TheOneside">
             <Name>指令 : [紙片]</Name>

@@ -39,7 +39,7 @@ public class BattleUnitBuf_TheBleed : PrescriptBuf
         {
             this._totalBleedDmg += dmg;
 
-            if (this._totalBleedDmg >= 13)
+            if (this._totalBleedDmg >= 21)
             {
                 this.IsPassed = true;
 
