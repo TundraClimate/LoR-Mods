@@ -35,7 +35,9 @@ public class BattleUnitBuf_TheThree : PrescriptBuf
             }
         }
 
-        if (this._totalHitByTarget + this._totalHitByOther > 3)
+        int totalHit = this._totalIndexHitByTarget + this._totalIndexHitByOther + this._totalHitByTarget + this._totalHitByOther;
+
+        if (totalHit >= 7)
         {
             this.IsPassed = true;
         }
@@ -45,7 +47,7 @@ public class BattleUnitBuf_TheThree : PrescriptBuf
             this.IsPassed = true;
         }
 
-        if (this._totalHitByTarget > 3)
+        if (this._totalIndexHitByTarget + this._totalHitByTarget >= 7)
         {
             this.IsPassedByTarget = true;
         }

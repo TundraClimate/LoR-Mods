@@ -54,7 +54,7 @@
         <BattleEffectText ID="TheThree">
             <Name>指令 : [紙片]</Name>
             <Desc>指令の印が刻まれたページで攻撃を3回以上的中させる。
-合計で4回以上的中させてもよいものとする。</Desc>
+合計で7回以上的中させてもよいものとする。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="TheCounter">
             <Name>指令 : [紙片]</Name>
