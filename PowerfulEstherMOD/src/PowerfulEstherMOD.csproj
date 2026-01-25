@@ -147,6 +147,7 @@
     <Compile Include="DiceCardAbility_TheHealBreakLifeD2.cs" />
     <Compile Include="DiceCardAbility_TheHealBreakLifeD3.cs" />
     <Compile Include="DiceCardAbility_TheHealBreakLifeD4.cs" />
+    <Compile Include="DiceCardAbility_TheRollAllRange.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
