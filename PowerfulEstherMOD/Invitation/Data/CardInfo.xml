@@ -420,6 +420,31 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+  <Card ID="22">
+    <Name>代行 : 衝突</Name>
+    <TextId>-1</TextId>
+    <Artwork>Unlock3.png</Artwork>
+    <Rarity>Rare</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>TheBreakOrKillSelf</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="13" Dice="15" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="TheBreakOrKillD1" ActionScript="" Desc="" />
+      <Behaviour Min="5" Dice="7" Type="Def" Detail="Guard" Motion="H" MotionDefault="N" EffectRes="" Script="TheBreakOrKillD2" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="7" Type="Def" Detail="Guard" Motion="H" MotionDefault="N" EffectRes="" Script="TheBreakOrKillD2" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
   <Card ID="99">
     <Name>代行 : %@d$</Name>
     <TextId>-1</TextId>
