@@ -112,6 +112,7 @@
     <Compile Include="DiceCardSelfAbility_IntentOfOrder.cs" />
     <Compile Include="DiceCardSelfAbility_AcceptOrder.cs" />
     <Compile Include="DiceCardSelfAbility_GraceCloak.cs" />
+    <Compile Include="DiceCardSelfAbility_Termination.cs" />
     <Compile Include="DiceCardSelfAbility_TheOneAttackSelf.cs" />
     <Compile Include="DiceCardSelfAbility_ThePenetrateSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheBleedSelf.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="DiceCardSelfAbility_TheNormalResistSelf.cs" />
     <Compile Include="DiceCardSelfAbility_VsRedMist.cs" />
     <Compile Include="DiceCardAbility_ObeyOrder.cs" />
+    <Compile Include="DiceCardAbility_TerminationDice.cs" />
     <Compile Include="DiceCardAbility_TheOneAttack.cs" />
     <Compile Include="DiceCardAbility_TheThree.cs" />
     <Compile Include="DiceCardAbility_TheCounter.cs" />

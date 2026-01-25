@@ -274,6 +274,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         switch (this._elapsedTurn % 2)
         {
             case 0:
+                this.AddCard(40, 99999);
                 this.AddCard(0, 9999);
                 this.AddCard(0, 999);
                 this.AddCard(7, 99);
@@ -281,6 +282,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
                 break;
             case 1:
+                this.AddCard(40, 99999);
                 this.AddCard(0, 9999);
                 this.AddCard(0, 999);
                 this.AddCard(6, 99);

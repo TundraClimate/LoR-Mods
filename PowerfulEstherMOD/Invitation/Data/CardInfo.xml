@@ -664,6 +664,31 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+  <Card ID="40">
+    <Name>代行 : 刑罰</Name>
+    <TextId>-1</TextId>
+    <Artwork>Termination.png</Artwork>
+    <Rarity>Unique</Rarity>
+    <Spec Range="Near" Cost="4" Affection="One" EmotionLimit="0" />
+    <Script>Termination</Script>
+    <ScriptDesc />
+    <Option>OnlyPage</Option>
+    <BehaviourList>
+      <Behaviour Min="1" Dice="5" Type="Atk" Detail="Penetrate" Motion="Z2" MotionDefault="N" EffectRes="" Script="TerminationDice" ActionScript="Esther" Desc="" />
+      <Behaviour Min="2" Dice="7" Type="Standby" Detail="Penetrate" Motion="Z2" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
   <Card ID="99">
     <Name>代行 : %@d$</Name>
     <TextId>-1</TextId>
