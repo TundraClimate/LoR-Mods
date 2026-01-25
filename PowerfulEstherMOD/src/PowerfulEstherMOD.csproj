@@ -117,6 +117,7 @@
     <Compile Include="DiceCardSelfAbility_TheKillOrDamageSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheBreakOrKillSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheOneSpeedDiceSelf.cs" />
+    <Compile Include="DiceCardSelfAbility_TheWinAndLoseSelf.cs" />
     <Compile Include="DiceCardSelfAbility_VsRedMist.cs" />
     <Compile Include="DiceCardAbility_ObeyOrder.cs" />
     <Compile Include="DiceCardAbility_TheOneAttack.cs" />
