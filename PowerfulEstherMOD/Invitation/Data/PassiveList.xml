@@ -52,4 +52,19 @@
     <Name>解禁</Name>
     <Desc>解禁管理するやつ TODO</Desc>
   </Passive>
+  <Passive ID="5">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Common</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>Unlock</Script>
+    <Name>連結ダイス</Name>
+    <Desc>連結ダイス: 必ず対になるダイスが存在する。
+片方のダイスのマッチ敗北時、対のダイスも同時に破壊される。
+ただし、連結ダイス-断片 がマッチ敗北した場合は対のダイスに影響を与えない。</Desc>
+  </Passive>
 </PassiveXmlRoot>

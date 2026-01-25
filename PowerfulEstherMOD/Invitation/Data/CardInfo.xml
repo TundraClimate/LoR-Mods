@@ -589,6 +589,32 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+  <Card ID="29">
+    <Name>代行 : ズレた連撃</Name>
+    <TextId>-1</TextId>
+    <Artwork>Unlock3.png</Artwork>
+    <Rarity>Rare</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>TheHealBreakLifeSelf</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="8" Dice="10" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="TheHealBreakLifeD1" ActionScript="" Desc="" />
+      <Behaviour Min="8" Dice="10" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="TheHealBreakLifeD2" ActionScript="" Desc="" />
+      <Behaviour Min="18" Dice="24" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TheHealBreakLifeD3" ActionScript="" Desc="" />
+      <Behaviour Min="18" Dice="24" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TheHealBreakLifeD4" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
   <Card ID="99">
     <Name>代行 : %@d$</Name>
     <TextId>-1</TextId>
