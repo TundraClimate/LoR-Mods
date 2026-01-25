@@ -226,7 +226,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     private void UseLv2Pattern()
     {
-        this.AddCard(25, 9999);
+        this.AddCard(26, 9999);
 
         switch (this._elapsedTurn % 6)
         {

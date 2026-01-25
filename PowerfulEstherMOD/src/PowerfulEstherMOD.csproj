@@ -119,6 +119,7 @@
     <Compile Include="DiceCardSelfAbility_TheOneSpeedDiceSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheWinAndLoseSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheLoseMatchSelf.cs" />
+    <Compile Include="DiceCardSelfAbility_TheFiveBufSelf.cs" />
     <Compile Include="DiceCardSelfAbility_VsRedMist.cs" />
     <Compile Include="DiceCardAbility_ObeyOrder.cs" />
     <Compile Include="DiceCardAbility_TheOneAttack.cs" />
@@ -134,6 +135,8 @@
     <Compile Include="DiceCardAbility_TheBreakOrKillD2.cs" />
     <Compile Include="DiceCardAbility_TheOneSpeedDice.cs" />
     <Compile Include="DiceCardAbility_TheLoseMatch.cs" />
+    <Compile Include="DiceCardAbility_TheFiveBufD1.cs" />
+    <Compile Include="DiceCardAbility_TheFiveBufD2.cs" />
     <Compile Include="EnemyUnitTargetSetter_Esther.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
