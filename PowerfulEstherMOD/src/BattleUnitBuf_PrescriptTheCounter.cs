@@ -44,8 +44,8 @@ public class BattleUnitBuf_TheCounter : PrescriptBuf
             return pids.Contains(model.GetID());
         }
 
-        return !ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList.TrueForAll(dice =>
-            dice.Detail != BehaviourDetail.Guard
+        return ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList.Exists(dice =>
+            dice.Detail == BehaviourDetail.Guard
         );
     }
 
@@ -53,9 +53,9 @@ public class BattleUnitBuf_TheCounter : PrescriptBuf
     {
         List<BattleDiceCardModel> hands = self.Owner.allyCardDetail.GetHand();
 
-        bool hasGuardDice = !hands.TrueForAll(hand =>
-                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.TrueForAll(dice =>
-                    dice.Detail != BehaviourDetail.Guard
+        bool hasGuardDice = hands.Exists(hand =>
+                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.Exists(dice =>
+                    dice.Detail == BehaviourDetail.Guard
                 )
             );
 

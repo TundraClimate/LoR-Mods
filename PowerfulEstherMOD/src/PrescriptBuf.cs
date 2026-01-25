@@ -57,8 +57,8 @@ public class PrescriptBuf : BattleUnitBuf
 
     public bool SetIndexMarkForAtkDice(BattleDiceCardModel model)
     {
-        return !ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList.TrueForAll(dice =>
-                dice.Type == BehaviourType.Def || dice.Type == BehaviourType.Standby
+        return ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList.Exists(dice =>
+                dice.Type == BehaviourType.Atk
             );
     }
 
@@ -66,9 +66,9 @@ public class PrescriptBuf : BattleUnitBuf
     {
         List<BattleDiceCardModel> hands = self.Owner.allyCardDetail.GetHand();
 
-        bool hasAtkDice = !hands.TrueForAll(hand =>
-                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.TrueForAll(dice =>
-                    dice.Type == BehaviourType.Def || dice.Type == BehaviourType.Standby
+        bool hasAtkDice = hands.Exists(hand =>
+                ItemXmlDataList.instance.GetCardItem(hand.GetID()).DiceBehaviourList.Exists(dice =>
+                    dice.Type == BehaviourType.Atk
                 )
             );
 
