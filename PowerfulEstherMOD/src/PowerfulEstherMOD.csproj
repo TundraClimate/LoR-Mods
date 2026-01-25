@@ -111,6 +111,7 @@
     <Compile Include="DiceCardSelfAbility_PetelSlash.cs" />
     <Compile Include="DiceCardSelfAbility_IntentOfOrder.cs" />
     <Compile Include="DiceCardSelfAbility_AcceptOrder.cs" />
+    <Compile Include="DiceCardSelfAbility_GraceCloak.cs" />
     <Compile Include="DiceCardSelfAbility_TheOneAttackSelf.cs" />
     <Compile Include="DiceCardSelfAbility_ThePenetrateSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheBleedSelf.cs" />

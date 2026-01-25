@@ -271,6 +271,23 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     private void UseLv3Pattern()
     {
+        switch (this._elapsedTurn % 2)
+        {
+            case 0:
+                this.AddCard(0, 9999);
+                this.AddCard(0, 999);
+                this.AddCard(7, 99);
+                this.AddCard(4, 9);
+
+                break;
+            case 1:
+                this.AddCard(0, 9999);
+                this.AddCard(0, 999);
+                this.AddCard(6, 99);
+                this.AddCard(4, 9);
+
+                break;
+        }
     }
 
     private int _elapsedTurn = 0;
