@@ -50,7 +50,7 @@ public class PassiveAbility_Unlock : PassiveAbilityBase
 
                 if (this._auraSecond == null)
                 {
-                    this._auraSecond = CreateAura();
+                    this._auraSecond = CreateAura(false);
                 }
             }
 
@@ -137,7 +137,7 @@ public class PassiveAbility_Unlock : PassiveAbilityBase
         }
     }
 
-    private GameObject CreateAura()
+    private GameObject CreateAura(bool initial = true)
     {
         UnityEngine.Object @object = Resources.Load("Prefabs/Battle/SpecialEffect/IndexRelease_Aura");
 
@@ -149,7 +149,7 @@ public class PassiveAbility_Unlock : PassiveAbilityBase
             gameObject.transform.localRotation = Quaternion.identity;
             gameObject.transform.localScale = Vector3.one;
             IndexReleaseAura component = gameObject.GetComponent<IndexReleaseAura>();
-            if (component != null)
+            if (component != null && initial)
             {
                 component.Init(this.owner.view);
             }
