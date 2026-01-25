@@ -170,8 +170,18 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             }
         }
 
-        compatCards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
-        compatCards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
+        if (limit == 1)
+        {
+            compatCards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
+
+            return;
+        }
+        else
+        {
+            compatCards[rand1].AddBuf(new BattleDiceCardBuf_IndexMark());
+            compatCards[rand2].AddBuf(new BattleDiceCardBuf_IndexMark());
+        }
+
     }
 
     private void SendPrescript(int level)
