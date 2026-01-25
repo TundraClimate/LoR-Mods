@@ -34,6 +34,13 @@ public class BattleUnitBuf_TheNormalResist : PrescriptBuf
 
     public override bool IsIndexMarkNeeds(BattleDiceCardModel model)
     {
+        if (base._owner != null && base._owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            LorId[] pids = new[] { new LorId(PowerfulEstherMOD.packageId, 28) };
+
+            return pids.Contains(model.GetID());
+        }
+
         return base.SetIndexMarkForAtkDice(model);
     }
 

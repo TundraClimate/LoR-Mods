@@ -226,7 +226,57 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
     private void UseLv2Pattern()
     {
-        this.AddCard(20, 9999);
+        BattleUnitBuf prescript = base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is PrescriptBuf);
+
+        if (prescript is BattleUnitBuf_TheKillOrDamage)
+        {
+            this.AddCard(21, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheBreakOrKill)
+        {
+            this.AddCard(22, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheOneSpeedDice)
+        {
+            this.AddCard(23, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheWinAndLose)
+        {
+            this.AddCard(24, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheLoseMatch)
+        {
+            this.AddCard(25, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheFiveBuf)
+        {
+            this.AddCard(26, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheWinByHigh)
+        {
+            this.AddCard(27, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheNormalResist)
+        {
+            this.AddCard(28, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheHealBreakLife)
+        {
+            this.AddCard(29, 9999);
+        }
+
+        if (prescript is BattleUnitBuf_TheRollAllRange)
+        {
+            this.AddCard(20, 9999);
+        }
 
         switch (this._elapsedTurn % 6)
         {

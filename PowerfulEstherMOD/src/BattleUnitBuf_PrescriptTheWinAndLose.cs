@@ -49,6 +49,13 @@ public class BattleUnitBuf_TheWinAndLose : PrescriptBuf
 
     public override bool IsIndexMarkNeeds(BattleDiceCardModel model)
     {
+        if (base._owner != null && base._owner.passiveDetail.HasPassive<PassiveAbility_Esther>())
+        {
+            LorId[] pids = new[] { new LorId(PowerfulEstherMOD.packageId, 24) };
+
+            return pids.Contains(model.GetID());
+        }
+
         return ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList.FindAll(dbh => dbh.Type != BehaviourType.Standby).Count != 1;
     }
 
