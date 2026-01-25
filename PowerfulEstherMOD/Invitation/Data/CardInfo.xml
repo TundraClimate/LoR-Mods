@@ -564,6 +564,31 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+  <Card ID="28">
+    <Name>代行 : 指し示すまま</Name>
+    <TextId>-1</TextId>
+    <Artwork>Unlock3.png</Artwork>
+    <Rarity>Rare</Rarity>
+    <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
+    <Script>TheNormalResistSelf</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="8" Dice="11" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TheNormalResist" ActionScript="" Desc="" />
+      <Behaviour Min="6" Dice="9" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="7" Dice="11" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TheNormalResist" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
   <Card ID="99">
     <Name>代行 : %@d$</Name>
     <TextId>-1</TextId>
