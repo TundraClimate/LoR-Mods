@@ -8,8 +8,8 @@
       <Formation>13</Formation>
       <FormationType>Default</FormationType>
       <AvailableUnit>5</AvailableUnit>
-      <AggroScript></AggroScript>
       <emotionCardList />
+      <AggroScript />
     </Wave>
     <StageType>Invitation</StageType>
     <FloorNum>1</FloorNum>

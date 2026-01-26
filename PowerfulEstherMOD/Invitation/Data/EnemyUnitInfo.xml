@@ -15,7 +15,7 @@
     <Exp>0</Exp>
     <DropBonus>0</DropBonus>
     <DropTable Level="0">
-      <DropItem Prob="1">-1</DropItem>
+      <DropItem Prob="1">1</DropItem>
     </DropTable>
     <AiScript>Esther</AiScript>
   </Enemy>

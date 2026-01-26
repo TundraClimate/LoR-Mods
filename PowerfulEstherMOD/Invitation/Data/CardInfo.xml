@@ -179,7 +179,7 @@
     <Artwork>Order.png</Artwork>
     <Rarity>Common</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script />
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="4" Dice="6" Type="Atk" Detail="Penetrate" Motion="Z" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
@@ -278,7 +278,7 @@
     <Artwork>Unlock2.png</Artwork>
     <Rarity>Rare</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script />
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="12" Dice="16" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
@@ -303,7 +303,7 @@
     <Artwork>Unlock2.png</Artwork>
     <Rarity>Rare</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script />
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="6" Dice="8" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TheThree" ActionScript="" Desc="" />
@@ -329,7 +329,7 @@
     <Artwork>Unlock2.png</Artwork>
     <Rarity>Rare</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script />
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="16" Dice="18" Type="Standby" Detail="Guard" Motion="H2" MotionDefault="N" EffectRes="" Script="TheCounter" ActionScript="" Desc="" />
@@ -377,7 +377,7 @@
     <Artwork>Unlock2.png</Artwork>
     <Rarity>Rare</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script />
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="4" Dice="12" Type="Atk" Detail="Slash" Motion="J2" MotionDefault="N" EffectRes="" Script="TheSlash" ActionScript="" Desc="" />
@@ -645,7 +645,7 @@
     <Artwork>Unlock3.png</Artwork>
     <Rarity>Rare</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script />
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="3" Dice="16" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
@@ -669,10 +669,10 @@
     <TextId>-1</TextId>
     <Artwork>Termination.png</Artwork>
     <Rarity>Unique</Rarity>
+    <Option>OnlyPage</Option>
     <Spec Range="Near" Cost="4" Affection="One" EmotionLimit="0" />
     <Script>Termination</Script>
     <ScriptDesc />
-    <Option>OnlyPage</Option>
     <BehaviourList>
       <Behaviour Min="1" Dice="5" Type="Atk" Detail="Penetrate" Motion="Z2" MotionDefault="N" EffectRes="" Script="TerminationDice" ActionScript="Esther" Desc="" />
       <Behaviour Min="2" Dice="7" Type="Standby" Detail="Penetrate" Motion="Z2" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
