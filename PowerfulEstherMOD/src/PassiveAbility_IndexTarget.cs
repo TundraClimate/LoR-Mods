@@ -4,7 +4,7 @@ public class PassiveAbility_IndexTarget : PassiveAbilityBase
 {
     public override void OnRoundStart()
     {
-        List<BattleUnitModel> targets = BattleObjectManager.instance.GetAliveList_random(Faction.Player, 1);
+        List<BattleUnitModel> targets = BattleObjectManager.instance.GetAliveList_random(base.owner.faction == Faction.Player ? Faction.Enemy : Faction.Player, 1);
 
         if (targets.Count == 0)
         {
