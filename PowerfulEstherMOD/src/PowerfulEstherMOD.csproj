@@ -67,6 +67,14 @@
     <Reference Include="0Harmony">
       <HintPath>./libs/0Harmony.dll</HintPath>
     </Reference>
+
+    <Reference Include="DebugUtil">
+      <HintPath>./libs/DebugUtil.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include=".\libs\DebugUtil.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Init.cs" />

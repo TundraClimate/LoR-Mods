@@ -13,6 +13,14 @@ public class BattleUnitBuf_Unlock3 : BattleUnitBuf
         base.stack = 0;
     }
 
+    public override void OnRoundEnd()
+    {
+        if (!base._owner.IsDead())
+        {
+            base._owner.breakDetail.RecoverBreak(15);
+        }
+    }
+
     public void Lock()
     {
         base._owner.bufListDetail.RemoveBuf(this);
