@@ -286,5 +286,10 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
                 return this.keywordId;
             }
         }
+
+        public override void OnRoundEnd()
+        {
+            base.Destroy();
+        }
     }
 }
