@@ -3,31 +3,35 @@
     <effectTextList>
         <BattleEffectText ID="GraceOfPrescript">
             <Name>指令の加護</Name>
-            <Desc>TODO</Desc>
+            <Desc>最大値: 9
+数値3ごとに全威力が1増加。
+数値6ごとにダメージ量が1増加。
+数値9ごとに混乱ダメージ量が1増加。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="TargetOfPrescript">
             <Name>指令対象</Name>
-            <Desc>TODO</Desc>
+            <Desc>「指令」を受け取った相手からの被ダメージ量+1</Desc>
         </BattleEffectText>
         <BattleEffectText ID="CardBuf_IndexMark">
             <Name>指令の印</Name>
-            <Desc>TODO</Desc>
+            <Desc>指令の印が刻まれたページ</Desc>
         </BattleEffectText>
         <BattleEffectText ID="Unlock">
             <Name>解禁 - I</Name>
-            <Desc>TODO</Desc>
+            <Desc>幕の終了時、混乱抵抗値を5回復。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="Unlock2">
             <Name>解禁 - II</Name>
-            <Desc>TODO</Desc>
+            <Desc>幕の終了時、混乱抵抗値を10回復。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="Unlock3">
             <Name>解禁 - III</Name>
-            <Desc>TODO</Desc>
+            <Desc>幕の終了時、混乱抵抗値を15回復。</Desc>
         </BattleEffectText>
         <BattleEffectText ID="Karma">
             <Name>カルマ</Name>
-            <Desc>TODO</Desc>
+            <Desc>最大値: 10
+数値5ごとに自身の全物理耐性が一段階弱化。</Desc>
         </BattleEffectText>
 
         <!-- Level0 -->
