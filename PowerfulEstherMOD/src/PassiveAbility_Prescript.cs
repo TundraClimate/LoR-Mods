@@ -32,6 +32,15 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             base.owner.bufListDetail.AddBuf(grace);
         }
 
+        if (!false)
+        {
+            // TODO Only debug
+
+            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheOneAttack()));
+
+            return;
+        }
+
         if (3 > grace.stack && grace.stack >= 0)
         {
             this.SendPrescript(0);

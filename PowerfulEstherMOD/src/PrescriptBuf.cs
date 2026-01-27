@@ -3,6 +3,48 @@ using LOR_DiceSystem;
 
 public class PrescriptBuf : BattleUnitBuf
 {
+    public bool IsPassed
+    {
+        get
+        {
+            return _isPassed;
+        }
+        set
+        {
+            if (value)
+            {
+                UnityEngine.Debug.Log("Prescript was passed");
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Prescript was failed");
+            }
+
+            _isPassed = value;
+        }
+    }
+
+    public bool IsPassedByTarget
+    {
+        get
+        {
+            return _isPassedByTarget;
+        }
+        set
+        {
+            if (value)
+            {
+                UnityEngine.Debug.Log("Prescript was passed by target");
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Prescript was failed by target");
+            }
+
+            _isPassedByTarget = value;
+        }
+    }
+
     public static PrescriptBuf GetOne(params PrescriptBuf[] prescripts)
     {
         if (prescripts.Length == 0)
@@ -36,9 +78,9 @@ public class PrescriptBuf : BattleUnitBuf
         return prescript;
     }
 
-    public bool IsPassed = false;
+    private bool _isPassed = false;
 
-    public bool IsPassedByTarget = false;
+    private bool _isPassedByTarget = false;
 
     public override void OnRoundEnd()
     {
