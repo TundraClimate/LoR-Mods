@@ -15,7 +15,7 @@ public class DiceCardSelfAbility_PetelSlash : DiceCardSelfAbilityBase
 
         if (currentPage.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
         {
-            DiceBehaviour dice = currentPage.GetDiceBehaviourXmlList()[2];
+            DiceBehaviour dice = currentPage.GetDiceBehaviourXmlList()[2].Copy();
 
             if (dice != null)
             {
@@ -26,7 +26,7 @@ public class DiceCardSelfAbility_PetelSlash : DiceCardSelfAbilityBase
 
                 currentPage.AddDice(new BattleDiceBehavior()
                 {
-                    behaviourInCard = dice.Copy(),
+                    behaviourInCard = dice,
                 });
             }
         }
