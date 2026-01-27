@@ -232,8 +232,8 @@
     <Script>GraceCloak</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="3" Dice="6" Type="Standby" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="3" Dice="6" Type="Standby" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="6" Type="Standby" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="GraceCloakDice" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="6" Type="Standby" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="GraceCloakDice" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>6</Chapter>
     <SpecialEffect />
