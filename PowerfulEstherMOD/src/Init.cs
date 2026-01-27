@@ -41,7 +41,7 @@ public class PowerfulEstherMOD : ModInitializer
             }
 
             esther.allyCardDetail.ExhaustAllCards();
-            esther.allyCardDetail.AddNewCard(new LorId(packageId, 6));
+            esther.allyCardDetail.AddNewCard(new LorId(packageId, 8));
         });
     }
 
