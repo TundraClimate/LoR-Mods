@@ -33,6 +33,15 @@ public class PowerfulEstherMOD : ModInitializer
     {
         DebugUtil.InBattleScheduler.Instance.AddSchedule(DebugUtil.InBattleScheduler.ScheduleTime.RoundStart, () =>
         {
+            BattleUnitModel esther = BattleObjectManager.instance.GetAliveList(Faction.Player).Find(pl => pl.passiveDetail.HasPassive<PassiveAbility_Prescript>());
+
+            if (esther == null)
+            {
+                return;
+            }
+
+            esther.allyCardDetail.ExhaustAllCards();
+            esther.allyCardDetail.AddNewCard(new LorId(packageId, 4));
         });
     }
 
