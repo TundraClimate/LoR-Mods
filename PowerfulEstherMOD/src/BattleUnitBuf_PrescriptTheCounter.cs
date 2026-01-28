@@ -28,7 +28,7 @@ public class BattleUnitBuf_TheCounter : PrescriptBuf
             this._isPassedByTarget = true;
         }
 
-        if (behavior.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>() || this._usedModels.Count >= 3)
+        if (behavior.abilityList.Exists(abi => abi is PassiveAbility_Prescript.DiceCardAbility_Marker) || this._usedModels.Count >= 3)
         {
             this.IsPassed = true;
             this.IsPassedByTarget = this._isPassedByTarget;

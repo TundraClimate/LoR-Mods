@@ -36,7 +36,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             // TODO Only debug
 
-            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheThree()));
+            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheCounter()));
 
             return;
         }
@@ -300,5 +300,9 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             base.Destroy();
         }
+    }
+
+    public class DiceCardAbility_Marker : DiceCardAbilityBase
+    {
     }
 }
