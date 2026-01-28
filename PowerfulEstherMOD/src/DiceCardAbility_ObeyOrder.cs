@@ -2,31 +2,16 @@ public class DiceCardAbility_ObeyOrder : DiceCardAbilityBase
 {
     public static string Desc = "[マッチ勝利時] 指令の印が刻まれているなら、次の幕にパワーか忍耐かクイックを1得る。";
 
-    public override void OnRollDice()
-    {
-        BattlePlayingCardDataInUnitModel currentPage = base.owner.currentDiceAction;
-
-        if (currentPage == null)
-        {
-            return;
-        }
-
-        if (base.owner != null && currentPage.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
-        {
-            this._isMarked = true;
-        }
-    }
-
     public override void OnWinParrying()
     {
         BattlePlayingCardDataInUnitModel currentPage = base.owner.currentDiceAction;
 
-        if (currentPage == null)
+        if (base.owner == null || currentPage == null)
         {
             return;
         }
 
-        if (base.owner == null || !this._isMarked)
+        if (!currentPage.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>() && !this.behavior.abilityList.Exists(abi => abi is PassiveAbility_Prescript.DiceCardAbility_Marker))
         {
             return;
         }
@@ -49,6 +34,4 @@ public class DiceCardAbility_ObeyOrder : DiceCardAbilityBase
                 break;
         }
     }
-
-    private bool _isMarked = false;
 }
