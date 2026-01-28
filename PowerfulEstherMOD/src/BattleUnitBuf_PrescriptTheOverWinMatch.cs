@@ -10,6 +10,11 @@ public class BattleUnitBuf_TheOverWinMatch : PrescriptBuf
 
     public override void OnWinParrying(BattleDiceBehavior behavior)
     {
+        if (!behavior.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>() && !behavior.abilityList.Exists(abi => abi is PassiveAbility_Prescript.DiceCardAbility_Marker))
+        {
+            return;
+        }
+
         if (behavior.DiceResultValue - behavior.TargetDice.DiceResultValue >= 5)
         {
             this.IsPassed = true;
