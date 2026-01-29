@@ -8,35 +8,31 @@ public class BattleUnitBuf_TheKillOrDamage : PrescriptBuf
         }
     }
 
-    public override void BeforeGiveDamage(BattleDiceBehavior behavior)
+    public override void OnUseCard(BattlePlayingCardDataInUnitModel card)
     {
-        this._prev = behavior;
-        this._tempHealth = behavior.card.target.hp;
+        this._tempHealth = card.target.hp;
     }
 
-    public override void OnSuccessAttack(BattleDiceBehavior behavior)
+    public override void OnEndBattle(BattlePlayingCardDataInUnitModel curCard)
     {
-        if (this._prev == null || this._tempHealth == null)
+        if (this._tempHealth != null && curCard != null)
         {
-            return;
-        }
-
-        if (behavior.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
-        {
-            this._totalDamage += (int)(behavior.card.target.hp + this._tempHealth);
-
-            if (this._totalDamage >= 29)
+            if (curCard.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
             {
-                this.IsPassed = true;
+                this._totalDamage += (int)(this._tempHealth - curCard.target.hp);
 
-                if (behavior.card.target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+                if (this._totalDamage >= 29)
                 {
-                    this.IsPassedByTarget = true;
+                    this.IsPassed = true;
+
+                    if (curCard.target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+                    {
+                        this.IsPassedByTarget = true;
+                    }
                 }
             }
         }
 
-        this._prev = null;
         this._tempHealth = null;
     }
 
