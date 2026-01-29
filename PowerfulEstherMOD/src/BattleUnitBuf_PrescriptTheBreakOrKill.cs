@@ -8,9 +8,19 @@ public class BattleUnitBuf_TheBreakOrKill : PrescriptBuf
         }
     }
 
-    public override void OnSuccessAttack(BattleDiceBehavior behavior)
+    public override void OnRollDice(BattleDiceBehavior behavior)
     {
-        BattleUnitModel target = behavior.card.target;
+        this._lastDice = behavior;
+    }
+
+    public override void OnEndBattle(BattlePlayingCardDataInUnitModel curCard)
+    {
+        if (curCard == null)
+        {
+            return;
+        }
+
+        BattleUnitModel target = curCard.target;
 
         if (target != null)
         {
@@ -19,13 +29,16 @@ public class BattleUnitBuf_TheBreakOrKill : PrescriptBuf
                 return;
             }
 
-            if (target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+            if (curCard.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>() || this._lastDice.abilityList.Exists(abi => abi is PassiveAbility_Prescript.DiceCardAbility_Marker))
             {
-                this.IsPassedByTarget = true;
-            }
-            else
-            {
-                this.IsPassed = true;
+                if (target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+                {
+                    this.IsPassedByTarget = true;
+                }
+                else
+                {
+                    this.IsPassed = true;
+                }
             }
         }
     }
@@ -34,13 +47,16 @@ public class BattleUnitBuf_TheBreakOrKill : PrescriptBuf
     {
         if (target != null)
         {
-            if (target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+            if (base._owner.currentDiceAction.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>() || this._lastDice.abilityList.Exists(abi => abi is PassiveAbility_Prescript.DiceCardAbility_Marker))
             {
-                this.IsPassedByTarget = true;
-            }
-            else
-            {
-                this.IsPassed = true;
+                if (target.bufListDetail.HasBuf<BattleUnitBuf_TargetOfPrescript>())
+                {
+                    this.IsPassedByTarget = true;
+                }
+                else
+                {
+                    this.IsPassed = true;
+                }
             }
         }
     }
@@ -56,4 +72,6 @@ public class BattleUnitBuf_TheBreakOrKill : PrescriptBuf
 
         return base.IsIndexMarkNeeds(model);
     }
+
+    private BattleDiceBehavior _lastDice;
 }
