@@ -46,10 +46,10 @@ public class BattleUnitBuf_Karma : BattleUnitBuf
         {
             case AtkResist.None:
                 return AtkResist.None;
-            case AtkResist.Weak:
-                return AtkResist.Vulnerable;
-            case AtkResist.Normal:
+            case AtkResist.Vulnerable:
                 return AtkResist.Weak;
+            case AtkResist.Normal:
+                return AtkResist.Vulnerable;
             case AtkResist.Endure:
                 return AtkResist.Normal;
             case AtkResist.Resist:
