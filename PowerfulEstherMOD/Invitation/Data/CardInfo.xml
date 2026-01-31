@@ -550,7 +550,7 @@
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="7" Dice="12" Type="Atk" Detail="Penetrate" Motion="Z" MotionDefault="N" EffectRes="" Script="TheFiveBufD1" ActionScript="" Desc="" />
-      <Behaviour Min="3" Dice="6" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="TheFiveBufD2" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="6" Type="Def" Detail="Evasion" Motion="J" MotionDefault="N" EffectRes="" Script="TheFiveBufD2" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>6</Chapter>
     <SpecialEffect />
