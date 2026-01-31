@@ -17,3 +17,13 @@ InBattleScheduler.Instance.AddSchedule(InBattleScheduler.ScheduleTime.RoundStart
 });
 
 ```
+
+## SysHacks
+
+```cs
+using System;
+
+string msg = Fmt.Format("{} is {}", 1, "numeric");
+
+Console.WriteLine(msg); // 1 is numeric
+```
