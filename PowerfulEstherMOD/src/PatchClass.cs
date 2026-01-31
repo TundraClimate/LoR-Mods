@@ -24,6 +24,11 @@ public static class PatchClass
         {
             foreach (BattleDiceBehavior beh in behaviourList)
             {
+                if (beh.card == null)
+                {
+                    continue;
+                }
+
                 if (beh.card.card != null && beh.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
                 {
                     beh.abilityList.Add(new PassiveAbility_Prescript.DiceCardAbility_Marker());
@@ -39,6 +44,11 @@ public static class PatchClass
         {
             foreach (BattleDiceBehavior beh in behaviourList)
             {
+                if (beh.card == null)
+                {
+                    continue;
+                }
+
                 if (beh.card.card != null && beh.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
                 {
                     beh.abilityList.Add(new PassiveAbility_Prescript.DiceCardAbility_Marker());
@@ -52,6 +62,11 @@ public static class PatchClass
     {
         public static void Prefix(BattleDiceBehavior behaviour)
         {
+            if (behaviour.card == null)
+            {
+                return;
+            }
+
             if (behaviour.card.card != null && behaviour.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
             {
                 behaviour.abilityList.Add(new PassiveAbility_Prescript.DiceCardAbility_Marker());
@@ -64,6 +79,11 @@ public static class PatchClass
     {
         public static void Prefix(BattleDiceBehavior behaviour)
         {
+            if (behaviour.card == null)
+            {
+                return;
+            }
+
             if (behaviour.card.card != null && behaviour.card.card.HasBuf<PassiveAbility_Prescript.BattleDiceCardBuf_IndexMark>())
             {
                 behaviour.abilityList.Add(new PassiveAbility_Prescript.DiceCardAbility_Marker());
