@@ -11,11 +11,11 @@ public class PrescriptBuf : BattleUnitBuf
         }
         set
         {
-            if (value)
+            if (!_isPassed && value)
             {
                 UnityEngine.Debug.Log("Prescript was passed");
             }
-            else
+            else if (_isPassed && !value)
             {
                 UnityEngine.Debug.Log("Prescript was failed");
             }
@@ -32,11 +32,11 @@ public class PrescriptBuf : BattleUnitBuf
         }
         set
         {
-            if (value)
+            if (!_isPassedByTarget && value)
             {
                 UnityEngine.Debug.Log("Prescript was passed by target");
             }
-            else
+            else if (_isPassedByTarget && !value)
             {
                 UnityEngine.Debug.Log("Prescript was failed by target");
             }
