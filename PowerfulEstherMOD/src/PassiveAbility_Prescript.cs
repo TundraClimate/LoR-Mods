@@ -36,7 +36,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             // TODO Only debug
 
-            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheOneSpeedDice()));
+            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheWinAndLose()));
 
             return;
         }
