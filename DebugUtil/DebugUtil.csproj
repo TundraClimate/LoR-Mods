@@ -55,6 +55,7 @@
   <ItemGroup>
       <Compile Include="Schedule.cs" />
       <Compile Include="SysHack.cs" />
+      <Compile Include="Peekable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
