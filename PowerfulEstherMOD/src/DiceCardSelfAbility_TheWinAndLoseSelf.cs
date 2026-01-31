@@ -44,11 +44,11 @@ public class DiceCardSelfAbility_TheWinAndLoseSelf : DiceCardSelfAbilityBase
         guardDice.Script = "";
         guardDice.MotionDetail = MotionDetail.G;
 
-        keepCard.AddDice(new BattleDiceBehavior()
+        keepCard.AddBehaviour(base.card.card, new BattleDiceBehavior()
         {
             behaviourInCard = evadeDice,
         });
-        keepCard.AddDice(new BattleDiceBehavior()
+        keepCard.AddBehaviour(base.card.card, new BattleDiceBehavior()
         {
             behaviourInCard = guardDice,
         });
