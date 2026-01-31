@@ -70,7 +70,5 @@ public class BattleUnitBuf_TheKillOrDamage : PrescriptBuf
 
     private int _totalDamage = 0;
 
-    private BattleDiceBehavior _prev;
-
     private float? _tempHealth;
 }
