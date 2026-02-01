@@ -26,9 +26,8 @@ public class BattleUnitBuf_TheHealBreakLife : PrescriptBuf
         }
 
         int selfPow = behavior.DiceResultValue;
-        int otherPow = behavior.TargetDice.DiceResultValue;
 
-        this._totalHeals += selfPow - otherPow;
+        this._totalHeals += selfPow;
 
         if (this._totalHeals >= 18)
         {
