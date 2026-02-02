@@ -13,8 +13,8 @@ public class BattleUnitBuf_TheRollAllRange : PrescriptBuf
     public override void OnRollDice(BattleDiceBehavior behavior)
     {
         int resValue = behavior.DiceVanillaValue;
-        int resMin = behavior.GetDiceMin();
-        int resMax = behavior.GetDiceMax();
+        int resMin = behavior.GetDiceVanillaMin();
+        int resMax = behavior.GetDiceVanillaMax();
 
         if (resValue == resMin)
         {

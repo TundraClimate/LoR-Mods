@@ -36,7 +36,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             // TODO Only debug
 
-            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheHealBreakLife()));
+            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheRollAllRange()));
 
             return;
         }
