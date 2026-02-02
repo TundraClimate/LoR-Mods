@@ -32,7 +32,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             base.owner.bufListDetail.AddBuf(grace);
         }
 
-        if (!false)
+        if (false)
         {
             // TODO Only debug
 

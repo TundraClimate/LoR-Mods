@@ -7,18 +7,18 @@
     <BookIcon />
     <EquipEffect>
       <HpReduction>0</HpReduction>
-      <HP>300</HP>
+      <HP>700</HP>
       <DeadLine>0</DeadLine>
-      <Break>150</Break>
+      <Break>440</Break>
       <SpeedMin>4</SpeedMin>
       <Speed>7</Speed>
       <SpeedDiceNum>0</SpeedDiceNum>
-      <SResist>Endure</SResist>
-      <PResist>Normal</PResist>
-      <HResist>Endure</HResist>
-      <SBResist>Endure</SBResist>
-      <PBResist>Endure</PBResist>
-      <HBResist>Normal</HBResist>
+      <SResist>Resist</SResist>
+      <PResist>Resist</PResist>
+      <HResist>Resist</HResist>
+      <SBResist>Resist</SBResist>
+      <PBResist>Resist</PBResist>
+      <HBResist>Resist</HBResist>
       <MaxPlayPoint>4</MaxPlayPoint>
       <StartPlayPoint>4</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
