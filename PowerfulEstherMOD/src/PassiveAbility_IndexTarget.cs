@@ -6,6 +6,8 @@ public class PassiveAbility_IndexTarget : PassiveAbilityBase
     {
         List<BattleUnitModel> targets = BattleObjectManager.instance.GetAliveList_random(base.owner.faction == Faction.Player ? Faction.Enemy : Faction.Player, 1);
 
+        targets.RemoveAll(unit => !unit.IsTargetable(base.owner));
+
         if (targets.Count == 0)
         {
             return;

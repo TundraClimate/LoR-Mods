@@ -44,12 +44,11 @@ public class BattleUnitBuf_TheRedMist : SpecialPrescriptBuf
 
     public override BattleUnitModel FixedIndexTarget(List<BattleUnitModel> candidates, BattleUnitModel origin)
     {
-        foreach (BattleUnitModel candidate in candidates)
+        BattleUnitModel redMist = candidates.Find(candidate => candidate.bufListDetail.GetActivatedBuf(KeywordBuf.RedMistEgo) != null);
+
+        if (redMist != null)
         {
-            if (candidate.bufListDetail.GetActivatedBuf(KeywordBuf.RedMistEgo) != null)
-            {
-                return candidate;
-            }
+            return redMist;
         }
 
         return base.FixedIndexTarget(candidates, origin);
