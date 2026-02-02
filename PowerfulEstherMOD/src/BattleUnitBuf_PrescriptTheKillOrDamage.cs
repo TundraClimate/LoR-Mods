@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class BattleUnitBuf_TheKillOrDamage : PrescriptBuf
 {
     protected override string keywordId
@@ -66,6 +68,21 @@ public class BattleUnitBuf_TheKillOrDamage : PrescriptBuf
     public override bool IsSelectable(PassiveAbilityBase self)
     {
         return base.SelectAtkDiceNeeds(self);
+    }
+
+    public override BattleUnitModel FixedIndexTarget(List<BattleUnitModel> candidates, BattleUnitModel origin)
+    {
+        BattleUnitModel res = origin;
+
+        foreach (BattleUnitModel candidate in candidates)
+        {
+            if (res.hp > candidate.hp)
+            {
+                res = candidate;
+            }
+        }
+
+        return res;
     }
 
     private int _totalDamage = 0;

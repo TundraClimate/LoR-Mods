@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class BattleUnitBuf_TheBreakOrKill : PrescriptBuf
 {
     protected override string keywordId
@@ -71,6 +73,21 @@ public class BattleUnitBuf_TheBreakOrKill : PrescriptBuf
         }
 
         return base.IsIndexMarkNeeds(model);
+    }
+
+    public override BattleUnitModel FixedIndexTarget(List<BattleUnitModel> candidates, BattleUnitModel origin)
+    {
+        BattleUnitModel res = origin;
+
+        foreach (BattleUnitModel candidate in candidates)
+        {
+            if (res.breakDetail.breakGauge > candidate.breakDetail.breakGauge && !candidate.breakDetail.IsBreakLifeZero())
+            {
+                res = candidate;
+            }
+        }
+
+        return res;
     }
 
     private BattleDiceBehavior _lastDice;

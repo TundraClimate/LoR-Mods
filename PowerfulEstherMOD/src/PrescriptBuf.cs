@@ -97,6 +97,11 @@ public class PrescriptBuf : BattleUnitBuf
         return true;
     }
 
+    public virtual BattleUnitModel FixedIndexTarget(List<BattleUnitModel> candidates, BattleUnitModel origin)
+    {
+        return origin;
+    }
+
     public bool SetIndexMarkForAtkDice(BattleDiceCardModel model)
     {
         return ItemXmlDataList.instance.GetCardItem(model.GetID()).DiceBehaviourList.Exists(dice =>
