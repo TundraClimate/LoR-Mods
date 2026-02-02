@@ -719,14 +719,14 @@
     <Artwork>Unlock3.png</Artwork>
     <Rarity>Special</Rarity>
     <Spec Range="Near" Cost="5" Affection="One" EmotionLimit="0" />
-    <Script>VsRedMist</Script>
+    <Script>TheRedMistSelf</Script>
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="8" Dice="16" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
       <Behaviour Min="4" Dice="8" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="10" Dice="12" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="12" Dice="16" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="12" Dice="16" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="10" Dice="12" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TheRedMist" ActionScript="" Desc="" />
+      <Behaviour Min="12" Dice="16" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="TheRedMist" ActionScript="" Desc="" />
+      <Behaviour Min="12" Dice="16" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="" Script="TheRedMist" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>6</Chapter>
     <SpecialEffect />

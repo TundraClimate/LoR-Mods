@@ -36,22 +36,26 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         {
             // TODO Only debug
 
-            this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
+            /* this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
 
-            return;
+            return; */
         }
 
-        List<SpecialPrescriptBuf> specialInstances = new List<SpecialPrescriptBuf>()
+        if (base.owner.faction == Faction.Enemy)
         {
-        };
+            List<SpecialPrescriptBuf> specialInstances = new List<SpecialPrescriptBuf>()
+            {
+                new BattleUnitBuf_TheRedMist(),
+            };
 
-        SpecialPrescriptBuf findOne = specialInstances.Find(sp => sp.ShouldSendScript());
+            SpecialPrescriptBuf findOne = specialInstances.Find(sp => sp.ShouldSendScript());
 
-        if (findOne != null)
-        {
-            this.SendSpecialPrescript(findOne);
+            if (findOne != null)
+            {
+                this.SendSpecialPrescript(findOne);
 
-            return;
+                return;
+            }
         }
 
         if (3 > grace.stack && grace.stack >= 0)
