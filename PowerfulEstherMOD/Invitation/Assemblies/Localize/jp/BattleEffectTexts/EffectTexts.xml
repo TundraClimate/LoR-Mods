@@ -151,7 +151,9 @@
         </BattleEffectText>
         <BattleEffectText ID="TheRedMist">
             <Name>指令 : [紙片]</Name>
-            <Desc>砕けた伝説に挑め。</Desc>
+            <Desc>砕けた伝説に挑め。
+
+&lt;color=#AA8888&gt;かの赤い霧は単身で代行者を3人、伝令を5人倒したとされる。&lt;/color&gt;</Desc>
             <!-- BREAK THE LEGEND OF REDMIST -->
         </BattleEffectText>
 
