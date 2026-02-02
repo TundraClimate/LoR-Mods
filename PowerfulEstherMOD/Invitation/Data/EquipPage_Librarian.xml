@@ -22,6 +22,7 @@
       <MaxPlayPoint>4</MaxPlayPoint>
       <StartPlayPoint>4</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
+      <OnlyCard>40</OnlyCard>
       <Passive Pid="@origin">10008</Passive>
       <Passive>2</Passive>
       <Passive>3</Passive>

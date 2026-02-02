@@ -4,6 +4,30 @@ using HarmonyLib;
 
 public static class PatchClass
 {
+    [HarmonyPatch(typeof(BookModel), "SetXmlInfo")]
+    public class PostfixPatch_SetXmlInfo
+    {
+        public static void Postfix(BookXmlInfo classInfo, List<DiceCardXmlInfo> ____onlyCards)
+        {
+            if (classInfo.id.packageId == PowerfulEstherMOD.packageId)
+            {
+                ____onlyCards.Clear();
+
+                foreach (int id in classInfo.EquipEffect.OnlyCard)
+                {
+                    LorId lid = new LorId(PowerfulEstherMOD.packageId, id);
+
+                    DiceCardXmlInfo info = ItemXmlDataList.instance.GetCardItem(lid);
+
+                    if (info != null)
+                    {
+                        ____onlyCards.Add(info);
+                    }
+                }
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(BattleDiceCardBuf), "GetBufIcon")]
     public class PostfixPatch_GetCardBufIcon
     {

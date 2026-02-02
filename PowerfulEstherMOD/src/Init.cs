@@ -40,11 +40,13 @@ public class PowerfulEstherMOD : ModInitializer
                 return;
             }
 
+            ((BattleUnitBuf_GraceOfPrescript)esther.bufListDetail.GetActivatedBufList().Find(buf => buf is BattleUnitBuf_GraceOfPrescript)).AddStack(9);
+
             esther.allyCardDetail.ExhaustAllCards();
-            esther.allyCardDetail.AddNewCard(new LorId(packageId, 20));
-            esther.allyCardDetail.AddNewCard(new LorId(packageId, 20));
-            esther.allyCardDetail.AddNewCard(new LorId(packageId, 20));
-            esther.allyCardDetail.AddNewCard(new LorId(packageId, 20));
+            esther.allyCardDetail.AddNewCard(new LorId(packageId, 40));
+            esther.allyCardDetail.AddNewCard(new LorId(packageId, 40));
+            esther.allyCardDetail.AddNewCard(new LorId(packageId, 40));
+            esther.allyCardDetail.AddNewCard(new LorId(packageId, 40));
         });
     }
 
