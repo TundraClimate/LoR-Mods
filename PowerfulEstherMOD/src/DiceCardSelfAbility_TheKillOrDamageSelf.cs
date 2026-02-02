@@ -18,7 +18,7 @@ public class DiceCardSelfAbility_TheKillOrDamageSelf : DiceCardSelfAbilityBase
             {
                 power = 3,
             });
-            base.owner.currentDiceAction.target.bufListDetail.AddKeywordBufByCard(KeywordBuf.Paralysis, 3, base.owner);
+            base.owner.currentDiceAction.target.bufListDetail.AddKeywordBufThisRoundByCard(KeywordBuf.Paralysis, 3, base.owner);
         }
     }
 }
