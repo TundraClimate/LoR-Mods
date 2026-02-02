@@ -91,6 +91,7 @@
     <Compile Include="BattleUnitBuf_Unlock3.cs" />
     <Compile Include="BattleUnitBuf_Karma.cs" />
     <Compile Include="PrescriptBuf.cs" />
+    <Compile Include="SpecialPrescriptBuf.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheTerminateAll.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheUseMarked.cs" />
     <Compile Include="BattleUnitBuf_PrescriptTheHitMarked.cs" />

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class PassiveAbility_Esther : PassiveAbilityBase
 {
     public override void OnRoundStartAfter()
@@ -20,6 +22,13 @@ public class PassiveAbility_Esther : PassiveAbilityBase
             UnityEngine.Debug.LogWarning("GraceOfPrescript not found");
 
             return 0;
+        }
+
+        SpecialPrescriptBuf special = (SpecialPrescriptBuf)base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is SpecialPrescriptBuf);
+
+        if (special != null)
+        {
+            return special.SpeedDiceNumAdder();
         }
 
         if (3 > grace.stack && grace.stack >= 0)
@@ -76,6 +85,15 @@ public class PassiveAbility_Esther : PassiveAbilityBase
         if (grace == null)
         {
             UnityEngine.Debug.LogWarning("GraceOfPrescript not found");
+
+            return;
+        }
+
+        SpecialPrescriptBuf special = (SpecialPrescriptBuf)base.owner.bufListDetail.GetActivatedBufList().Find(buf => buf is SpecialPrescriptBuf);
+
+        if (special != null)
+        {
+            this.UseSpecialPattern(special.InitializeHand());
 
             return;
         }
@@ -339,6 +357,26 @@ public class PassiveAbility_Esther : PassiveAbilityBase
                 this.AddCard(4, 9);
 
                 break;
+        }
+    }
+
+    private void UseSpecialPattern(List<LorId> hands)
+    {
+        if (hands.Count == 0)
+        {
+            return;
+        }
+
+        int[] prios = new int[hands.Count];
+
+        for (int i = hands.Count - 1; i >= 0; i--)
+        {
+            prios[i] = (2 << 10) - i * 9;
+        }
+
+        for (int i = 0; hands.Count > i; i++)
+        {
+            this.AddCard(hands[i], prios[i]);
         }
     }
 

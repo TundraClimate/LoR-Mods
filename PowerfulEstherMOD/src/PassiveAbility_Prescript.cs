@@ -41,6 +41,19 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             return;
         }
 
+        List<SpecialPrescriptBuf> specialInstances = new List<SpecialPrescriptBuf>()
+        {
+        };
+
+        SpecialPrescriptBuf findOne = specialInstances.Find(sp => sp.ShouldSendScript());
+
+        if (findOne != null)
+        {
+            this.SendSpecialPrescript(findOne);
+
+            return;
+        }
+
         if (3 > grace.stack && grace.stack >= 0)
         {
             this.SendPrescript(0);
@@ -262,6 +275,11 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
         }
 
         this.SetPrescript(PrescriptBuf.Create(PrescriptBuf.GetOne(ablePrescripts.ToArray())));
+    }
+
+    private void SendSpecialPrescript(SpecialPrescriptBuf prescriptBuf)
+    {
+        this.SetPrescript(PrescriptBuf.Create(prescriptBuf));
     }
 
     private void SetPrescript(PrescriptBuf prescript)
