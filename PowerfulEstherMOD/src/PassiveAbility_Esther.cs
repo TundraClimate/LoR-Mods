@@ -28,7 +28,7 @@ public class PassiveAbility_Esther : PassiveAbilityBase
 
         if (special != null)
         {
-            return special.SpeedDiceNumAdder();
+            return 0;
         }
 
         if (3 > grace.stack && grace.stack >= 0)
