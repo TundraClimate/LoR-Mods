@@ -43,13 +43,9 @@ public class ModResource
             string fileName = Path.GetFileName(unitBuf);
             string unitBufId;
 
-            if (fileName.EndsWith(".png"))
+            if (fileName.EndsWith(".png") || fileName.EndsWith(".jpg"))
             {
-                unitBufId = fileName.TrimEnd(".png".ToCharArray());
-            }
-            else if (fileName.EndsWith(".jpg"))
-            {
-                unitBufId = fileName.TrimEnd(".jpg".ToCharArray());
+                unitBufId = fileName.Substring(0, fileName.Length - 4);
             }
             else
             {

@@ -46,6 +46,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             List<SpecialPrescriptBuf> specialInstances = new List<SpecialPrescriptBuf>()
             {
                 new BattleUnitBuf_TheRedMist(),
+                new BattleUnitBuf_TheGotoLantern(),
             };
 
             SpecialPrescriptBuf findOne = specialInstances.Find(sp => sp.ShouldSendScript());
@@ -53,6 +54,7 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             if (findOne != null)
             {
                 this.SendSpecialPrescript(findOne);
+                DebugUtil.Logger.Info("Send special the {}", findOne.GetType().Name);
 
                 return;
             }
