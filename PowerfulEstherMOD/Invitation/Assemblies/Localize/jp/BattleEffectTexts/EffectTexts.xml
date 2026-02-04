@@ -141,7 +141,9 @@
         <!-- Special -->
         <BattleEffectText ID="TheKillPinocchio">
             <Name>指令 : [紙片]</Name>
-            <Desc>嘘つきを殺せ。</Desc>
+            <Desc>嘘つきを殺せ。
+
+&lt;color=#AA8888&gt;相手を真似することしか出来ないもの。伸びた鼻を摘出しなさい。&lt;/color&gt;</Desc>
             <!-- Kill the librarian of having pinocchio page -->
         </BattleEffectText>
         <BattleEffectText ID="TheGotoLantern">

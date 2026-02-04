@@ -32,21 +32,13 @@ public class PassiveAbility_Prescript : PassiveAbilityBase
             base.owner.bufListDetail.AddBuf(grace);
         }
 
-        if (false)
-        {
-            // TODO Only debug
-
-            /* this.SetPrescript(PrescriptBuf.Create(new BattleUnitBuf_TheTerminateAll()));
-
-            return; */
-        }
-
         if (base.owner.faction == Faction.Enemy)
         {
             List<SpecialPrescriptBuf> specialInstances = new List<SpecialPrescriptBuf>()
             {
                 new BattleUnitBuf_TheRedMist(),
                 new BattleUnitBuf_TheGotoLantern(),
+                new BattleUnitBuf_TheKillPinocchio(),
             };
 
             SpecialPrescriptBuf findOne = specialInstances.Find(sp => sp.ShouldSendScript());

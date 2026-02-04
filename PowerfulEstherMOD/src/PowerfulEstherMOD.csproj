@@ -114,6 +114,7 @@
     <Compile Include="BattleUnitBuf_PrescriptTheRollAllRange.cs" />
     <Compile Include="BattleUnitBuf_SpecialPrescriptTheRedMist.cs" />
     <Compile Include="BattleUnitBuf_SpecialPrescriptTheGotoLantern.cs" />
+    <Compile Include="BattleUnitBuf_SpecialPrescriptTheKillPinocchio.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock2.cs" />
     <Compile Include="DiceCardSelfAbility_ForceUnlock3.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="DiceCardSelfAbility_TheNormalResistSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheRedMistSelf.cs" />
     <Compile Include="DiceCardSelfAbility_TheGotoLanternSelf.cs" />
+    <Compile Include="DiceCardSelfAbility_TheKillPinocchioSelf.cs" />
     <Compile Include="DiceCardAbility_ObeyOrder.cs" />
     <Compile Include="DiceCardAbility_TerminationDice.cs" />
     <Compile Include="DiceCardAbility_TheOneAttack.cs" />

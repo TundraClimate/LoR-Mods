@@ -713,6 +713,31 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+  <Card ID="97">
+    <Name>代行 : 無作為な連撃</Name>
+    <TextId>-1</TextId>
+    <Artwork>Unlock3.png</Artwork>
+    <Rarity>Special</Rarity>
+    <Spec Range="Near" Cost="5" Affection="One" EmotionLimit="0" />
+    <Script>TheKillPinocchioSelf</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="10" Dice="10" Type="Atk" Detail="Slash" Motion="Z" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="10" Dice="10" Type="Atk" Detail="Penetrate" Motion="H" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="10" Dice="10" Type="Atk" Detail="Hit" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>6</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
   <Card ID="98">
     <Name>代行 : 抱擁</Name>
     <TextId>-1</TextId>
