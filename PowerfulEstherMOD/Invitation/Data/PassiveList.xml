@@ -24,7 +24,10 @@
     <Cost>0</Cost>
     <Script>Prescript</Script>
     <Name>指令の代行者：[紙片]</Name>
-    <Desc>指令と指令の加護得るやつ</Desc>
+    <Desc>幕の開始時、ランダムな指令を解禁段階に応じて得る
+幕の終了時、指令を達成したなら指令の加護を1得る。指令対象で指令を達成したなら、代わりに3得る
+    
+幕の開始時、受け取った指令に応じて指令の印が手元のページに刻まれる</Desc>
   </Passive>
   <Passive ID="3">
     <Negative>false</Negative>
@@ -37,7 +40,7 @@
     <Cost>0</Cost>
     <Script>IndexTarget</Script>
     <Name>指令の向かう処</Name>
-    <Desc>指令対象付与するやつ TODO</Desc>
+    <Desc>幕の開始時、ランダムな敵1名へ指令対象を付与</Desc>
   </Passive>
   <Passive ID="4">
     <Negative>false</Negative>
@@ -50,7 +53,7 @@
     <Cost>0</Cost>
     <Script>Unlock</Script>
     <Name>解禁</Name>
-    <Desc>解禁管理するやつ TODO</Desc>
+    <Desc>幕の終了時に指令の加護が3/6/9なら、解禁 - I/解禁 - II/解禁 - IIIを得る</Desc>
   </Passive>
   <Passive ID="5">
     <Negative>false</Negative>

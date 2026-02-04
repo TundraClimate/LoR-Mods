@@ -16,7 +16,7 @@ public class PowerfulEstherMOD : ModInitializer
     public override void OnInitializeMod()
     {
         PowerfulEstherMOD.ApplyHarmonyPatch();
-        PowerfulEstherMOD.DebugInitialize();
+        // PowerfulEstherMOD.DebugInitialize();
         ModResource.LoadAdditionals();
     }
 
