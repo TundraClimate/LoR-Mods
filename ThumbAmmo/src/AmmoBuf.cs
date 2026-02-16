@@ -8,6 +8,11 @@ public class AmmoBuf : BattleUnitBuf
         this._bulletBuf = effect;
     }
 
+    public string GetTextId()
+    {
+        return this.keywordId;
+    }
+
     public static void ApplyOrAdd(BattleUnitModel unit, string keywordId, BattleUnitBuf effect, int stack = 1)
     {
         if (unit == null || stack == 0)
@@ -56,6 +61,11 @@ public class AmmoBuf : BattleUnitBuf
         {
             base._owner.bufListDetail.AddBuf(this._bulletBuf);
             base._owner.passiveDetail.OnExhaustBullet();
+        }
+
+        if (this.stack == 0)
+        {
+            base._owner.bufListDetail.RemoveBuf(this);
         }
     }
 
