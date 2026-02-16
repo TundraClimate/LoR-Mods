@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleEffectTextRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <effectTextList>
+        <BattleEffectText ID="FireAmmo">
+            <Name>火炎弾</Name>
+            <Desc>消耗した数に応じて、今回の幕にて遠距離バトルページで攻撃を的中させた場合、火傷を2付与</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="FreezeAmmo">
+            <Name>氷結弾</Name>
+            <Desc>消耗した数に応じて、今回の幕にて遠距離バトルページで攻撃を的中させた場合、次の幕にて麻痺1と武装解除を1付与</Desc>
+        </BattleEffectText>
+        <BattleEffectText ID="IronAmmo">
+            <Name>徹甲弾</Name>
+            <Desc>消耗した数に応じて、今回の幕にて遠距離バトルページでマッチをする場合、相手のダイスの威力を -1</Desc>
+        </BattleEffectText>
+    </effectTextList>
+</BattleEffectTextRoot>

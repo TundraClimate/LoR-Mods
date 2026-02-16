@@ -14,6 +14,7 @@ public class ThumbAmmo : ModInitializer
     public override void OnInitializeMod()
     {
         ApplyHarmonyPatch();
+        ModResource.LoadAdditionals();
     }
 
     private static void ApplyHarmonyPatch()
