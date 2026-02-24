@@ -1,0 +1,7 @@
+.env
+build.sh
+usr.sh
+
+bin/
+obj/
+libs/
