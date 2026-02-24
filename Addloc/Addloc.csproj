@@ -59,6 +59,8 @@
   <ItemGroup>
       <Compile Include="Localize.cs" />
       <Compile Include="Walkdir.cs" />
+      <Compile Include="ModPackage.cs" />
+      <Compile Include="Artwork.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
