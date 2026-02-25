@@ -8,6 +8,7 @@ namespace Addloc
             Artwork artwork = new Artwork(ModPackage<T>.PackageId, ModPackage<T>.AssemblyPath);
 
             artwork.LoadBattleUnitBufIcons();
+            artwork.LoadStoryIcons("_Overlay");
         }
     }
 }

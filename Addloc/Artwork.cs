@@ -1,6 +1,8 @@
 using System.IO;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UI;
 
 namespace Addloc
 {
@@ -37,6 +39,59 @@ namespace Addloc
                 }
 
                 iconDict.Add(unitBufId, Artwork.CreateSprite(unitBuf));
+            }
+        }
+
+        public void LoadStoryIcons(string overlaySuffix)
+        {
+            string dirPath = this._artworkPath + "StoryIcon";
+
+            if (!Directory.Exists(dirPath))
+            {
+                return;
+            }
+
+            FieldInfo storyIconDic = typeof(UISpriteDataManager).GetField("StoryIconDic", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            if (storyIconDic == null)
+            {
+                throw new InvalidDataException("An Assembly-CSharp.dll was modified");
+            }
+
+            var iconDict = (Dictionary<string, UIIconManager.IconSet>)storyIconDic.GetValue(UISpriteDataManager.instance);
+            var iconSprites = new Dictionary<string, Sprite>();
+
+            foreach (string storyIcon in Walkdir.GetFilesRecursive(dirPath))
+            {
+                string fileName = Path.GetFileName(storyIcon);
+                string iconId;
+
+                if (fileName.EndsWith(".png") || fileName.EndsWith(".jpg"))
+                {
+                    iconId = fileName.Substring(0, fileName.Length - 4);
+                }
+                else
+                {
+                    continue;
+                }
+
+                Sprite sprite = Artwork.CreateSprite(storyIcon);
+
+                iconSprites.Add(iconId, sprite);
+            }
+
+            foreach (var entry in iconSprites)
+            {
+                string iconId = entry.Key;
+                Sprite baseLayer = entry.Value;
+                iconSprites.TryGetValue(iconId + overlaySuffix, out Sprite overlay);
+
+                iconDict.Add(entry.Key, new UIIconManager.IconSet()
+                {
+                    type = entry.Key,
+                    icon = entry.Value,
+                    iconGlow = overlay ?? baseLayer,
+                });
             }
         }
 
