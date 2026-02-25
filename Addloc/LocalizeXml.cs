@@ -17,9 +17,10 @@ namespace Addloc
             this._localizeHarmony = new Harmony(packageId + ".Localize");
         }
 
-        public static LocalizeXml<T> Init()
+        public static LocalizeXml<T> Init(string defaultLang)
         {
             _localizePath = ModPackage<T>.AssemblyPath + "\\Localize\\";
+            _defaultLang = defaultLang.ToLower();
 
             return new LocalizeXml<T>(ModPackage<T>.PackageId, ModPackage<T>.AssemblyPath);
         }
@@ -38,6 +39,8 @@ namespace Addloc
         private string _packageId;
 
         private static string _localizePath;
+
+        private static string _defaultLang;
 
         [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBattleEffectTexts))]
         private class LocalizeBattleEffectTexts
@@ -63,6 +66,16 @@ namespace Addloc
             static void LoadBattleEffectTextsXmls(Dictionary<string, BattleEffectText> dictionary, string language)
             {
                 string path = Path.Combine(_localizePath, language, "BattleEffectTexts");
+
+                if (!Directory.Exists(path))
+                {
+                    path = Path.Combine(_localizePath, _defaultLang, "BattleEffectTexts");
+                }
+
+                if (!Directory.Exists(path))
+                {
+                    return;
+                }
 
                 XmlSerializer serializer = new XmlSerializer(typeof(BattleEffectTextRoot));
 
