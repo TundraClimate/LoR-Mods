@@ -9,6 +9,8 @@ namespace Addloc
 
             artwork.LoadBattleUnitBufIcons();
             artwork.LoadStoryIcons("_Overlay");
+
+            LocalizeXml xml = new LocalizeXml();
         }
     }
 }
