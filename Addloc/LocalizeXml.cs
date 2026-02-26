@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Xml.Serialization;
 using System.Collections.Generic;
@@ -59,52 +60,27 @@ namespace Addloc
                 MethodInfo target = AccessTools.Method(typeof(BattleEffectTextsXmlList), nameof(BattleEffectTextsXmlList.Init));
                 MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleEffectTexts), nameof(LocalizeBattleEffectTexts.LoadBattleEffectTextsXmls));
 
-                foreach (CodeInstruction inst in instructions)
-                {
-                    if (inst.Calls(target))
-                    {
-                        yield return new CodeInstruction(OpCodes.Dup);
-                        yield return new CodeInstruction(OpCodes.Ldarg_1);
-                        yield return new CodeInstruction(OpCodes.Call, inject);
-                    }
-
-                    yield return inst;
-                }
+                return instructions.InjectBefore(target, inject);
             }
 
             static void LoadBattleEffectTextsXmls(Dictionary<string, BattleEffectText> dictionary, string language)
             {
                 string path = Path.Combine(_localizePath, language, "BattleEffectTexts");
 
-                if (!Directory.Exists(path))
-                {
-                    path = Path.Combine(_localizePath, _defaultLang, "BattleEffectTexts");
-                }
-
-                if (!Directory.Exists(path))
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
                 {
                     return;
                 }
 
-                XmlSerializer serializer = new XmlSerializer(typeof(BattleEffectTextRoot));
-
-                foreach (string effectTexts in Walkdir.GetFilesRecursive(path))
+                PatchUtil.EachXmlAt<BattleEffectTextRoot>(path, xml =>
                 {
-                    if (!effectTexts.EndsWith(".xml"))
-                    {
-                        continue;
-                    }
+                    var elements = xml.effectTextList;
 
-                    using (StreamReader reader = new StreamReader(effectTexts))
+                    foreach (var elem in elements)
                     {
-                        List<BattleEffectText> texts = ((BattleEffectTextRoot)serializer.Deserialize(reader)).effectTextList;
-
-                        foreach (BattleEffectText text in texts)
-                        {
-                            dictionary.Add(text.ID, text);
-                        }
+                        dictionary.Add(elem.ID, elem);
                     }
-                }
+                });
             }
         }
 
@@ -116,51 +92,77 @@ namespace Addloc
                 MethodInfo target = AccessTools.Method(typeof(BattleEffectTextsXmlList), nameof(BattleCardAbilityDescXmlList.Init));
                 MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleEffectTexts), nameof(LocalizeBattleCardAbilityDesc.LoadBattleCardAbilityDescXmls));
 
-                foreach (CodeInstruction inst in instructions)
-                {
-                    if (inst.Calls(target))
-                    {
-                        yield return new CodeInstruction(OpCodes.Dup);
-                        yield return new CodeInstruction(OpCodes.Ldarg_1);
-                        yield return new CodeInstruction(OpCodes.Call, inject);
-                    }
-
-                    yield return inst;
-                }
+                return instructions.InjectBefore(target, inject);
             }
 
             static void LoadBattleCardAbilityDescXmls(Dictionary<string, BattleCardAbilityDesc> dictionary, string language)
             {
                 string path = Path.Combine(_localizePath, language, "BattleCardAbilityDesc");
 
-                if (!Directory.Exists(path))
-                {
-                    path = Path.Combine(_localizePath, _defaultLang, "BattleCardAbilityDesc");
-                }
-
-                if (!Directory.Exists(path))
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
                 {
                     return;
                 }
 
-                XmlSerializer serializer = new XmlSerializer(typeof(BattleCardAbilityDescRoot));
-
-                foreach (string effectTexts in Walkdir.GetFilesRecursive(path))
+                PatchUtil.EachXmlAt<BattleCardAbilityDescRoot>(path, xml =>
                 {
-                    if (!effectTexts.EndsWith(".xml"))
-                    {
-                        continue;
-                    }
+                    var elements = xml.cardDescList;
 
-                    using (StreamReader reader = new StreamReader(effectTexts))
+                    foreach (var elem in elements)
                     {
-                        List<BattleCardAbilityDesc> texts = ((BattleCardAbilityDescRoot)serializer.Deserialize(reader)).cardDescList;
-
-                        foreach (BattleCardAbilityDesc text in texts)
-                        {
-                            dictionary.Add(text.id, text);
-                        }
+                        dictionary.Add(elem.id, elem);
                     }
+                });
+            }
+        }
+    }
+
+    internal static class PatchUtil
+    {
+        internal static IEnumerable<CodeInstruction> InjectBefore(this IEnumerable<CodeInstruction> instructions, MethodInfo target, MethodInfo inject)
+        {
+            foreach (CodeInstruction inst in instructions)
+            {
+                if (inst.Calls(target))
+                {
+                    yield return new CodeInstruction(OpCodes.Dup);
+                    yield return new CodeInstruction(OpCodes.Ldarg_1);
+                    yield return new CodeInstruction(OpCodes.Call, inject);
+                }
+
+                yield return inst;
+            }
+        }
+
+        internal static bool TryExistsWithDefault(string defaultLang, ref string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                string locaType = Path.GetFileName(path);
+                string localizeDir = Path.GetDirectoryName(Path.GetDirectoryName(path));
+
+                path = Path.Combine(localizeDir, defaultLang, locaType);
+            }
+
+            return Directory.Exists(path);
+        }
+
+        internal static void EachXmlAt<T>(string atPath, Action<T> each)
+        {
+            var serializer = new XmlSerializer(typeof(T));
+
+            foreach (string filePath in Walkdir.GetFilesRecursive(atPath))
+            {
+                if (!filePath.EndsWith(".xml"))
+                {
+                    continue;
+                }
+
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    var xml = (T)serializer.Deserialize(reader);
+
+                    each(xml);
                 }
             }
         }
