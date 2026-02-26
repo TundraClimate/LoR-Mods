@@ -29,18 +29,18 @@ namespace Addloc
         public void ApplyBattleEffectTextsPatch()
         {
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleEffectTexts)).Patch();
-
-            string lang = GlobalGameManager.Instance.CurrentOption.language;
-
-            LocalizedTextLoader.Instance.LoadBattleEffectTexts(lang);
         }
 
         public void ApplyBattleCardAbilityDescPatch()
         {
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleCardAbilityDesc)).Patch();
+        }
 
+        public void ReloadLocalize()
+        {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
 
+            LocalizedTextLoader.Instance.LoadBattleEffectTexts(lang);
             LocalizedTextLoader.Instance.LoadBattleCardAbilityDescriptions(lang);
         }
 
