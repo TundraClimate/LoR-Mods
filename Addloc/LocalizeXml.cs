@@ -36,6 +36,11 @@ namespace Addloc
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleCardAbilityDesc)).Patch();
         }
 
+        public void ApplyBattleCardDescPatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleCardDesc)).Patch();
+        }
+
         public void ReloadLocalize()
         {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
@@ -89,8 +94,8 @@ namespace Addloc
         {
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                MethodInfo target = AccessTools.Method(typeof(BattleEffectTextsXmlList), nameof(BattleCardAbilityDescXmlList.Init));
-                MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleEffectTexts), nameof(LocalizeBattleCardAbilityDesc.LoadBattleCardAbilityDescXmls));
+                MethodInfo target = AccessTools.Method(typeof(BattleCardAbilityDescXmlList), nameof(BattleCardAbilityDescXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleCardAbilityDesc), nameof(LocalizeBattleCardAbilityDesc.LoadBattleCardAbilityDescXmls));
 
                 return instructions.InjectBefore(target, inject);
             }
@@ -111,6 +116,38 @@ namespace Addloc
                     foreach (var elem in elements)
                     {
                         dictionary.Add(elem.id, elem);
+                    }
+                });
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBattleCardDescriptions))]
+        private class LocalizeBattleCardDesc
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo target = AccessTools.Method(typeof(BattleCardDescXmlList), nameof(BattleCardDescXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleCardDesc), nameof(LocalizeBattleCardDesc.LoadBattleCardDescXmls));
+
+                return instructions.InjectBefore(target, inject);
+            }
+
+            static void LoadBattleCardDescXmls(Dictionary<LorId, BattleCardDesc> dictionary, string language)
+            {
+                string path = Path.Combine(_localizePath, language, "BattleCardDesc");
+
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
+                {
+                    return;
+                }
+
+                PatchUtil.EachXmlAt<BattleCardDescRoot>(path, xml =>
+                {
+                    var elements = xml.cardDescList;
+
+                    foreach (var elem in elements)
+                    {
+                        dictionary.Add(new LorId(elem.cardID), elem);
                     }
                 });
             }
