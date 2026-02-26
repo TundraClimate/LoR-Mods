@@ -13,6 +13,7 @@ namespace Addloc
             LocalizeXml<T> xml = LocalizeXml<T>.Init(defaultLang);
 
             xml.ApplyBattleEffectTextsPatch();
+            xml.ApplyBattleCardAbilityDescPatch();
         }
     }
 }

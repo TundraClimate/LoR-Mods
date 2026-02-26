@@ -34,6 +34,15 @@ namespace Addloc
             LocalizedTextLoader.Instance.LoadBattleEffectTexts(lang);
         }
 
+        public void ApplyBattleCardAbilityDescPatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleCardAbilityDesc)).Patch();
+
+            string lang = GlobalGameManager.Instance.CurrentOption.language;
+
+            LocalizedTextLoader.Instance.LoadBattleCardAbilityDescriptions(lang);
+        }
+
         private Harmony _localizeHarmony;
 
         private string _packageId;
@@ -93,6 +102,63 @@ namespace Addloc
                         foreach (BattleEffectText text in texts)
                         {
                             dictionary.Add(text.ID, text);
+                        }
+                    }
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBattleCardAbilityDescriptions))]
+        private class LocalizeBattleCardAbilityDesc
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo target = AccessTools.Method(typeof(BattleEffectTextsXmlList), nameof(BattleCardAbilityDescXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleEffectTexts), nameof(LocalizeBattleCardAbilityDesc.LoadBattleCardAbilityDescXmls));
+
+                foreach (CodeInstruction inst in instructions)
+                {
+                    if (inst.Calls(target))
+                    {
+                        yield return new CodeInstruction(OpCodes.Dup);
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Call, inject);
+                    }
+
+                    yield return inst;
+                }
+            }
+
+            static void LoadBattleCardAbilityDescXmls(Dictionary<string, BattleCardAbilityDesc> dictionary, string language)
+            {
+                string path = Path.Combine(_localizePath, language, "BattleCardAbilityDesc");
+
+                if (!Directory.Exists(path))
+                {
+                    path = Path.Combine(_localizePath, _defaultLang, "BattleCardAbilityDesc");
+                }
+
+                if (!Directory.Exists(path))
+                {
+                    return;
+                }
+
+                XmlSerializer serializer = new XmlSerializer(typeof(BattleCardAbilityDescRoot));
+
+                foreach (string effectTexts in Walkdir.GetFilesRecursive(path))
+                {
+                    if (!effectTexts.EndsWith(".xml"))
+                    {
+                        continue;
+                    }
+
+                    using (StreamReader reader = new StreamReader(effectTexts))
+                    {
+                        List<BattleCardAbilityDesc> texts = ((BattleCardAbilityDescRoot)serializer.Deserialize(reader)).cardDescList;
+
+                        foreach (BattleCardAbilityDesc text in texts)
+                        {
+                            dictionary.Add(text.id, text);
                         }
                     }
                 }
