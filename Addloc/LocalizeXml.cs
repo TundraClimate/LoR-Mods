@@ -57,6 +57,9 @@ namespace Addloc
 
             LocalizedTextLoader.Instance.LoadBattleEffectTexts(lang);
             LocalizedTextLoader.Instance.LoadBattleCardAbilityDescriptions(lang);
+            LocalizedTextLoader.Instance.LoadBattleCardDescriptions(lang);
+            LocalizedTextLoader.Instance.LoadBattleDialogues(lang);
+            LocalizedTextLoader.Instance.LoadBookDescriptions(lang);
         }
 
         private Harmony _localizeHarmony;
