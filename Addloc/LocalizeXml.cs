@@ -41,6 +41,11 @@ namespace Addloc
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleCardDesc)).Patch();
         }
 
+        public void ApplyBattleDialogPatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleDialog)).Patch();
+        }
+
         public void ReloadLocalize()
         {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
@@ -149,6 +154,52 @@ namespace Addloc
                     {
                         dictionary.Add(new LorId(elem.cardID), elem);
                     }
+                });
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBattleDialogues))]
+        private class LocalizeBattleDialog
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+            {
+                MethodInfo target = AccessTools.Method(typeof(BattleDialogXmlList), nameof(BattleDialogXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeBattleDialog), nameof(LocalizeBattleDialog.LoadBattleDialogXmls));
+
+                foreach (CodeInstruction inst in instructions)
+                {
+                    if (inst.Calls(target))
+                    {
+                        var stash1 = generator.DeclareLocal(typeof(Dictionary<string, BattleDialogRoot>));
+                        var stash2 = generator.DeclareLocal(typeof(List<BattleDialogRelationWithBookID>));
+
+                        yield return new CodeInstruction(OpCodes.Stloc, stash2);
+                        yield return new CodeInstruction(OpCodes.Stloc, stash1);
+
+                        yield return new CodeInstruction(OpCodes.Ldloc, stash1);
+                        yield return new CodeInstruction(OpCodes.Ldloc, stash2);
+                        yield return new CodeInstruction(OpCodes.Ldloc, stash1);
+
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Call, inject);
+                    }
+
+                    yield return inst;
+                }
+            }
+
+            static void LoadBattleDialogXmls(Dictionary<string, BattleDialogRoot> dictionary, string language)
+            {
+                string path = Path.Combine(_localizePath, language, "BattleDialog");
+
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
+                {
+                    return;
+                }
+
+                PatchUtil.EachXmlAt<BattleDialogRoot>(path, xml =>
+                {
+                    dictionary.Add(xml.groupName, xml);
                 });
             }
         }
