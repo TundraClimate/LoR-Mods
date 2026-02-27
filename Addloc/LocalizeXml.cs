@@ -12,18 +12,18 @@ namespace Addloc
     public class LocalizeXml<T>
         where T : ModPackage<T>, new()
     {
-        private LocalizeXml(string packageId, string packagePath)
+        private LocalizeXml(string packageId)
         {
-            this._packageId = packageId;
             this._localizeHarmony = new Harmony(packageId + ".Localize");
         }
 
         public static LocalizeXml<T> Init(string defaultLang)
         {
+            _packageId = ModPackage<T>.PackageId;
             _localizePath = ModPackage<T>.AssemblyPath + "\\Localize\\";
             _defaultLang = defaultLang.ToLower();
 
-            return new LocalizeXml<T>(ModPackage<T>.PackageId, ModPackage<T>.AssemblyPath);
+            return new LocalizeXml<T>(_packageId);
         }
 
         public void ApplyBattleEffectTextsPatch()
@@ -56,7 +56,7 @@ namespace Addloc
 
         private Harmony _localizeHarmony;
 
-        private string _packageId;
+        private static string _packageId;
 
         private static string _localizePath;
 
@@ -152,7 +152,7 @@ namespace Addloc
 
                     foreach (var elem in elements)
                     {
-                        dictionary.Add(new LorId(elem.cardID), elem);
+                        dictionary.Add(new LorId(_packageId, elem.cardID), elem);
                     }
                 });
             }
