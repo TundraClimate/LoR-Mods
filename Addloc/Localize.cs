@@ -16,6 +16,7 @@ namespace Addloc
             xml.ApplyBattleCardAbilityDescPatch();
             xml.ApplyBattleCardDescPatch();
             xml.ApplyBattleDialogPatch();
+            xml.ApplyBookDescPatch();
 
             xml.ReloadLocalize();
         }

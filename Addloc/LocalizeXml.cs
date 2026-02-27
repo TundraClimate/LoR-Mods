@@ -46,6 +46,11 @@ namespace Addloc
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBattleDialog)).Patch();
         }
 
+        public void ApplyBookDescPatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizeBookDesc)).Patch();
+        }
+
         public void ReloadLocalize()
         {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
@@ -200,6 +205,69 @@ namespace Addloc
                 PatchUtil.EachXmlAt<BattleDialogRoot>(path, xml =>
                 {
                     dictionary.Add(xml.groupName, xml);
+                });
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBookDescriptions))]
+        private class LocalizeBookDesc
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo target = AccessTools.Method(typeof(BookDescXmlList), nameof(BookDescXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeBookDesc), nameof(LocalizeBookDesc.LoadBookXmlDesc));
+
+                return instructions.InjectBefore(target, inject);
+            }
+
+            static void LoadBookXmlDesc(Dictionary<int, BookDesc> dictionary, string language)
+            {
+                string path = Path.Combine(_localizePath, language, "BookDesc");
+
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
+                {
+                    return;
+                }
+
+                PatchUtil.EachXmlAt<ModBookDescRoot>(path, xml =>
+                {
+                    var books = xml.bookDescList;
+                    Dictionary<string, List<BookDesc>> workshopBooks = new Dictionary<string, List<BookDesc>>();
+
+                    foreach (var book in books)
+                    {
+                        BookDesc vannilaBook = new BookDesc()
+                        {
+                            bookID = book.bookID,
+                            bookName = book.bookName,
+                            texts = book.texts,
+                            passives = book.passives,
+                        };
+
+                        if (book.pid == "@origin")
+                        {
+                            dictionary.Add(book.bookID, vannilaBook);
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(book.pid))
+                            {
+                                book.pid = _packageId;
+                            }
+
+                            if (!workshopBooks.TryGetValue(book.pid, out var descs))
+                            {
+                                descs = new List<BookDesc>();
+                            }
+
+                            descs.Add(vannilaBook);
+                        }
+                    }
+
+                    foreach (var workshopBook in workshopBooks)
+                    {
+                        BookDescXmlList.Instance.AddBookTextByMod(workshopBook.Key, workshopBook.Value);
+                    }
                 });
             }
         }
