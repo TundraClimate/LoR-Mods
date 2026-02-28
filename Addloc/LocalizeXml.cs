@@ -61,6 +61,11 @@ namespace Addloc
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeStageName)).Patch();
         }
 
+        public void ApplyPassiveDescPatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizePassiveDesc)).Patch();
+        }
+
         public void ReloadLocalize()
         {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
@@ -72,6 +77,7 @@ namespace Addloc
             LocalizedTextLoader.Instance.LoadBookDescriptions(lang);
             LocalizedTextLoader.Instance.LoadCharactersName(lang);
             LocalizedTextLoader.Instance.LoadStageName(lang);
+            LocalizedTextLoader.Instance.LoadPassiveDesc(lang);
         }
 
         private Harmony _localizeHarmony;
@@ -419,6 +425,55 @@ namespace Addloc
                         if (targetStage != null)
                         {
                             targetStage.stageName = name.name;
+                        }
+                    }
+                });
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadPassiveDesc))]
+        private class LocalizePassiveDesc
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo target = AccessTools.Method(typeof(PassiveDescXmlList), nameof(PassiveDescXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizePassiveDesc), nameof(LocalizePassiveDesc.LoadPassiveDescXmls));
+
+                return instructions.InjectBefore(target, inject);
+            }
+
+            static void LoadPassiveDescXmls(PassiveDescRoot descRoot, string language)
+            {
+                string path = Path.Combine(_localizePath, language, "PassiveDesc");
+
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
+                {
+                    return;
+                }
+
+                PatchUtil.EachXmlAt<PassiveDescRoot>(path, xml =>
+                {
+                    var descList = xml.descList;
+
+                    foreach (var desc in descList)
+                    {
+                        var packagedDesc = new PassiveDesc()
+                        {
+                            _id = desc._id,
+                            isError = desc.isError,
+                            workshopID = _packageId,
+                            name = desc.name,
+                            desc = desc.desc,
+                        };
+
+                        descRoot.descList.Add(packagedDesc);
+
+                        var passiveXml = PassiveXmlList.Instance.GetData(packagedDesc.ID);
+
+                        if (passiveXml != null)
+                        {
+                            passiveXml.name = packagedDesc.name;
+                            passiveXml.desc = packagedDesc.desc;
                         }
                     }
                 });
