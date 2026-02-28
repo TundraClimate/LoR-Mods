@@ -56,6 +56,11 @@ namespace Addloc
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizeCharacterName)).Patch();
         }
 
+        public void ApplyStageNamePatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizeStageName)).Patch();
+        }
+
         public void ReloadLocalize()
         {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
@@ -66,6 +71,7 @@ namespace Addloc
             LocalizedTextLoader.Instance.LoadBattleDialogues(lang);
             LocalizedTextLoader.Instance.LoadBookDescriptions(lang);
             LocalizedTextLoader.Instance.LoadCharactersName(lang);
+            LocalizedTextLoader.Instance.LoadStageName(lang);
         }
 
         private Harmony _localizeHarmony;
@@ -341,6 +347,78 @@ namespace Addloc
                         if (moddedUnit != null)
                         {
                             moddedUnit.name = name.name;
+                        }
+                    }
+                });
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadStageName))]
+        private class LocalizeStageName
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo target = AccessTools.Method(typeof(StageNameXmlList), nameof(StageNameXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeStageName), nameof(LocalizeStageName.LoadStageNameXmls));
+
+                return instructions.InjectBefore(target, inject);
+            }
+
+            static void LoadStageNameXmls(CharactersNameRoot nameRoot, string language)
+            {
+                string path = Path.Combine(_localizePath, language, "StageName");
+
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
+                {
+                    return;
+                }
+
+                var workshopStages = StageClassInfoList.Instance.GetAllWorkshopData();
+
+                PatchUtil.EachXmlAt<ModCharactersNameRoot>(path, xml =>
+                {
+                    var nameList = xml.nameList;
+
+                    foreach (var name in nameList)
+                    {
+                        string pid = name.pid;
+                        if (pid == "@origin")
+                        {
+                            CharacterName vannilaName = new CharacterName()
+                            {
+                                ID = name.ID,
+                                name = name.name,
+                            };
+
+                            var locaName = nameRoot.nameList.Find(n => n.ID == name.ID);
+
+                            if (locaName == null)
+                            {
+                                nameRoot.nameList.Add(vannilaName);
+                            }
+                            else
+                            {
+                                locaName.name = name.name;
+                            }
+
+                            continue;
+                        }
+
+                        if (string.IsNullOrEmpty(pid))
+                        {
+                            pid = _packageId;
+                        }
+
+                        if (!workshopStages.TryGetValue(pid, out var stages))
+                        {
+                            continue;
+                        }
+
+                        var targetStage = stages.Find(s => s.id == name.ID);
+
+                        if (targetStage != null)
+                        {
+                            targetStage.stageName = name.name;
                         }
                     }
                 });

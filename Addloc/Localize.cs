@@ -18,6 +18,7 @@ namespace Addloc
             xml.ApplyBattleDialogPatch();
             xml.ApplyBookDescPatch();
             xml.ApplyCharacterNamePatch();
+            xml.ApplyStageNamePatch();
 
             xml.ReloadLocalize();
         }
