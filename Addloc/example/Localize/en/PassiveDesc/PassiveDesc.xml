@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PassiveDescRoot>
+  <PassiveDesc ID="1">
+    <Name>The Passive</Name>
+    <Desc>Description</Desc>
+  </PassiveDesc>
+</PassiveDescRoot>

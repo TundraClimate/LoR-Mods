@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BookDescRoot>
+  <bookDescList>
+
+    <BookDesc BookID="1">
+      <BookName>John’s Page</BookName>
+      <TextList>
+        <Desc>Line1</Desc>
+        <Desc>Line2</Desc>
+        <Desc>Line3</Desc>
+      </TextList>
+    </BookDesc>
+
+    <!-- Override -->
+    <BookDesc Pid="@origin" BookID="1">
+      <BookName>John’s Page</BookName>
+      <TextList>
+        <Desc>Line1</Desc>
+        <Desc>Line2</Desc>
+        <Desc>Line3</Desc>
+      </TextList>
+    </BookDesc>
+
+  </bookDescList>
+</BookDescRoot>

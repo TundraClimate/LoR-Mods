@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleCardAbilityDescRoot>
+  <BattleCardAbility ID="SpecId">
+    <Desc>This description is Test</Desc>
+  </BattleCardAbility>
+</BattleCardAbilityDescRoot>

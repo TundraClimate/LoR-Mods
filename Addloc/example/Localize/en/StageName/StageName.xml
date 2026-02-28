@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CharactersNameRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Name ID="1">The John</Name>
+
+  <!-- Override -->
+  <Name Pid="@origin" ID="1">The John</Name>
+
+</CharactersNameRoot>
