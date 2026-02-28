@@ -20,6 +20,7 @@ namespace Addloc
             xml.ApplyCharacterNamePatch();
             xml.ApplyStageNamePatch();
             xml.ApplyPassiveDescPatch();
+            xml.ApplyDropBookPatch();
 
             xml.ReloadLocalize();
         }

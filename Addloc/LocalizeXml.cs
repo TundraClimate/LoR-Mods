@@ -22,6 +22,7 @@ namespace Addloc
             _packageId = ModPackage<T>.PackageId;
             _localizePath = ModPackage<T>.AssemblyPath + "\\Localize\\";
             _defaultLang = defaultLang.ToLower();
+            _dropBookDict = new();
 
             return new LocalizeXml<T>(_packageId);
         }
@@ -66,6 +67,12 @@ namespace Addloc
             this._localizeHarmony.CreateClassProcessor(typeof(LocalizePassiveDesc)).Patch();
         }
 
+        public void ApplyDropBookPatch()
+        {
+            this._localizeHarmony.CreateClassProcessor(typeof(LocalizeDropBook)).Patch();
+            this._localizeHarmony.CreateClassProcessor(typeof(ReplaceDropBookName)).Patch();
+        }
+
         public void ReloadLocalize()
         {
             string lang = GlobalGameManager.Instance.CurrentOption.language;
@@ -87,6 +94,8 @@ namespace Addloc
         private static string _localizePath;
 
         private static string _defaultLang;
+
+        private static Dictionary<int, string> _dropBookDict;
 
         [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBattleEffectTexts))]
         private class LocalizeBattleEffectTexts
@@ -477,6 +486,64 @@ namespace Addloc
                         }
                     }
                 });
+            }
+        }
+
+        [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBookDescriptions))]
+        private class LocalizeDropBook
+        {
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                MethodInfo target = AccessTools.Method(typeof(BookDescXmlList), nameof(BookDescXmlList.Init));
+                MethodInfo inject = AccessTools.Method(typeof(LocalizeDropBook), nameof(LocalizeDropBook.LoadDropBookXmls));
+
+                foreach (CodeInstruction inst in instructions)
+                {
+                    if (inst.Calls(target))
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Call, inject);
+                    }
+
+                    yield return inst;
+                }
+            }
+
+            static void LoadDropBookXmls(string language)
+            {
+                string path = Path.Combine(_localizePath, language, "DropBook");
+
+                if (!PatchUtil.TryExistsWithDefault(_defaultLang, ref path))
+                {
+                    return;
+                }
+
+                PatchUtil.EachXmlAt<CharactersNameRoot>(path, xml =>
+                {
+                    var nameList = xml.nameList;
+
+                    foreach (var name in nameList)
+                    {
+                        _dropBookDict.Add(name.ID, name.name);
+                    }
+                });
+            }
+        }
+
+        [HarmonyPatch(typeof(DropBookXmlInfo), "get_Name")]
+        private class ReplaceDropBookName
+        {
+            static void Postfix(DropBookXmlInfo __instance, ref string __result)
+            {
+                if (__instance.workshopID == _packageId)
+                {
+                    var id = __instance._id;
+
+                    if (_dropBookDict.TryGetValue(id, out var name))
+                    {
+                        __result = name;
+                    }
+                }
             }
         }
     }
