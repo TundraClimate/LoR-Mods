@@ -1,29 +1,7 @@
-# depends
+# Addloc
 
-- HarmonyLib net48
-- LOR Assembly-CSharp
+Very similar the Localization Manager.
 
-# H2U
+looks the `example`
 
-## Scheduler
-
-```cs
-using DebugUtil;
-
-// Logging the "Round Started!" for every OnRoundStart calling
-InBattleScheduler.Instance.AddSchedule(InBattleScheduler.ScheduleTime.RoundStart, () =>
-{
-    UnityEngine.Debug.Log("Round Started!");
-});
-
-```
-
-## SysHacks
-
-```cs
-using System;
-
-string msg = Fmt.Format("{} is {}", 1, "numeric");
-
-Console.WriteLine(msg); // 1 is numeric
-```
+Put folders to under `Assemblies` in `example` with copy.
