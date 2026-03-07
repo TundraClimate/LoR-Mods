@@ -24,5 +24,6 @@
     <Reference Include="UnityEngine.ImageConversionModule" HintPath=".\libs\UnityEngine.ImageConversionModule.dll" />
     <Reference Include="Assembly-CSharp" HintPath=".\libs\Assembly-CSharp.dll" />
     <Reference Include="0Harmony" HintPath=".\libs\0Harmony.dll" />
+    <Reference Include="AdvancedBases" HintPath=".\libs\AdvancedBases.dll" />
   </ItemGroup>
 </Project>

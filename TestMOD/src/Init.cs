@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 using HarmonyLib;
+using AdvancedBases;
 
 public class TestMOD : ModInitializer
 {
@@ -55,6 +56,16 @@ public class TestMOD : ModInitializer
         foreach (string trash in bin)
         {
             __result.Remove(trash);
+        }
+    }
+
+    public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
+    {
+        public override bool IsAllowRoundEnd()
+        {
+            UnityEngine.Debug.Log("CANCELLD! : " + System.DateTime.Now);
+
+            return false;
         }
     }
 }
