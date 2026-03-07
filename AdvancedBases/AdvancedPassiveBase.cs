@@ -6,7 +6,7 @@ namespace AdvancedBases
     {
         static AdvancedPassiveBase()
         {
-            var harmony = new Harmony("AdvancedBases");
+            var harmony = new Harmony("AdvancedBases.Passive");
 
             harmony.CreateClassProcessor(typeof(PassivePatch.PatchOnBattleLast)).Patch();
         }
