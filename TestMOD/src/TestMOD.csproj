@@ -16,14 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System" HintPath=".\libs\System.dll" />
-    <Reference Include="System.Core" HintPath=".\libs\System.Core.dll" />
-    <Reference Include="System.Xml" HintPath=".\libs\System.Core.dll" />
-    <Reference Include="mscorlib" HintPath=".\libs\mscorlib.dll" />
-    <Reference Include="UnityEngine.CoreModule" HintPath=".\libs\UnityEngine.CoreModule.dll" />
-    <Reference Include="UnityEngine.ImageConversionModule" HintPath=".\libs\UnityEngine.ImageConversionModule.dll" />
-    <Reference Include="Assembly-CSharp" HintPath=".\libs\Assembly-CSharp.dll" />
-    <Reference Include="0Harmony" HintPath=".\libs\0Harmony.dll" />
-    <Reference Include="AdvancedBases" HintPath=".\libs\AdvancedBases.dll" />
+    <_Libs Include=".\libs\*.dll" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="@(_Libs->'%(Filename)')">
+      <HintPath>%(_Libs.FullPath)</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 </Project>
