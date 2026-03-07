@@ -61,11 +61,31 @@ public class TestMOD : ModInitializer
 
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
     {
+        public override void OnRoundStartFirst()
+        {
+            UnityEngine.Debug.Log("RoundStartFirst");
+        }
+
+        public override void OnRoundStart()
+        {
+            UnityEngine.Debug.Log("RoundStart");
+        }
+
+        public override void OnRoundStartAfter()
+        {
+            UnityEngine.Debug.Log("RoundStartAfter");
+        }
+
+        public override void OnRoundStartLast()
+        {
+            UnityEngine.Debug.Log("RoundStartLast");
+        }
+
         public override bool IsAllowRoundEnd()
         {
-            UnityEngine.Debug.Log("CANCELLD! : " + System.DateTime.Now);
+            UnityEngine.Debug.Log("Allow end");
 
-            return false;
+            return base.IsAllowRoundEnd();
         }
     }
 }
