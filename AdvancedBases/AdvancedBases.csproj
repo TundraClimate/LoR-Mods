@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AdvancedBases</AssemblyName>
+    <RootNamespace>AdvancedBases</RootNamespace>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48"
+                      Version="1.0.3"
+                      PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System" HintPath=".\libs\System.dll" />
+    <Reference Include="System.Core" HintPath=".\libs\System.Core.dll" />
+    <Reference Include="System.Xml" HintPath=".\libs\System.Core.dll" />
+    <Reference Include="mscorlib" HintPath=".\libs\mscorlib.dll" />
+    <Reference Include="UnityEngine.CoreModule" HintPath=".\libs\UnityEngine.CoreModule.dll" />
+    <Reference Include="Assembly-CSharp" HintPath=".\libs\Assembly-CSharp.dll" />
+    <Reference Include="0Harmony" HintPath=".\libs\0Harmony.dll" />
+  </ItemGroup>
+</Project>
