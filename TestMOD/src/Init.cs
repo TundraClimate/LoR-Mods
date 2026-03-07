@@ -59,6 +59,21 @@ public class TestMOD : ModInitializer
         }
     }
 
+    public class DiceCardAbility_TestAdvDice : AdvancedDiceBase
+    {
+        public override void OnAddToKeeped()
+        {
+            UnityEngine.Debug.Log("Added");
+        }
+
+        public override bool IsKeeps()
+        {
+            UnityEngine.Debug.Log("Keeps");
+
+            return false;
+        }
+    }
+
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
     {
         public override void OnRoundStartFirst()
