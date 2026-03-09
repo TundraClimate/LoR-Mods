@@ -14,7 +14,7 @@ public static class BattleBufExtension
         return res is not null;
     }
 
-    public static T GetAndInitIfNull<T>(this BattleUnitModel model, Func<T> bufMake)
+    public static T GetBufAndInitIfNull<T>(this BattleUnitModel model, Func<T> bufMake)
         where T : BattleUnitBuf
     {
         if (!model.TryGetBuf<T>(out var buf))

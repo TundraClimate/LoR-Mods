@@ -70,11 +70,11 @@ if (base.owner.TryGetBuf<BattleUnitBuf_burn>(out BattleUnitBuf_burn burn))
 // burn is Nullable
 ```
 
-`GetAndInitIfNull<T>(this BattleUnitModel model, Func<T> bufMake)`:
+`GetBufAndInitIfNull<T>(this BattleUnitModel model, Func<T> bufMake)`:
 
 ```cs
 using BattleBuf;
 
 // Throws the NullReferenceException if base.owner is null
-BattleUnitBuf_burn buf = base.owner.GetAndInitIfNull<BattleUnitBuf_burn>(() => new BattleUnitBuf_burn());
+BattleUnitBuf_burn buf = base.owner.GetBufAndInitIfNull<BattleUnitBuf_burn>(() => new BattleUnitBuf_burn());
 ```
