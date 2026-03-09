@@ -54,3 +54,27 @@ peekable.MoveNext(out elem);
 // null
 Console.Write(elem);
 ```
+
+## Impl for BattleUnitModel
+
+`TryGetBuf<T>(this BattleUnitModel model, [NotNullWhen(true)] out T? buf)`:
+
+```cs
+using BattleBuf;
+
+if (base.owner.TryGetBuf<BattleUnitBuf_burn>(out BattleUnitBuf_burn burn))
+{
+    // burn is Non-null
+}
+
+// burn is Nullable
+```
+
+`GetAndInitIfNull<T>(this BattleUnitModel model, Func<T> bufMake)`:
+
+```cs
+using BattleBuf;
+
+// Throws the NullReferenceException if base.owner is null
+BattleUnitBuf_burn buf = base.owner.GetAndInitIfNull<BattleUnitBuf_burn>(() => new BattleUnitBuf_burn());
+```
