@@ -90,4 +90,65 @@ public static class Extension
 
         return null;
     }
+
+    public static IEnumerable<V> Map<T, V>(this IEnumerable<T> enumerable, Func<T, V> pred)
+    {
+        return enumerable.Select(pred);
+    }
+
+    public static IEnumerable<T> Filter<T>(this IEnumerable<T> enumerable, Func<T, bool> pred)
+    {
+        return enumerable.Where(pred);
+    }
+
+    public static IEnumerable<V> FilterMap<T, V>(this IEnumerable<T> enumerable, Func<T, V> pred)
+    {
+        return enumerable.Select(val => pred(val)).Where(val => val is not null);
+    }
+
+    public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> enumerable)
+    {
+        return enumerable.SelectMany(val => val);
+    }
+
+    public static IEnumerable<(int, T)> Enumerate<T>(this IEnumerable<T> enumerable)
+    {
+        return enumerable.Select((val, idx) => (idx, val));
+    }
+
+    public static List<T> Collect<T>(this IEnumerable<T> enumerable)
+    {
+        return enumerable.ToList();
+    }
+
+    public static R Fold<T, R>(this IEnumerable<T> enumerable, R root, Func<R, T, R> acc)
+    {
+        var res = root;
+
+        foreach (var elem in enumerable)
+        {
+            res = acc(res, elem);
+        }
+
+        return res;
+    }
+
+    public static T? Reduce<T>(this IEnumerable<T> enumerable, Func<T, T, T> acc)
+    {
+        T? res = default(T);
+
+        foreach (var elem in enumerable)
+        {
+            if (res is null)
+            {
+                res = elem;
+
+                continue;
+            }
+
+            res = acc(res, elem);
+        }
+
+        return res;
+    }
 }
