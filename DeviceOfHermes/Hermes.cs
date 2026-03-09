@@ -22,6 +22,23 @@ public static class Hermes
                 break;
         }
     }
+
+    public static void Store<T>(T data)
+    {
+        DataStorage<T>.Data = data;
+    }
+
+    public static T Load<T>()
+    {
+        return DataStorage<T>.Data;
+    }
+
+    public static bool TryLoad<T>(out T? data)
+    {
+        data = DataStorage<T>._data;
+
+        return data is not null;
+    }
 }
 
 public enum MessageLevel
@@ -29,4 +46,15 @@ public enum MessageLevel
     Info,
     Warn,
     Error,
+}
+
+internal static class DataStorage<T>
+{
+    internal static T? _data;
+
+    public static T Data
+    {
+        get => _data ?? throw new InvalidOperationException($"Data of {nameof(T)} must was initialized");
+        set => _data = value;
+    }
 }

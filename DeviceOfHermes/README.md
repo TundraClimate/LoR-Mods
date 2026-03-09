@@ -2,7 +2,7 @@
 
 ## Impl for System
 
-`Hermes`
+`Hermes.Say(message, lvl = MessageLevel.Info)`:
 
 ```cs
 Hermes.Say("Hey, Rien.");
@@ -10,6 +10,20 @@ Hermes.Say("Hey, Rien.");
 Hermes.Say("The prescript cannot be defied", MessageLevel.Warn);
 
 Hermes.Say("*beep*", MessageLevel.Error);
+```
+
+`Hermes.Store(data)`, `Hermes.Load()`:
+
+```
+Hermes.Store("Hi, Hermes!");
+
+// "Hi, Hermes!"
+Console.WriteLine(Hermes.Load<string>());
+
+Hermes.Store<int>(12);
+
+// "12"
+Console.WriteLine(Hermes.Load<int>());
 ```
 
 ## Impl for System.Collction.Generic
