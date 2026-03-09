@@ -57,6 +57,14 @@ Console.Write(elem);
 
 ## Impl for BattleUnitModel
 
+`GetBuf<T>(this BattleUnitModel? model)`:
+
+```cs
+using BattleBuf;
+
+BattleUnitBuf_burn? burn = base.owner.GetBuf<BattleUnitBuf_burn>();
+```
+
 `TryGetBuf<T>(this BattleUnitModel model, [NotNullWhen(true)] out T? buf)`:
 
 ```cs
@@ -77,4 +85,16 @@ using BattleBuf;
 
 // Throws the NullReferenceException if base.owner is null
 BattleUnitBuf_burn buf = base.owner.GetBufAndInitIfNull<BattleUnitBuf_burn>(() => new BattleUnitBuf_burn());
+```
+
+`RemoveBuf<T>(this BattleUnitModel? model)`, `RemoveBufIf(this BattleUnitModel? model, Func<BattleUnitBuf, bool> cond)`:
+
+```cs
+using BattleBuf;
+
+// Removes the BattleUnitBuf_burn
+base.owner.RemoveBuf<BattleUnitBuf_burn>();
+
+// Removes buf that has stack is zero
+base.owner.RemoveBufIf(buf => buf.stack == 0);
 ```
