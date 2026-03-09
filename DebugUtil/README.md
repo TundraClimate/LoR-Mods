@@ -1,3 +1,7 @@
+# DEPRECATED
+
+Instead for the `DeviceOfHermes`
+
 # depends
 
 - HarmonyLib net48
