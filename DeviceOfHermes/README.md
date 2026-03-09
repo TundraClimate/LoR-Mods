@@ -26,6 +26,55 @@ Hermes.Store<int>(12);
 Console.WriteLine(Hermes.Load<int>());
 ```
 
+`Mem.Swap(ref a, ref b)`, `Mem.Take(ref self)`, `Mem.Replace(ref self, newValue)`, `Mem.ReplaceIf(ref self, newValue, exptected)`:
+
+```cs
+int a = 12;
+int b = 22;
+
+Mem.Swap(ref a, ref b);
+
+// 22
+Console.WriteLine(a);
+// 12
+Console.WriteLine(b);
+```
+
+```cs
+string? data = "Elevens";
+
+string? ejected = Mem.Take(ref data);
+
+// null
+Console.WriteLine(data);
+// "Elevens"
+Console.WriteLine(ejected);
+```
+
+```cs
+string? text = "Hello, Hermes!";
+
+string? old = Mem.Replace(ref text, "*beep*");
+
+// "*beep*"
+Console.WriteLine(text);
+// "Hello, Hermes!"
+Console.WriteLine(old);
+```
+
+```cs
+string? pass = "_CLEAR._";
+
+// "_CLEAR._"
+Console.WriteLine(Mem.ReplaceIf(ref pass, "*beep*", "*beep*"));
+
+// "_CLEAR._"
+Console.WriteLine(Mem.ReplaceIf(ref pass, "*beep*", "_CLEAR._"));
+
+// "*beep*"
+Console.WriteLine(pass);
+```
+
 ## Impl for System.Collction.Generic
 
 `Peekable`
