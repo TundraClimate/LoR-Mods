@@ -58,3 +58,36 @@ internal static class DataStorage<T>
         set => _data = value;
     }
 }
+
+public static class Extension
+{
+    public static int Min(this int n1, int n2)
+    {
+        return Math.Min(n1, n2);
+    }
+
+    public static int Max(this int n1, int n2)
+    {
+        return Math.Max(n1, n2);
+    }
+
+    public static string? StripPrefix(this string original, string strip)
+    {
+        if (original.StartsWith(strip))
+        {
+            return original.Substring(strip.Length);
+        }
+
+        return null;
+    }
+
+    public static string? StripSuffix(this string original, string strip)
+    {
+        if (original.EndsWith(strip))
+        {
+            return original.Substring(0, (original.Length - strip.Length).Max(0));
+        }
+
+        return null;
+    }
+}
