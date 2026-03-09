@@ -1,7 +1,4 @@
-using System;
-using System.IO;
 using System.Xml.Serialization;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
@@ -19,10 +16,7 @@ namespace Addloc
 
         public static LocalizeXml<T> Init(string defaultLang)
         {
-            _packageId = ModPackage<T>.PackageId;
-            _localizePath = ModPackage<T>.AssemblyPath + "\\Localize\\";
             _defaultLang = defaultLang.ToLower();
-            _dropBookDict = new();
 
             return new LocalizeXml<T>(_packageId);
         }
@@ -89,13 +83,13 @@ namespace Addloc
 
         private Harmony _localizeHarmony;
 
-        private static string _packageId;
+        private static string _packageId = ModPackage<T>.PackageId;
 
-        private static string _localizePath;
+        private static string _localizePath = Path.Combine(ModPackage<T>.AssemblyPath, "Localize");
 
-        private static string _defaultLang;
+        private static string _defaultLang = "en";
 
-        private static Dictionary<int, string> _dropBookDict;
+        private static Dictionary<int, string> _dropBookDict = new();
 
         [HarmonyPatch(typeof(LocalizedTextLoader), nameof(LocalizedTextLoader.LoadBattleEffectTexts))]
         private class LocalizeBattleEffectTexts
@@ -285,7 +279,7 @@ namespace Addloc
                                 book.pid = _packageId;
                             }
 
-                            if (!workshopBooks.TryGetValue(book.pid, out var descs))
+                            if (!workshopBooks.TryGetValue(book.pid!, out var descs))
                             {
                                 descs = new List<BookDesc>();
                             }
@@ -328,7 +322,7 @@ namespace Addloc
 
                     foreach (var name in nameList)
                     {
-                        string pid = name.pid;
+                        string? pid = name.pid;
 
                         CharacterName vannilaName = new CharacterName()
                         {
@@ -396,7 +390,7 @@ namespace Addloc
 
                     foreach (var name in nameList)
                     {
-                        string pid = name.pid;
+                        string? pid = name.pid;
                         if (pid == "@origin")
                         {
                             CharacterName vannilaName = new CharacterName()

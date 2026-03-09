@@ -7,7 +7,7 @@ public class Peekable<T>
         _inner = enumrable.GetEnumerator();
     }
 
-    public T Peek(out bool result)
+    public T? Peek(out bool result)
     {
         if (!this._hasPeeked)
         {
@@ -27,14 +27,14 @@ public class Peekable<T>
         return this._peeked;
     }
 
-    public T Peek()
+    public T? Peek()
     {
         bool _;
 
         return Peek(out _);
     }
 
-    public T MoveNext(out bool result)
+    public T? MoveNext(out bool result)
     {
         if (this._hasPeeked)
         {
@@ -56,7 +56,7 @@ public class Peekable<T>
         return default(T);
     }
 
-    public T MoveNext()
+    public T? MoveNext()
     {
         bool _;
 
@@ -67,5 +67,5 @@ public class Peekable<T>
 
     private bool _hasPeeked;
 
-    private T _peeked;
+    private T? _peeked;
 }

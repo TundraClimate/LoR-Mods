@@ -1,5 +1,3 @@
-using System.IO;
-using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UI;
@@ -38,7 +36,12 @@ namespace Addloc
                     continue;
                 }
 
-                iconDict.Add(unitBufId, Artwork.CreateSprite(unitBuf));
+                Sprite? sprite = Artwork.CreateSprite(unitBuf);
+
+                if (sprite is not null)
+                {
+                    iconDict.Add(unitBufId, sprite);
+                }
             }
         }
 
@@ -75,9 +78,12 @@ namespace Addloc
                     continue;
                 }
 
-                Sprite sprite = Artwork.CreateSprite(storyIcon);
+                Sprite? sprite = Artwork.CreateSprite(storyIcon);
 
-                iconSprites.Add(iconId, sprite);
+                if (sprite is not null)
+                {
+                    iconSprites.Add(iconId, sprite);
+                }
             }
 
             foreach (var entry in iconSprites)
@@ -95,7 +101,7 @@ namespace Addloc
             }
         }
 
-        private static Sprite CreateSprite(string path)
+        private static Sprite? CreateSprite(string path)
         {
             byte[] pngData = File.ReadAllBytes(path);
 

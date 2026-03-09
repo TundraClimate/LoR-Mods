@@ -1,6 +1,3 @@
-using System.IO;
-using System.Collections.Generic;
-
 internal static class Walkdir
 {
     public static List<string> GetFilesRecursive(string path)

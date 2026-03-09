@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Addloc
@@ -7,6 +6,6 @@ namespace Addloc
     public class ModCharactersNameRoot
     {
         [XmlElement("Name")]
-        public List<ModCharacterName> nameList;
+        public List<ModCharacterName> nameList = new();
     }
 }
