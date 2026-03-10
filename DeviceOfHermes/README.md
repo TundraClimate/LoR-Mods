@@ -147,3 +147,15 @@ base.owner.RemoveBuf<BattleUnitBuf_burn>();
 // Removes buf that has stack is zero
 base.owner.RemoveBufIf(buf => buf.stack == 0);
 ```
+
+## Impl for Schedule
+
+`ScheduleRunner`:
+
+```cs
+using Schedule;
+
+ScheduleRunner.AddSchedule(ScheduleTiming.RoundStart, () => Hermes.Say("Ahh, round started."));
+
+ScheduleRunner.AddSchedule(ScheduleTiming.RoundEnd, () => Hermes.Say("Shhhh!"));
+```
