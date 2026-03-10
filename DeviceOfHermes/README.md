@@ -159,3 +159,14 @@ ScheduleRunner.AddSchedule(ScheduleTiming.RoundStart, () => Hermes.Say("Ahh, rou
 
 ScheduleRunner.AddSchedule(ScheduleTiming.RoundEnd, () => Hermes.Say("Shhhh!"));
 ```
+
+## Impl for Style
+
+`StyleExt`:
+
+```cs
+using DeviceOfHermes.Style;
+
+string red = "Red Text".Red();
+string bold = "Bold Text".Bold();
+```
