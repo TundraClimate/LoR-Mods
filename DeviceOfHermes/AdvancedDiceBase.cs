@@ -1,7 +1,7 @@
 using HarmonyLib;
 using LOR_DiceSystem;
 
-namespace AdvancedBase;
+namespace DeviceOfHermes.AdvancedBase;
 
 public class AdvancedDiceBase : DiceCardAbilityBase
 {

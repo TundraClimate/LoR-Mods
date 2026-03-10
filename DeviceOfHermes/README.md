@@ -109,7 +109,7 @@ Console.Write(elem);
 `GetBuf<T>(this BattleUnitModel? model)`:
 
 ```cs
-using BattleBuf;
+using DeviceOfHermes.BattleBuf;
 
 BattleUnitBuf_burn? burn = base.owner.GetBuf<BattleUnitBuf_burn>();
 ```
@@ -117,7 +117,7 @@ BattleUnitBuf_burn? burn = base.owner.GetBuf<BattleUnitBuf_burn>();
 `TryGetBuf<T>(this BattleUnitModel model, [NotNullWhen(true)] out T? buf)`:
 
 ```cs
-using BattleBuf;
+using DeviceOfHermes.BattleBuf;
 
 if (base.owner.TryGetBuf<BattleUnitBuf_burn>(out BattleUnitBuf_burn burn))
 {
@@ -130,7 +130,7 @@ if (base.owner.TryGetBuf<BattleUnitBuf_burn>(out BattleUnitBuf_burn burn))
 `GetBufAndInitIfNull<T>(this BattleUnitModel model, Func<T> bufMake)`:
 
 ```cs
-using BattleBuf;
+using DeviceOfHermes.BattleBuf;
 
 // Throws the NullReferenceException if base.owner is null
 BattleUnitBuf_burn buf = base.owner.GetBufAndInitIfNull<BattleUnitBuf_burn>(() => new BattleUnitBuf_burn());
@@ -139,7 +139,7 @@ BattleUnitBuf_burn buf = base.owner.GetBufAndInitIfNull<BattleUnitBuf_burn>(() =
 `RemoveBuf<T>(this BattleUnitModel? model)`, `RemoveBufIf(this BattleUnitModel? model, Func<BattleUnitBuf, bool> cond)`:
 
 ```cs
-using BattleBuf;
+using DeviceOfHermes.BattleBuf;
 
 // Removes the BattleUnitBuf_burn
 base.owner.RemoveBuf<BattleUnitBuf_burn>();
@@ -153,7 +153,7 @@ base.owner.RemoveBufIf(buf => buf.stack == 0);
 `ScheduleRunner`:
 
 ```cs
-using Schedule;
+using DeviceOfHermes.Schedule;
 
 ScheduleRunner.AddSchedule(ScheduleTiming.RoundStart, () => Hermes.Say("Ahh, round started."));
 

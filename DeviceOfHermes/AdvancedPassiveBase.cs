@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace AdvancedBase;
+namespace DeviceOfHermes.AdvancedBase;
 
 public class AdvancedPassiveBase : PassiveAbilityBase
 {
