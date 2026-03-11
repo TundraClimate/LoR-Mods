@@ -7,7 +7,7 @@
     <Artwork />
     <Rarity>Common</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script />
+    <Script>TestAdvCard</Script>
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="1" Dice="99" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />

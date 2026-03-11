@@ -1,6 +1,4 @@
-using System;
 using System.Reflection;
-using System.Collections.Generic;
 using HarmonyLib;
 using DeviceOfHermes.AdvancedBase;
 
@@ -72,6 +70,11 @@ public class TestMOD : ModInitializer
 
             return false;
         }
+    }
+
+    public class DiceCardSelfAbility_TestAdvCard : AdvancedCardBase
+    {
+        public override bool IsClashable => false;
     }
 
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
