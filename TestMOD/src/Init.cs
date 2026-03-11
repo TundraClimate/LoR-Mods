@@ -1,5 +1,6 @@
 using System.Reflection;
 using HarmonyLib;
+using DeviceOfHermes.BattleBuf;
 using DeviceOfHermes.AdvancedBase;
 
 public class TestMOD : ModInitializer
@@ -97,6 +98,8 @@ public class TestMOD : ModInitializer
         public override void OnRoundStart()
         {
             UnityEngine.Debug.Log("RoundStart");
+
+            var buf = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_TestCustomBuf());
         }
 
         public override void OnRoundStartAfter()

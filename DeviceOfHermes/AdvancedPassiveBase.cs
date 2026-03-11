@@ -102,8 +102,6 @@ static class PassivePatch
         {
             foreach (var arrow in ___TargetListData)
             {
-                var forceUnpair = false;
-
                 var selfCard = arrow?.Dice?.CardInDice;
                 var targetCard = arrow?.TargetDice?.CardInDice;
 
@@ -112,29 +110,7 @@ static class PassivePatch
                     continue;
                 }
 
-                foreach (var passive in selfCard.owner?.passiveDetail?.PassiveList ?? new())
-                {
-                    if (passive is AdvancedPassiveBase advPassive)
-                    {
-                        if (!advPassive.IsClashable(selfCard) || !advPassive.IsClashable(selfCard, targetCard))
-                        {
-                            forceUnpair = true;
-                        }
-                    }
-                }
-
-                foreach (var passive in targetCard.owner?.passiveDetail?.PassiveList ?? new())
-                {
-                    if (passive is AdvancedPassiveBase advPassive)
-                    {
-                        if (!advPassive.IsClashable(targetCard) || !advPassive.IsClashable(targetCard, selfCard))
-                        {
-                            forceUnpair = true;
-                        }
-                    }
-                }
-
-                if (forceUnpair)
+                if (!PassivePatch.IsClash(selfCard, targetCard))
                 {
                     arrow?.isPairing = false;
                 }
@@ -159,11 +135,12 @@ static class PassivePatch
 
                 var target = targetAry[targetSlotOrder];
 
-                var isClashableSelf = card?.owner?.passiveDetail?.PassiveList?.All(passive => !(passive is AdvancedPassiveBase adv && (!adv.IsClashable(card) || !adv.IsClashable(card, target)))) ?? true;
+                if (card is null || target is null)
+                {
+                    continue;
+                }
 
-                var isClashableTarget = target.owner?.passiveDetail?.PassiveList?.All(passive => !(passive is AdvancedPassiveBase adv && (!adv.IsClashable(target) || (card is not null && !adv.IsClashable(target, card))))) ?? true;
-
-                if (!isClashableSelf || !isClashableTarget)
+                if (!PassivePatch.IsClash(card, target))
                 {
                     card?.targetSlotOrder = -1;
                 }
@@ -190,11 +167,12 @@ static class PassivePatch
 
         static bool Prefix(StageController __instance, BattlePlayingCardDataInUnitModel cardA, BattlePlayingCardDataInUnitModel cardB)
         {
-            var isClashableA = cardA.owner?.passiveDetail?.PassiveList?.All(passive => !(passive is AdvancedPassiveBase adv && (!adv.IsClashable(cardA) || !adv.IsClashable(cardA, cardB)))) ?? true;
+            if (cardA is null || cardB is null)
+            {
+                return true;
+            }
 
-            var isClashableB = cardB.owner?.passiveDetail?.PassiveList?.All(passive => !(passive is AdvancedPassiveBase adv && (!adv.IsClashable(cardB) || !adv.IsClashable(cardB, cardA)))) ?? true;
-
-            if (!isClashableA || !isClashableB)
+            if (!PassivePatch.IsClash(cardA, cardB))
             {
                 startAction(__instance, cardA);
 
@@ -203,5 +181,43 @@ static class PassivePatch
 
             return true;
         }
+    }
+
+    internal static bool IsClash(BattlePlayingCardDataInUnitModel cardA, BattlePlayingCardDataInUnitModel cardB)
+    {
+        bool isClashableA = true;
+        bool isClashableB = true;
+
+        {
+            var passiveList = cardA.owner?.passiveDetail.PassiveList ?? new();
+
+            foreach (var passive in passiveList)
+            {
+                if (passive is AdvancedPassiveBase adv)
+                {
+                    if (!adv.IsClashable(cardA) || !adv.IsClashable(cardA, cardB))
+                    {
+                        isClashableA = false;
+                    }
+                }
+            }
+        }
+
+        {
+            var passiveList = cardB.owner?.passiveDetail.PassiveList ?? new();
+
+            foreach (var passive in passiveList)
+            {
+                if (passive is AdvancedPassiveBase adv)
+                {
+                    if (!adv.IsClashable(cardB) || !adv.IsClashable(cardB, cardA))
+                    {
+                        isClashableB = false;
+                    }
+                }
+            }
+        }
+
+        return isClashableA && isClashableB;
     }
 }

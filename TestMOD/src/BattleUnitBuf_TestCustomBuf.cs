@@ -1,5 +1,9 @@
-public class BattleUnitBuf_TestCustomBuf : BattleUnitBuf
+using DeviceOfHermes.AdvancedBase;
+
+public class BattleUnitBuf_TestCustomBuf : AdvancedUnitBuf
 {
+    public override int DefaultStack => 4;
+
     protected override string keywordId
     {
         get
@@ -8,9 +12,18 @@ public class BattleUnitBuf_TestCustomBuf : BattleUnitBuf
         }
     }
 
+    public override void OnStackChange(int last)
+    {
+        Hermes.Say($"Stack changed {last} => {base.stack}");
+    }
+
     public override void OnRoundEnd()
     {
-        base.OnRoundEnd();
-        base.Destroy();
+        base.stack -= 1;
+
+        if (base.stack == 0)
+        {
+            base.Destroy();
+        }
     }
 }

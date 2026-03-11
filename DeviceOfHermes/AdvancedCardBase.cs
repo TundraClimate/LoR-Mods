@@ -25,23 +25,15 @@ internal class CardPatch
         {
             foreach (var arrow in ___TargetListData)
             {
-                var forceUnpair = false;
+                var cardA = arrow?.Dice?.CardInDice;
+                var cardB = arrow?.TargetDice?.CardInDice;
 
-                var selfAbi = arrow?.Dice?.CardInDice?.cardAbility;
-
-                if (selfAbi is AdvancedCardBase selfAdvAbi && !selfAdvAbi.IsClashable)
+                if (cardA is null || cardB is null)
                 {
-                    forceUnpair = true;
+                    continue;
                 }
 
-                var targetAbi = arrow?.TargetDice?.CardInDice?.cardAbility;
-
-                if (targetAbi is AdvancedCardBase targetAdvAbi && !targetAdvAbi.IsClashable)
-                {
-                    forceUnpair = true;
-                }
-
-                if (forceUnpair)
+                if (!CardPatch.IsClash(cardA, cardB))
                 {
                     arrow?.isPairing = false;
                 }
@@ -83,14 +75,12 @@ internal class CardPatch
 
         static bool Prefix(StageController __instance, BattlePlayingCardDataInUnitModel cardA, BattlePlayingCardDataInUnitModel cardB)
         {
-            if (cardA?.cardAbility is AdvancedCardBase advAbi && !advAbi.IsClashable)
+            if (cardA is null || cardB is null)
             {
-                startAction(__instance, cardA);
-
-                return false;
+                return true;
             }
 
-            if (cardB?.cardAbility is AdvancedCardBase advAbiB && !advAbiB.IsClashable && cardA is not null)
+            if (!CardPatch.IsClash(cardA, cardB))
             {
                 startAction(__instance, cardA);
 
@@ -99,5 +89,13 @@ internal class CardPatch
 
             return true;
         }
+    }
+
+    internal static bool IsClash(BattlePlayingCardDataInUnitModel cardA, BattlePlayingCardDataInUnitModel cardB)
+    {
+        bool isClashableA = !(cardA.cardAbility is AdvancedCardBase advAbiA && !advAbiA.IsClashable);
+        bool isClashableB = !(cardB.cardAbility is AdvancedCardBase advAbiB && !advAbiB.IsClashable);
+
+        return isClashableA && isClashableB;
     }
 }
