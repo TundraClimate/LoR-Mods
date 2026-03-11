@@ -81,9 +81,16 @@ internal class CardPatch
             startAction = (Action<StageController, BattlePlayingCardDataInUnitModel>)act.CreateDelegate(typeof(Action<StageController, BattlePlayingCardDataInUnitModel>));
         }
 
-        static bool Prefix(StageController __instance, BattlePlayingCardDataInUnitModel cardA)
+        static bool Prefix(StageController __instance, BattlePlayingCardDataInUnitModel cardA, BattlePlayingCardDataInUnitModel cardB)
         {
             if (cardA?.cardAbility is AdvancedCardBase advAbi && !advAbi.IsClashable)
+            {
+                startAction(__instance, cardA);
+
+                return false;
+            }
+
+            if (cardB?.cardAbility is AdvancedCardBase advAbiB && !advAbiB.IsClashable && cardA is not null)
             {
                 startAction(__instance, cardA);
 

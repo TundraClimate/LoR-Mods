@@ -79,6 +79,16 @@ public class TestMOD : ModInitializer
 
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
     {
+        public override bool IsClashable(BattlePlayingCardDataInUnitModel self, BattlePlayingCardDataInUnitModel target)
+        {
+            if (target.slotOrder == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public override void OnRoundStartFirst()
         {
             UnityEngine.Debug.Log("RoundStartFirst");
