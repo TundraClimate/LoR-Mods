@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 using HarmonyLib;
-using AdvancedBases;
+using DeviceOfHermes.AdvancedBase;
 
 public class TestMOD : ModInitializer
 {
