@@ -75,6 +75,13 @@ Console.WriteLine(Mem.ReplaceIf(ref pass, "*beep*", "_CLEAR._"));
 Console.WriteLine(pass);
 ```
 
+`Faction.FaceTo`
+
+```cs
+// Faction.Player
+Faction.Enemy.FaceTo();
+```
+
 ## Impl for System.Collction.Generic
 
 `Peekable`

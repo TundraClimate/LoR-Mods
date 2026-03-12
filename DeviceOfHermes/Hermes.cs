@@ -151,6 +151,15 @@ public static class Extension
 
         return res;
     }
+
+    public static Faction FaceTo(this Faction faction)
+    {
+        return faction switch
+        {
+            Faction.Enemy => Faction.Player,
+            _ => Faction.Enemy,
+        };
+    }
 }
 
 public static class Mem
