@@ -148,6 +148,14 @@ base.owner.RemoveBuf<BattleUnitBuf_burn>();
 base.owner.RemoveBufIf(buf => buf.stack == 0);
 ```
 
+`GetBufStack<T>(this BattleUnitModel? model)`:
+
+```cs
+using DeviceOfHermes.BattleBuf;
+
+int stack = base.owner.GetBufStack<BattleUnitBuf_burn>() ?? 0;
+```
+
 ## Impl for Schedule
 
 `ScheduleRunner`:

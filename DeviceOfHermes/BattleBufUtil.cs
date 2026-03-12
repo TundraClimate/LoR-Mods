@@ -57,4 +57,10 @@ public static class BattleBufExtension
             model?.bufListDetail?.RemoveBuf(trash);
         }
     }
+
+    public static int? GetBufStack<T>(this BattleUnitModel? model)
+        where T : BattleUnitBuf
+    {
+        return model?.GetBuf<T>()?.stack;
+    }
 }
