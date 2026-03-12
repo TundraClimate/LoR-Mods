@@ -1,3 +1,5 @@
+using System.Reflection.Emit;
+
 using HarmonyLib;
 
 namespace DeviceOfHermes.AdvancedBase;
@@ -11,9 +13,12 @@ public class AdvancedCardBase : DiceCardSelfAbilityBase
         harmony.CreateClassProcessor(typeof(CardPatch.PatchTargetUI)).Patch();
         harmony.CreateClassProcessor(typeof(CardPatch.PatchOnStartResolve)).Patch();
         harmony.CreateClassProcessor(typeof(CardPatch.PatchOnDynamicParrying)).Patch();
+        harmony.CreateClassProcessor(typeof(CardPatch.PatchOnChangeTarget)).Patch();
     }
 
     public virtual bool IsClashable => true;
+
+    public virtual bool IsIgnoreSpeedByMatch => false;
 }
 
 internal class CardPatch
@@ -97,5 +102,51 @@ internal class CardPatch
         bool isClashableB = !(cardB.cardAbility is AdvancedCardBase advAbiB && !advAbiB.IsClashable);
 
         return isClashableA && isClashableB;
+    }
+
+    [HarmonyPatch(typeof(BattleUnitModel), "CanChangeAttackTarget")]
+    internal class PatchOnChangeTarget
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var inject = AccessTools.Method(typeof(PatchOnChangeTarget), "InjectMethod");
+
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.End()
+                .MatchStartBackwards(new CodeMatch(OpCodes.Ret))
+                .Insert(
+                    new CodeInstruction(OpCodes.Ldarg_0),
+                    new CodeInstruction(OpCodes.Ldarg_1),
+                    new CodeInstruction(OpCodes.Ldarg_2),
+                    new CodeInstruction(OpCodes.Ldarg_3),
+                    new CodeInstruction(OpCodes.Call, inject)
+                );
+
+            return matcher.Instructions();
+        }
+
+        static bool InjectMethod(bool speedWin, BattleUnitModel? self, BattleUnitModel? target, int myIndex, int targetIndex)
+        {
+            if (speedWin)
+            {
+                return speedWin;
+            }
+
+            var selfAbi = self?.view?.speedDiceSetterUI?.GetSpeedDiceByIndex(myIndex)?.CardInDice?.cardAbility;
+            var targetAbi = target?.view?.speedDiceSetterUI?.GetSpeedDiceByIndex(targetIndex)?.CardInDice?.cardAbility;
+
+            if (selfAbi is AdvancedCardBase selfAdv && selfAdv.IsIgnoreSpeedByMatch)
+            {
+                return true;
+            }
+
+            if (targetAbi is AdvancedCardBase targetAdv && targetAdv.IsIgnoreSpeedByMatch)
+            {
+                return true;
+            }
+
+            return speedWin;
+        }
     }
 }

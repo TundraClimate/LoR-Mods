@@ -10,8 +10,8 @@
       <HP>100</HP>
       <DeadLine>0</DeadLine>
       <Break>100</Break>
-      <SpeedMin>1</SpeedMin>
-      <Speed>1</Speed>
+      <SpeedMin>99</SpeedMin>
+      <Speed>99</Speed>
       <SpeedDiceNum>0</SpeedDiceNum>
       <SResist>Normal</SResist>
       <PResist>Normal</PResist>
@@ -32,7 +32,7 @@
     <Episode>-1</Episode>
     <RangeType>Hybrid</RangeType>
     <NotEquip>false</NotEquip>
-    <RandomFace>true</RandomFace>
+    <RandomFace>false</RandomFace>
     <SpeedDiceNum>1</SpeedDiceNum>
     <SuccessionPossibleNumber>9</SuccessionPossibleNumber>
   </Book>

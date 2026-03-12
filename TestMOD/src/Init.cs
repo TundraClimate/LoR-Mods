@@ -75,21 +75,13 @@ public class TestMOD : ModInitializer
 
     public class DiceCardSelfAbility_TestAdvCard : AdvancedCardBase
     {
-        public override bool IsClashable => false;
+        public override bool IsClashable => true;
+
+        public override bool IsIgnoreSpeedByMatch => true;
     }
 
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
     {
-        public override bool IsClashable(BattlePlayingCardDataInUnitModel self, BattlePlayingCardDataInUnitModel target)
-        {
-            if (target.slotOrder == 0)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         public override void OnRoundStartFirst()
         {
             UnityEngine.Debug.Log("RoundStartFirst");
