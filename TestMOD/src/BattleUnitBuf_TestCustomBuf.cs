@@ -2,7 +2,7 @@ using DeviceOfHermes.AdvancedBase;
 
 public class BattleUnitBuf_TestCustomBuf : AdvancedUnitBuf
 {
-    public override int DefaultStack => 4;
+    public override bool IsInstant => true;
 
     protected override string keywordId
     {
@@ -12,18 +12,12 @@ public class BattleUnitBuf_TestCustomBuf : AdvancedUnitBuf
         }
     }
 
-    public override void OnStackChange(int last)
+    public override void OnInstant()
     {
-        Hermes.Say($"Stack changed {last} => {base.stack}");
+        Hermes.Say($"Hermes says: Haha, Instant the {keywordId} inflicted!");
     }
 
     public override void OnRoundEnd()
     {
-        base.stack -= 1;
-
-        if (base.stack == 0)
-        {
-            base.Destroy();
-        }
     }
 }

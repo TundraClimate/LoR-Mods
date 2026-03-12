@@ -9,6 +9,7 @@ public class AdvancedUnitBuf : BattleUnitBuf
         var harmony = new Harmony("DeviceOfHermes.AdvancedBases.UnitBuf");
 
         harmony.CreateClassProcessor(typeof(UnitBufPatch.PatchObserver)).Patch();
+        harmony.CreateClassProcessor(typeof(UnitBufPatch.PatchInstant)).Patch();
     }
 
     public override void Init(BattleUnitModel owner)
@@ -20,6 +21,16 @@ public class AdvancedUnitBuf : BattleUnitBuf
     }
 
     public virtual int DefaultStack { get => 0; }
+
+    public virtual bool IsInstant { get => false; }
+
+    public virtual void OnInstant()
+    {
+    }
+
+    public virtual void OnOtherInstant(AdvancedUnitBuf instant)
+    {
+    }
 
     public virtual void OnStackChange(int last)
     {
@@ -49,6 +60,39 @@ internal class UnitBufPatch
                     }
                 }
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(BattleUnitBufListDetail), "AddBuf")]
+    internal static class PatchInstant
+    {
+        static bool Prefix(BattleUnitBufListDetail __instance, BattleUnitBuf buf, BattleUnitModel ____self)
+        {
+            if (!__instance.CanAddBuf(buf))
+            {
+                return false;
+            }
+
+            if (buf is AdvancedUnitBuf adv && adv.IsInstant)
+            {
+                adv.Init(____self);
+                adv.OnInstant();
+
+                foreach (var unit in BattleObjectManager.instance.GetAliveList())
+                {
+                    foreach (var otherBuf in unit?.bufListDetail?.GetActivatedBufList() ?? new())
+                    {
+                        if (otherBuf is AdvancedUnitBuf otherAdv)
+                        {
+                            otherAdv.OnOtherInstant(adv);
+                        }
+                    }
+                }
+
+                return false;
+            }
+
+            return true;
         }
     }
 }
