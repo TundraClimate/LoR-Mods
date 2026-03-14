@@ -12,6 +12,11 @@ public class BattleUnitBuf_TestCustomBuf : AdvancedUnitBuf
         }
     }
 
+    public override void Init(BattleUnitModel owner)
+    {
+        Hermes.Say("Init by TestCustomBuf");
+    }
+
     public override void OnInstant()
     {
         Hermes.Say($"Hermes says: Haha, Instant the {keywordId} inflicted!");
