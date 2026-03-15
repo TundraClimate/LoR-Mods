@@ -1,4 +1,4 @@
-namespace DeviceOfHermes.Style;
+namespace DeviceOfHermes;
 
 public static class StyleExtension
 {

@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace DeviceOfHermes.Schedule;
+namespace DeviceOfHermes;
 
 public static class ScheduleRunner
 {

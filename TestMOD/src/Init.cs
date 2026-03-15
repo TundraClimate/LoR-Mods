@@ -1,6 +1,6 @@
 using System.Reflection;
 using HarmonyLib;
-using DeviceOfHermes.BattleBuf;
+using DeviceOfHermes;
 using DeviceOfHermes.AdvancedBase;
 
 public class TestMOD : ModInitializer

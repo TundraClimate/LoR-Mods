@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace DeviceOfHermes.BattleBuf;
+namespace DeviceOfHermes;
 
 public static class BattleBufExtension
 {
