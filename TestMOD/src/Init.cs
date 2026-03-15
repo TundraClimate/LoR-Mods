@@ -20,6 +20,8 @@ public class TestMOD : ModInitializer
         DebugConsole.Open();
 
         ModResource.LoadAdditionals();
+
+        new AdditonalOnlyCard(new LorId(260004)).AddCards(new LorId(705011));
     }
 
     private static void ApplyHarmonyPatch()
