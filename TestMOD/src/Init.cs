@@ -22,7 +22,6 @@ public class TestMOD : ModInitializer
         ModResource.LoadAdditionals();
 
         new AdditonalOnlyCard(new LorId(260004)).AddCards(new LorId(705011));
-        PassiveResolver.AddRestrict((passives, target) => target.id == new LorId(240027) && passives.Exists(p => p.id == new LorId(250113)));
     }
 
     private static void ApplyHarmonyPatch()
