@@ -80,6 +80,11 @@ public class TestMOD : ModInitializer
         public override bool IsClashable => true;
 
         public override bool IsIgnoreSpeedByMatch => true;
+
+        public override void BeforeRollDice(BattleDiceBehavior behavior)
+        {
+            base.owner.ConsumeAmmo<TestAmmoBuf>(6);
+        }
     }
 
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
@@ -94,6 +99,8 @@ public class TestMOD : ModInitializer
             UnityEngine.Debug.Log("RoundStart");
 
             var buf = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_TestCustomBuf());
+            var ammo = base.owner.GetBufAndInitIfNull(() => new TestAmmoBuf());
+            var reload = base.owner.GetBufAndInitIfNull(() => new ReloadAmmoBuf<TestAmmoBuf>());
         }
 
         public override void OnRoundStartAfter()
@@ -111,6 +118,20 @@ public class TestMOD : ModInitializer
             UnityEngine.Debug.Log("Allow end");
 
             return base.IsAllowRoundEnd();
+        }
+    }
+
+    public class TestAmmoBuf : BattleAmmoBuf
+    {
+        protected override string keywordId => "TestCustomBuf";
+
+        public override int DefaultStack => 6;
+
+        public override bool DiceBlockWithNotConsumable => true;
+
+        public override void OnConsume(ref int num)
+        {
+            Hermes.Say($"Wowow consumed {num} stack");
         }
     }
 }

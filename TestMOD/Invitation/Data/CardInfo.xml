@@ -10,7 +10,9 @@
     <Script>TestAdvCard</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="1" Dice="99" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
       <Behaviour Min="1" Dice="99" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>1</Chapter>
