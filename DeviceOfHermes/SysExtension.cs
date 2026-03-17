@@ -93,6 +93,39 @@ public static class Extension
         return res;
     }
 
+    public static void Foreach<T>(this IEnumerable<T> enumerable, Action<T> each)
+    {
+        foreach (T elem in enumerable)
+        {
+            each(elem);
+        }
+    }
+
+    public static bool TryForeach<T, R>(this IEnumerable<T> enumerable, Func<T, R?> each)
+    {
+        foreach (T elem in enumerable)
+        {
+            var res = each(elem);
+
+            if (res is null)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static T? Inspect<T>(this T? nullable, Action<T> inspect)
+    {
+        if (nullable is not null)
+        {
+            inspect(nullable);
+        }
+
+        return nullable;
+    }
+
     public static Faction FaceTo(this Faction faction)
     {
         return faction switch
@@ -100,5 +133,15 @@ public static class Extension
             Faction.Enemy => Faction.Player,
             _ => Faction.Enemy,
         };
+    }
+
+    public static List<BattleDiceCardModel> GetHands(this BattleUnitModel? owner, Func<BattleDiceCardModel, bool>? filter = null)
+    {
+        List<BattleDiceCardModel> list = new();
+        var f = filter ??= _ => true;
+
+        owner?.allyCardDetail?.GetHand()?.Filter(f)?.Inspect(hands => list.AddRange(hands));
+
+        return list;
     }
 }
