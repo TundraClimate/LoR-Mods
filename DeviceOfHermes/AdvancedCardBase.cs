@@ -19,6 +19,11 @@ public class AdvancedCardBase : DiceCardSelfAbilityBase
     public virtual bool IsClashable => true;
 
     public virtual bool IsIgnoreSpeedByMatch => false;
+
+    public virtual bool CanDiscardByAbility(BattleDiceCardModel self)
+    {
+        return true;
+    }
 }
 
 internal class CardPatch
@@ -147,6 +152,28 @@ internal class CardPatch
             }
 
             return speedWin;
+        }
+    }
+
+    [HarmonyPatch(typeof(BattleAllyCardDetail), "DiscardACardByAbility")]
+    internal class PatchCanDiscard
+    {
+        static void Prefix(List<BattleDiceCardModel> cardList)
+        {
+            List<BattleDiceCardModel> cancel = new();
+
+            foreach (var card in cardList)
+            {
+                if (card?.CreateDiceCardSelfAbilityScript() is AdvancedCardBase adv && !adv.CanDiscardByAbility(card))
+                {
+                    cancel.Add(card);
+                }
+            }
+
+            foreach (var card in cancel)
+            {
+                cardList.Remove(card);
+            }
         }
     }
 }
