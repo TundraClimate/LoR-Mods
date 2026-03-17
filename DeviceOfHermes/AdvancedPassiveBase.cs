@@ -14,6 +14,7 @@ public class AdvancedPassiveBase : PassiveAbilityBase
         harmony.CreateClassProcessor(typeof(PassivePatch.PatchTargetUI)).Patch();
         harmony.CreateClassProcessor(typeof(PassivePatch.PatchOnStartResolve)).Patch();
         harmony.CreateClassProcessor(typeof(PassivePatch.PatchOnDynamicParrying)).Patch();
+        harmony.CreateClassProcessor(typeof(PassivePatch.PatchCanDiscard)).Patch();
     }
 
     public virtual void OnRoundStartFirst()
@@ -35,6 +36,11 @@ public class AdvancedPassiveBase : PassiveAbilityBase
     }
 
     public virtual bool IsAllowRoundEnd()
+    {
+        return true;
+    }
+
+    public virtual bool CanDiscardByAbility(BattleDiceCardModel card)
     {
         return true;
     }
@@ -219,5 +225,35 @@ static class PassivePatch
         }
 
         return isClashableA && isClashableB;
+    }
+
+    [HarmonyPatch(typeof(BattleAllyCardDetail), "DiscardACardByAbility")]
+    internal class PatchCanDiscard
+    {
+        static void Prefix(BattleUnitModel ____self, List<BattleDiceCardModel> cardList)
+        {
+            List<BattleDiceCardModel> cancel = new();
+
+            foreach (var passive in ____self.passiveDetail.PassiveList)
+            {
+                foreach (var card in cardList)
+                {
+                    if (card is null || cancel.Contains(card))
+                    {
+                        continue;
+                    }
+
+                    if (passive is AdvancedPassiveBase adv && !adv.CanDiscardByAbility(card))
+                    {
+                        cancel.Add(card);
+                    }
+                }
+            }
+
+            foreach (var card in cancel)
+            {
+                cardList.Remove(card);
+            }
+        }
     }
 }

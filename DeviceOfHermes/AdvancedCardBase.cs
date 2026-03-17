@@ -14,6 +14,7 @@ public class AdvancedCardBase : DiceCardSelfAbilityBase
         harmony.CreateClassProcessor(typeof(CardPatch.PatchOnStartResolve)).Patch();
         harmony.CreateClassProcessor(typeof(CardPatch.PatchOnDynamicParrying)).Patch();
         harmony.CreateClassProcessor(typeof(CardPatch.PatchOnChangeTarget)).Patch();
+        harmony.CreateClassProcessor(typeof(CardPatch.PatchCanDiscard)).Patch();
     }
 
     public virtual bool IsClashable => true;
