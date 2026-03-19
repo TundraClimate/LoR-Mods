@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="public\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_Libs Include=".\libs\*.dll" />
   </ItemGroup>
   
