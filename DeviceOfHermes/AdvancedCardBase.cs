@@ -156,7 +156,7 @@ internal class CardPatch
         }
     }
 
-    [HarmonyPatch(typeof(BattleAllyCardDetail), "DiscardACardByAbility")]
+    [HarmonyPatch(typeof(BattleAllyCardDetail), "DiscardACardByAbility", [typeof(List<BattleDiceCardModel>)])]
     internal class PatchCanDiscard
     {
         static void Prefix(List<BattleDiceCardModel> cardList)

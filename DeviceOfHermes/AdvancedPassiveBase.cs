@@ -227,7 +227,7 @@ static class PassivePatch
         return isClashableA && isClashableB;
     }
 
-    [HarmonyPatch(typeof(BattleAllyCardDetail), "DiscardACardByAbility")]
+    [HarmonyPatch(typeof(BattleAllyCardDetail), "DiscardACardByAbility", [typeof(List<BattleDiceCardModel>)])]
     internal class PatchCanDiscard
     {
         static void Prefix(BattleUnitModel ____self, List<BattleDiceCardModel> cardList)
