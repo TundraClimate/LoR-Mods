@@ -12,8 +12,8 @@
     <BehaviourList>
       <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
       <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
-      <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
-      <Behaviour Min="1" Dice="99" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="1" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="12" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Revenge" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>1</Chapter>
     <SpecialEffect />

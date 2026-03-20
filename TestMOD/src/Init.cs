@@ -2,6 +2,7 @@ using System.Reflection;
 using HarmonyLib;
 using DeviceOfHermes;
 using DeviceOfHermes.AdvancedBase;
+using DeviceOfHermes.CustomDice;
 using UnityEngine;
 using LOR_DiceSystem;
 
@@ -78,6 +79,10 @@ public class TestMOD : ModInitializer
 
             return false;
         }
+    }
+
+    public class DiceCardAbility_Revenge : RevengeDice
+    {
     }
 
     public class DiceCardSelfAbility_TestAdvCard : AdvancedCardBase
