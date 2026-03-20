@@ -144,4 +144,9 @@ public static class Extension
 
         return list;
     }
+
+    public static void Say(this BattleUnitModel owner, string txt)
+    {
+        BattleManagerUI.Instance.ui_unitListInfoSummary.DisplayDlg(txt, owner, false, MentalState.Positive);
+    }
 }
