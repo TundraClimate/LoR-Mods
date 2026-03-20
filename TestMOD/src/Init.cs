@@ -3,8 +3,6 @@ using HarmonyLib;
 using DeviceOfHermes;
 using DeviceOfHermes.AdvancedBase;
 using DeviceOfHermes.CustomDice;
-using UnityEngine;
-using LOR_DiceSystem;
 
 public class TestMOD : ModInitializer
 {
@@ -25,9 +23,6 @@ public class TestMOD : ModInitializer
         ModResource.LoadAdditionals();
 
         new AdditonalOnlyCard(new LorId(260004)).AddCards(new LorId(705011));
-        CustomDiceSprite.AddSequence(beh => beh.Type is BehaviourType.Standby && beh.Detail is BehaviourDetail.Slash, HermesConstants.RevengeDiceSlash, new Color(255, 0, 200, 200));
-        CustomDiceSprite.AddSequence(beh => beh.Type is BehaviourType.Standby && beh.Detail is BehaviourDetail.Penetrate, HermesConstants.RevengeDicePenetrate);
-        CustomDiceSprite.AddSequence(beh => beh.Type is BehaviourType.Standby && beh.Detail is BehaviourDetail.Hit, HermesConstants.RevengeDiceHit);
     }
 
     private static void ApplyHarmonyPatch()
@@ -83,6 +78,11 @@ public class TestMOD : ModInitializer
 
     public class DiceCardAbility_Revenge : RevengeDice
     {
+        public static string Desc = "復讐ダイス".Purple();
+
+        public override void OnRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
+        {
+        }
     }
 
     public class DiceCardSelfAbility_TestAdvCard : AdvancedCardBase

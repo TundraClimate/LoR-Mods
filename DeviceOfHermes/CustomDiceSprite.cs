@@ -116,7 +116,7 @@ internal static class CustomDicePatch
     [HarmonyPatch(typeof(UI.UIDetailCardSlot), "SetData")]
     public class PatchDetailCardSlot
     {
-        static void Postfix(DiceCardItemModel cardmodel, Image[] ___img_BehaviourIcons, List<UI.UIDetailCardDescSlot> ___rightDescSlotList)
+        static void Postfix(DiceCardItemModel cardmodel, List<UI.UIDetailCardDescSlot> ___rightDescSlotList)
         {
             foreach (var (i, beh) in cardmodel.GetBehaviourList().Enumerate())
             {
