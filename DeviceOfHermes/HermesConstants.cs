@@ -7,10 +7,12 @@ public static class HermesConstants
 {
     static HermesConstants()
     {
-
         RevengeDiceSlash = Hermes.CreateSprite(LoadBytes("revenge_slash.png"))!;
         RevengeDicePenetrate = Hermes.CreateSprite(LoadBytes("revenge_penetrate.png"))!;
         RevengeDiceHit = Hermes.CreateSprite(LoadBytes("revenge_hit.png"))!;
+        UnbreakableSlash = Hermes.CreateSprite(LoadBytes("unbreakable_slash.png"))!;
+        UnbreakablePenetrate = Hermes.CreateSprite(LoadBytes("unbreakable_penetrate.png"))!;
+        UnbreakableHit = Hermes.CreateSprite(LoadBytes("unbreakable_hit.png"))!;
     }
 
     private static byte[] LoadBytes(string name)
@@ -33,4 +35,10 @@ public static class HermesConstants
     public static Sprite RevengeDicePenetrate;
 
     public static Sprite RevengeDiceHit;
+
+    public static Sprite UnbreakableSlash;
+
+    public static Sprite UnbreakablePenetrate;
+
+    public static Sprite UnbreakableHit;
 }
