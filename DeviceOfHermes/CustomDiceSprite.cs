@@ -60,6 +60,7 @@ internal static class CustomDicePatch
                     var color = res.Value.Item2;
 
                     __instance.ui_behaviourDescList[i].img_detail.sprite = sprite;
+                    __instance.img_behaviourDetatilList[i].sprite = sprite;
 
                     if (color is not null)
                     {
