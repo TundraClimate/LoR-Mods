@@ -83,6 +83,11 @@ public class TestMOD : ModInitializer
         public override void OnRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
         {
         }
+
+        public override void OnUseRevenge(BattlePlayingCardDataInUnitModel card)
+        {
+            BattleManagerUI.Instance.ui_unitListInfoSummary.DisplayDlg("は、ルール違反ということか....", base.owner, false, MentalState.Positive);
+        }
     }
 
     public class DiceCardSelfAbility_TestAdvCard : AdvancedCardBase

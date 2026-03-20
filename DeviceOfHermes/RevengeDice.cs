@@ -42,6 +42,7 @@ public class RevengeDice : AdvancedDiceBase
         harmony.CreateClassProcessor(typeof(PatchRevengeDice.PatchOnTakeDamage)).Patch();
         harmony.CreateClassProcessor(typeof(PatchRevengeDice.PatchStartParrying)).Patch();
         harmony.CreateClassProcessor(typeof(PatchRevengeDice.PatchStartAction)).Patch();
+        harmony.CreateClassProcessor(typeof(PatchRevengeDice.PatchOnUseCard)).Patch();
 
         _dices = new();
     }
@@ -91,9 +92,14 @@ public class RevengeDice : AdvancedDiceBase
     {
     }
 
+    public virtual void OnUseRevenge(BattlePlayingCardDataInUnitModel card)
+    {
+    }
+
     internal static Dictionary<BattleUnitModel, Queue<BattlePlayingCardDataInUnitModel>> Dices => _dices;
 
     private static Dictionary<BattleUnitModel, Queue<BattlePlayingCardDataInUnitModel>> _dices;
+
     internal static BattlePlayingCardDataInUnitModel? currentRevenge;
 }
 
@@ -189,6 +195,21 @@ internal class PatchRevengeDice
 
                     RevengeDice.currentRevenge = card;
                     StageController.Instance.GetAllCards().Add(card);
+                }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(BattleUnitModel), "OnUseCard")]
+    public class PatchOnUseCard
+    {
+        static void Prefix(BattlePlayingCardDataInUnitModel card)
+        {
+            foreach (var abi in card.GetDiceBehaviorList().Map(beh => beh.abilityList).Flatten())
+            {
+                if (abi is RevengeDice rev)
+                {
+                    rev.OnUseRevenge(card);
                 }
             }
         }
