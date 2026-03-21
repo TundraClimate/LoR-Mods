@@ -76,6 +76,16 @@ public class TestMOD : ModInitializer
         }
     }
 
+    public class DiceCardAbility_Unbreakable : UnbreakableDice
+    {
+        public static string Desc = "破壊不能ダイス".Red();
+
+        public override void OnUseBreaked(BattlePlayingCardDataInUnitModel card)
+        {
+            base.owner.Say("思っていたより面白いやつらだな……。");
+        }
+    }
+
     public class DiceCardAbility_Revenge : RevengeDice
     {
         public static string Desc = "復讐ダイス".Purple();
