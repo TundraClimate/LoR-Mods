@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleEffectTextRoot>
+  <effectTextList>
+
+    <BattleEffectText ID="CloudBlade">
+      <Name>黒雲刀</Name>
+      <Desc>斬撃威力が1増加。斬撃ダイス的中時、出血1を付与</Desc>
+    </BattleEffectText>
+
+    <BattleEffectText ID="CloudInk">
+      <Name>雲墨</Name>
+      <Desc>自身の出血だけ被ダメージ量が増加(最大5)</Desc>
+    </BattleEffectText>
+
+    <BattleEffectText ID="DarkCloud">
+      <Name>黒い雲</Name>
+      <Desc>ダイスによる出血付与数+1、攻撃ダイスがマッチ敗北時、該当するダイスの威力+3。</Desc>
+    </BattleEffectText>
+
+  </effectTextList>
+</BattleEffectTextRoot>
