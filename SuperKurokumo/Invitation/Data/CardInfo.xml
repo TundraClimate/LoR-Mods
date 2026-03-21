@@ -50,4 +50,30 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+
+  <Card ID="3">
+    <Name>刃先を揃える</Name>
+    <TextId>-1</TextId>
+    <Artwork>Kurokumo2.png</Artwork>
+    <Rarity>Rare</Rarity>
+    <Spec Range="Near" Cost="2" Affection="One" EmotionLimit="0" />
+    <Script>Add1BleedAll</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="5" Dice="8" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveBleed2" ActionScript="" Desc="" />
+      <Behaviour Min="2" Dice="6" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="5" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveBleed2" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>4</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
 </DiceCardXmlRoot>
