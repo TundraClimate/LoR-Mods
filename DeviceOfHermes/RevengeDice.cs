@@ -35,7 +35,7 @@ public class RevengeDice : AdvancedDiceBase
             new Color(255, 0, 200, 200)
         );
 
-        var harmony = new Harmony("DeviceOfHermes.CustomDice");
+        var harmony = new Harmony("DeviceOfHermes.CustomDice.Revenge");
 
         harmony.CreateClassProcessor(typeof(PatchRevengeDice.PatchBehaviourToKeeps)).Patch();
         harmony.CreateClassProcessor(typeof(PatchRevengeDice.PatchClearDices)).Patch();
