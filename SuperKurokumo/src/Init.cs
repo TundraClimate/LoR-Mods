@@ -1,14 +1,11 @@
+global using DeviceOfHermes.AdvancedBase;
+global using DeviceOfHermes;
+
 using HarmonyLib;
 
 public class SuperKurokumo : ModInitializer
 {
-    public static string packageId
-    {
-        get
-        {
-            return "SuperKurokumo";
-        }
-    }
+    public static string packageId => "SuperKurokumo";
 
     public override void OnInitializeMod()
     {
