@@ -76,4 +76,30 @@
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
   </Card>
+
+  <Card ID="4">
+    <Name>黒雲道:墨塗り</Name>
+    <TextId>-1</TextId>
+    <Artwork>Kurokumo1.png</Artwork>
+    <Rarity>Unique</Rarity>
+    <Spec Range="Near" Cost="6" Affection="One" EmotionLimit="0" />
+    <Script>GiveAllBlade</Script>
+    <ScriptDesc />
+    <BehaviourList>
+      <Behaviour Min="8" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveBleed9" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="7" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
+      <Behaviour Min="10" Dice="16" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveCloudInk" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>4</Chapter>
+    <SpecialEffect />
+    <SkinChange />
+    <SkinChangeType>EGO</SkinChangeType>
+    <SkinHeight>0</SkinHeight>
+    <MapChange />
+    <Priority>0</Priority>
+    <PriorityScript />
+    <Category>None</Category>
+    <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
+    <MaxNum>150</MaxNum>
+  </Card>
 </DiceCardXmlRoot>

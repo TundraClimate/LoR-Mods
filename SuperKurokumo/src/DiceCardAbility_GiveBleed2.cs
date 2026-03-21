@@ -1,4 +1,4 @@
-public class DiceCardAbility_TakeBleed2 : AdvancedDiceBase
+public class DiceCardAbility_GiveBleed2 : AdvancedDiceBase
 {
     public static string Desc = "[的中] 出血を2付与";
 
