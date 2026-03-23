@@ -3,6 +3,7 @@ using HarmonyLib;
 using DeviceOfHermes;
 using DeviceOfHermes.AdvancedBase;
 using DeviceOfHermes.CustomDice;
+using DeviceOfHermes.Resource;
 
 public class TestMOD : ModInitializer
 {
@@ -24,14 +25,32 @@ public class TestMOD : ModInitializer
 
         new AdditonalOnlyCard(new LorId(260004)).AddCards(new LorId(705011));
         var path = Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Artwork", "BattleUnitBuf", "TestCustomBuf.png");
-        DeviceOfHermes.Resource.Artwork.SetBattleUnitBufSprite(path);
-        DeviceOfHermes.Resource.Artwork.SetBattleUnitBufSprite("Strength", path, true);
-        DeviceOfHermes.Resource.TextModel.SetBattleEffectText(new LOR_XML.BattleEffectText()
+
+        Artwork.SetBattleUnitBufSprite(path);
+        Artwork.SetBattleUnitBufSprite("Strength", path, true);
+
+        TextModel.OnLoadLocalize += lang =>
         {
-            ID = "Strength",
-            Name = "解禁",
-            Desc = "解禁の皮を被ったパワー 攻撃威力+{0}"
-        }, true);
+            Hermes.Say($"Loaded by {lang}");
+            if (lang == "en")
+            {
+                TextModel.SetBattleEffectText(new LOR_XML.BattleEffectText()
+                {
+                    ID = "Strength",
+                    Name = "Unlock",
+                    Desc = "Is power +{0}"
+                }, true);
+            }
+            else if (lang == "jp")
+            {
+                TextModel.SetBattleEffectText(new LOR_XML.BattleEffectText()
+                {
+                    ID = "Strength",
+                    Name = "解禁",
+                    Desc = "解禁の皮を被ったパワー 攻撃威力+{0}"
+                }, true);
+            }
+        };
     }
 
     private static void ApplyHarmonyPatch()
