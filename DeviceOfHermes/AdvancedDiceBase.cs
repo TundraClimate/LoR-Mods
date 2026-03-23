@@ -27,9 +27,9 @@ public class AdvancedDiceBase : DiceCardAbilityBase
 
 static class DicePatch
 {
-    static bool OnAddKeeped(List<BattleDiceBehavior> behaviourList)
+    static List<BattleDiceBehavior> OnAddKeeped(List<BattleDiceBehavior> behaviourList)
     {
-        var isBreak = false;
+        List<BattleDiceBehavior> broke = new();
 
         foreach (var beh in behaviourList)
         {
@@ -41,15 +41,15 @@ static class DicePatch
 
                     advAbi.OnAddToKeeped();
 
-                    if (!isBreak)
+                    if (!advAbi.IsKeeps())
                     {
-                        isBreak = !advAbi.IsKeeps();
+                        broke.Add(beh);
                     }
                 }
             }
         }
 
-        return !isBreak;
+        return broke;
     }
 
     [HarmonyPatch
@@ -60,9 +60,11 @@ static class DicePatch
     )]
     internal class PatchOnAddKeeps1
     {
-        static bool Prefix(List<BattleDiceBehavior> behaviourList)
+        static void Prefix(List<BattleDiceBehavior> behaviourList)
         {
-            return DicePatch.OnAddKeeped(behaviourList);
+            var broke = DicePatch.OnAddKeeped(behaviourList);
+
+            behaviourList.RemoveAll(b => broke.Contains(b));
         }
     }
 
@@ -74,9 +76,11 @@ static class DicePatch
     )]
     internal class PatchOnAddKeeps2
     {
-        static bool Prefix(List<BattleDiceBehavior> behaviourList)
+        static void Prefix(List<BattleDiceBehavior> behaviourList)
         {
-            return DicePatch.OnAddKeeped(behaviourList);
+            var broke = DicePatch.OnAddKeeped(behaviourList);
+
+            behaviourList.RemoveAll(b => broke.Contains(b));
         }
     }
 
@@ -85,7 +89,7 @@ static class DicePatch
     {
         static bool Prefix(BattleDiceBehavior behaviour)
         {
-            return DicePatch.OnAddKeeped(new() { behaviour });
+            return DicePatch.OnAddKeeped(new() { behaviour }).Count != 1;
         }
     }
 
@@ -94,7 +98,7 @@ static class DicePatch
     {
         static bool Prefix(BattleDiceBehavior behaviour)
         {
-            return DicePatch.OnAddKeeped(new() { behaviour });
+            return DicePatch.OnAddKeeped(new() { behaviour }).Count != 1;
         }
     }
 }
