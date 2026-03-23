@@ -40,7 +40,7 @@ public static class Hermes
         return data is not null;
     }
 
-    public static Sprite? CreateSprite(byte[] bytes, float scale = 1f, float pixPerUnit = 50f)
+    public static Sprite? CreateSprite(byte[] bytes, float pixPerUnit = 50f)
     {
         Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
         if (!ImageConversion.LoadImage(texture, bytes))
@@ -50,13 +50,13 @@ public static class Hermes
 
         return Sprite.Create(
             texture,
-            new Rect(0, 0, texture.width * scale, texture.height * scale),
+            new Rect(0, 0, texture.width, texture.height),
             new Vector2(0.5f, 0.5f),
             pixPerUnit
         );
     }
 
-    public static Sprite? CreateSprite(string path, float scale = 1f, float pixPerUnit = 50f)
+    public static Sprite? CreateSprite(string path, float pixPerUnit = 50f)
     {
         var fileBytes = File.ReadAllBytes(path);
 
