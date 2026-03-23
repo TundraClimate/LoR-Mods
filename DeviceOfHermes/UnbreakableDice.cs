@@ -113,6 +113,7 @@ internal class PatchUnbreakableDice
                     {
                         playCard.owner = owner;
                         playCard.card = dice.card.card;
+                        playCard.speedDiceResultValue = dice.card.speedDiceResultValue;
                     }
 
                     dice.card = playCard;
