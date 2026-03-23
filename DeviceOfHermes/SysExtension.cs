@@ -149,4 +149,9 @@ public static class Extension
     {
         BattleManagerUI.Instance.ui_unitListInfoSummary.DisplayDlg(txt, owner, false, MentalState.Positive);
     }
+
+    public static string GetAsmDirectory(this Type ty)
+    {
+        return Path.GetDirectoryName(ty.Assembly.Location);
+    }
 }
