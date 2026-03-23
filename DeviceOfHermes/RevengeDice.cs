@@ -190,6 +190,7 @@ internal class PatchRevengeDice
 
                     card.target = atkDice.owner;
                     card.targetSlotOrder = -1;
+                    card.speedDiceResultValue = 99;
 
                     card.cardBehaviorQueue.Foreach(beh => beh.abilityList.Filter(abi => abi is RevengeDice).Foreach(abi => ((RevengeDice)abi).OnRevenge(card, atkDice)));
 

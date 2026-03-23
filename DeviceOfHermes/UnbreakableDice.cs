@@ -102,6 +102,7 @@ internal class PatchUnbreakableDice
                     cardBehaviorQueue = new(),
                     target = __instance.target,
                     targetSlotOrder = -1,
+                    speedDiceResultValue = 99,
                 };
 
                 while (queue.Count != 0)
