@@ -23,6 +23,15 @@ public class TestMOD : ModInitializer
         /* ModResource.LoadAdditionals(); */
 
         new AdditonalOnlyCard(new LorId(260004)).AddCards(new LorId(705011));
+        var path = Path.Combine(Path.GetDirectoryName(typeof(TestMOD).Assembly.Location), "Artwork", "BattleUnitBuf", "TestCustomBuf.png");
+        DeviceOfHermes.Resource.Artwork.SetBattleUnitBufSprite(path);
+        DeviceOfHermes.Resource.Artwork.SetBattleUnitBufSprite("Strength", path, true);
+        DeviceOfHermes.Resource.TextModel.SetBattleEffectText(new LOR_XML.BattleEffectText()
+        {
+            ID = "Strength",
+            Name = "解禁",
+            Desc = "解禁の皮を被ったパワー 攻撃威力+{0}"
+        }, true);
     }
 
     private static void ApplyHarmonyPatch()
