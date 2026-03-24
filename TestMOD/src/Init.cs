@@ -1,5 +1,6 @@
 using System.Reflection;
 using HarmonyLib;
+using LOR_XML;
 using DeviceOfHermes;
 using DeviceOfHermes.AdvancedBase;
 using DeviceOfHermes.CustomDice;
@@ -34,7 +35,7 @@ public class TestMOD : ModInitializer
             Hermes.Say($"Loaded by {lang}");
             if (lang == "en")
             {
-                TextModel.SetBattleEffectText(new LOR_XML.BattleEffectText()
+                TextModel.SetBattleEffectText(new BattleEffectText()
                 {
                     ID = "Strength",
                     Name = "Unlock",
@@ -43,12 +44,18 @@ public class TestMOD : ModInitializer
             }
             else if (lang == "jp")
             {
-                TextModel.SetBattleEffectText(new LOR_XML.BattleEffectText()
+                TextModel.SetBattleEffectText(new BattleEffectText()
                 {
                     ID = "Strength",
                     Name = "解禁",
                     Desc = "解禁の皮を被ったパワー 攻撃威力+{0}"
                 }, true);
+
+                var tmp = Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Temp.xml");
+
+                var eff = ReadXmlParser.Read<BattleEffectText>(tmp);
+
+                eff?.Inspect(eff => TextModel.SetBattleEffectText(eff, true));
             }
         };
     }

@@ -1,0 +1,4 @@
+<BattleEffectText ID="Vulnerable">
+    <Name>よわい</Name>
+    <Desc>{0}もいたたなの</Desc>
+</BattleEffectText>
