@@ -39,6 +39,14 @@ public static class TextModel
         dict.Add(text.ID, text);
     }
 
+    public static void SetBattleEffectTexts(IEnumerable<BattleEffectText> texts, bool replace = false)
+    {
+        foreach (var text in texts)
+        {
+            SetBattleEffectText(text, replace);
+        }
+    }
+
     private static ref Dictionary<string, BattleEffectText> EffectTextDict => ref _effTxtRef(BattleEffectTextsXmlList.Instance);
 
     private static readonly AccessTools.FieldRef<BattleEffectTextsXmlList, Dictionary<string, BattleEffectText>> _effTxtRef;
