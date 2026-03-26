@@ -125,6 +125,10 @@ public class TestMOD : ModInitializer
     {
         public static string Desc = "復讐ダイス".Purple();
 
+        public override void OnSucceedAttack(BattleUnitModel target)
+        {
+        }
+
         public override void OnRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
         {
         }
