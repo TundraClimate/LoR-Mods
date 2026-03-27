@@ -1,9 +1,0 @@
-.env
-
-bin/
-libs/
-obj/
-
-build.sh
-usr.sh
-upload.sh
