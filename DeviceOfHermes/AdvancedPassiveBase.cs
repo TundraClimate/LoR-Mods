@@ -1,3 +1,4 @@
+using System.Reflection.Emit;
 using HarmonyLib;
 
 namespace DeviceOfHermes.AdvancedBase;
@@ -15,6 +16,7 @@ public class AdvancedPassiveBase : PassiveAbilityBase
         harmony.CreateClassProcessor(typeof(PassivePatch.PatchOnStartResolve)).Patch();
         harmony.CreateClassProcessor(typeof(PassivePatch.PatchOnDynamicParrying)).Patch();
         harmony.CreateClassProcessor(typeof(PassivePatch.PatchCanDiscard)).Patch();
+        harmony.CreateClassProcessor(typeof(PassivePatch.PatchOnChangeTarget)).Patch();
     }
 
     public virtual void OnRoundStartFirst()
@@ -33,6 +35,11 @@ public class AdvancedPassiveBase : PassiveAbilityBase
     public virtual bool IsClashable(BattlePlayingCardDataInUnitModel self, BattlePlayingCardDataInUnitModel target)
     {
         return true;
+    }
+
+    public virtual bool IsIgnoreSpeedByMatch(BattlePlayingCardDataInUnitModel self, BattlePlayingCardDataInUnitModel target)
+    {
+        return false;
     }
 
     public virtual bool IsAllowRoundEnd()
@@ -254,6 +261,55 @@ static class PassivePatch
             {
                 cardList.Remove(card);
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(BattleUnitModel), "CanChangeAttackTarget")]
+    internal class PatchOnChangeTarget
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var inject = AccessTools.Method(typeof(PatchOnChangeTarget), "InjectMethod");
+
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.End()
+                .MatchStartBackwards(new CodeMatch(OpCodes.Ret))
+                .Insert(
+                    new CodeInstruction(OpCodes.Ldarg_0),
+                    new CodeInstruction(OpCodes.Ldarg_1),
+                    new CodeInstruction(OpCodes.Ldarg_2),
+                    new CodeInstruction(OpCodes.Ldarg_3),
+                    new CodeInstruction(OpCodes.Call, inject)
+                );
+
+            return matcher.Instructions();
+        }
+
+        static bool InjectMethod(bool speedWin, BattleUnitModel? self, BattleUnitModel? target, int myIndex, int targetIndex)
+        {
+            var selfCard = self?.view?.speedDiceSetterUI?.GetSpeedDiceByIndex(myIndex)?.CardInDice;
+            var targetCard = target?.view?.speedDiceSetterUI?.GetSpeedDiceByIndex(targetIndex)?.CardInDice;
+
+            if (speedWin || selfCard is null || targetCard is null)
+            {
+                return speedWin;
+            }
+
+            var selfPassives = self?.passiveDetail?.PassiveList?.Filter(passive => passive is AdvancedPassiveBase);
+            var targetPassives = target?.passiveDetail?.PassiveList?.Filter(passive => passive is AdvancedPassiveBase);
+
+            if (selfPassives?.Any(p => ((AdvancedPassiveBase)p).IsIgnoreSpeedByMatch(selfCard, targetCard)) == true)
+            {
+                return true;
+            }
+
+            if (targetPassives?.Any(p => ((AdvancedPassiveBase)p).IsIgnoreSpeedByMatch(targetCard, selfCard)) == true)
+            {
+                return true;
+            }
+
+            return speedWin;
         }
     }
 }
