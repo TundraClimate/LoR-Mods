@@ -55,7 +55,7 @@ public class TestMOD : ModInitializer
 
                 var eff = ReadXmlParser.Read<BattleEffectText>(tmp);
 
-                eff?.Inspect(eff => TextModel.SetBattleEffectText(eff, true));
+                eff?.Let(eff => TextModel.SetBattleEffectText(eff, true));
             }
         };
     }
@@ -115,9 +115,17 @@ public class TestMOD : ModInitializer
     {
         public static string Desc = "破壊不能ダイス".Red();
 
+        public override void OnLoseParrying()
+        {
+            base.behavior.ApplyDiceStatBonus(new DiceStatBonus()
+            {
+                power = 5,
+            });
+        }
+
         public override void OnUseBreaked(BattlePlayingCardDataInUnitModel card)
         {
-            base.owner.Say("思っていたより面白いやつらだな……。");
+            base.owner.view.Say("思っていたより面白いやつらだな……。", 1f);
         }
     }
 
@@ -129,13 +137,13 @@ public class TestMOD : ModInitializer
         {
         }
 
-        public override void OnRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
+        public override void OnBeforeRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
         {
         }
 
-        public override void OnUseRevenge(BattlePlayingCardDataInUnitModel card)
+        public override void OnRevenge(BattlePlayingCardDataInUnitModel card)
         {
-            base.owner.Say("は、ルール違反ということか....");
+            base.owner.view.Say("は、ルール違反ということか....", 1f);
         }
     }
 
@@ -193,9 +201,14 @@ public class TestMOD : ModInitializer
 
         public override bool DiceBlockWithNotConsumable => true;
 
-        public override void OnConsume(ref int num)
+        public override void OnBeforeConsume(ref int require)
         {
-            Hermes.Say($"Wowow consumed {num} stack");
+            Hermes.Say($"Aaay, needs {require} ammo!");
+        }
+
+        public override void OnConsume(int consumed)
+        {
+            Hermes.Say($"Wowow consumed {consumed} stack");
         }
     }
 }
