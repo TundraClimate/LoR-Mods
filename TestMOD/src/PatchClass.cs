@@ -60,20 +60,12 @@ public static class PatchClass
                 return;
             }
 
-            var setIcon = typeof(UI.UIStoryProgressIconSlot).Method("SetIcon");
             foreach (var icon in iconList)
             {
                 if (icon is null)
                 {
                     continue;
                 }
-
-                setIcon.Invoke(icon, [new UI.UIIconManager.IconSet()
-                    {
-                        type = "Alternate",
-                        icon = DeviceOfHermes.HermesConstants.UnbreakableSlash,
-                        iconGlow = DeviceOfHermes.HermesConstants.UnbreakableSlash,
-                    }]);
 
                 if (icon.currentStory == UI.UIStoryLine.YunsOffice)
                 {

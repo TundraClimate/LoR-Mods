@@ -7,7 +7,7 @@
     <Artwork />
     <Rarity>Common</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
-    <Script>TestAdvCard</Script>
+    <Script>DOHC_TestAdvCard_uc(ninfheavysmoke120amax99amin99)_sa(heal99bheal99)_desc([使用時] 相手は死ぬ)</Script>
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Unbreakable" ActionScript="" Desc="" />

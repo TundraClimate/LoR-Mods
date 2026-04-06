@@ -29,6 +29,7 @@ public class TestMOD : ModInitializer
 
         Artwork.SetBattleUnitBufSprite(path);
         Artwork.SetBattleUnitBufSprite("Strength", path, true);
+        Artwork.SetStoryIconSprite("MolarOffice", HermesConstants.RevengeDiceHit, replace: true);
 
         TextModel.OnLoadLocalize += lang =>
         {
@@ -50,6 +51,80 @@ public class TestMOD : ModInitializer
                     Name = "解禁",
                     Desc = "解禁の皮を被ったパワー 攻撃威力+{0}"
                 }, true);
+                TextModel.SetBattleCardAbilityDesc(new BattleCardAbilityDesc()
+                {
+                    id = "drawCard",
+                    desc = ["ページをなんかいっぱい引く。引いた枚数だけ引いたページの中からページを消し、ページを1枚引く。"],
+                }, true);
+                TextModel.SetBattleCardDesc(new BattleCardDesc()
+                {
+                    cardID = 602008,
+                    cardName = "ゴールデンナックル",
+                    ability = "ピッカピカだぜ".Yellow(),
+                    behaviourDescList = new(),
+                }, replace: true);
+                TextModel.SetCharacterDialog(new BattleDialogCharacter()
+                {
+                    characterID = "Named",
+                    dialogTypeList = [
+                         new BattleDialogType()
+                         {
+                             dialogType = DialogType.START_BATTLE,
+                             dialogList = [
+                                 new BattleDialog()
+                                 {
+                                     dialogID = "START_BATTLE_0",
+                                     dialogContent = "限り無く苦しめて殺してやるアラ...",
+                                 }
+                             ],
+                         }
+                    ],
+                }, "AwlOfNight", true);
+                TextModel.SetBookDesc(new BookDesc()
+                {
+                    bookID = 250051,
+                    bookName = "ヤンのページ",
+                    texts = [
+                        "ﾔｰﾝ"
+                    ],
+                    passives = [],
+                }, replace: true);
+                TextModel.SetCharacterName(new LorId(148), "ねじヤン", true);
+                TextModel.SetStageName(new LorId(50014), "ねじヤン", true);
+                TextModel.SetDropBookName(new LorId(250037), "ねじヤンの本");
+                TextModel.SetTextData("ui_invitation_context", "お前を本にします。", true);
+                TextModel.SetPassiveDescs([
+                    new PassiveDesc()
+                    {
+                        _id = 10008,
+                        name = "高貴なるファン",
+                        desc = "俺の名はファン、お前はファン。".Bold().Italic(),
+                    },
+                    new PassiveDesc()
+                    {
+                        _id = 250001,
+                        name = "高貴さ",
+                        desc = "決闘としよう。もし、俺が勝ったのなら...".Bold().Italic(),
+                    },
+                    new PassiveDesc()
+                    {
+                        _id = 243005,
+                        name = "血香",
+                        desc = "は....久々の馳走ということか....".Bold().Italic(),
+                    },
+                    new PassiveDesc()
+                    {
+                        _id = 243105,
+                        name = "したたたか",
+                        desc = "ここにテキストを入力".Bold().Strikethrough(),
+                    },
+                    new PassiveDesc()
+                    {
+                        _id = 243205,
+                        name = "1級式 傷裂き",
+                        desc = "思っていたより面白いやつらだな...。".Bold().Mark("#FF000080"),
+                    },
+                ], true);
 
                 var tmp = Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Temp.xml");
 
