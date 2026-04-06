@@ -1,2 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Passive ID="1">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>12</Cost>
+    <Script>Zikansa</Script>
+    <Name>時間差の攻撃</Name>
+    <Desc>戦闘終了前、残っている全ての反撃ダイスをランダムな敵に全て攻撃ダイスとして使用する</Desc>
+  </Passive>
+  <Passive ID="2">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>12</Cost>
+    <Script>ZikansaStock</Script>
+    <Name>時間差の被撃</Name>
+    <Desc>体力・混乱抵抗値が減少した時、代わりにダメージをストックする
+
+幕の開始時、前の幕にてストックしたダメージを受ける</Desc>
+  </Passive>
+</PassiveXmlRoot>
