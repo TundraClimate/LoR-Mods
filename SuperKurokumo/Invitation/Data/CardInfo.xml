@@ -7,7 +7,7 @@
     <Artwork>Kurokumo3.png</Artwork>
     <Rarity>Common</Rarity>
     <Spec Range="Near" Cost="1" Affection="One" EmotionLimit="0" />
-    <Script>Gain1Endu</Script>
+    <Script>dohc_Gain1Endu_sb(gainendurance1)_desc([戦闘開始時] 忍耐1を得る)</Script>
     <ScriptDesc />
     <BehaviourList>
       <Behaviour Min="4" Dice="5" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
@@ -60,9 +60,9 @@
     <Script>Add1BleedAll</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="5" Dice="8" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveBleed2" ActionScript="" Desc="" />
+      <Behaviour Min="5" Dice="8" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="dohd_GiveBleed2_sa(ninfbleeding2)_desc([的中] 次の幕に出血を2付与)" ActionScript="" Desc="" />
       <Behaviour Min="2" Dice="6" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="4" Dice="5" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveBleed2" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="5" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="dohd_GiveBleed2_sa(ninfbleeding2)_desc([的中] 次の幕に出血を2付与)" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>4</Chapter>
     <SpecialEffect />
@@ -86,7 +86,7 @@
     <Script>GiveAllBlade</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="8" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveBleed9" ActionScript="" Desc="" />
+      <Behaviour Min="8" Dice="9" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="dohd_GiveBleed9_sa(ninfbleeding9)_desc([的中] 次の幕に出血を9付与)" ActionScript="" Desc="" />
       <Behaviour Min="4" Dice="7" Type="Def" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="" ActionScript="" Desc="" />
       <Behaviour Min="10" Dice="16" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="GiveCloudInk" ActionScript="" Desc="" />
     </BehaviourList>
