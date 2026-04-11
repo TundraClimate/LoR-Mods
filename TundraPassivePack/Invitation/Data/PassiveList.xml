@@ -62,20 +62,18 @@
     <Script>TundraPassivePack_DrainSmoke</Script>
   </Passive>
 
-  <Passive ID="4">
-    <Name>呼吸器直通</Name>
-    <Desc>攻撃的中時、相手の煙を1消耗し、自身の煙を1増加
-自身の煙が10なら、代わりにダメージ量増加を次の幕に1得る
-(1幕に3回)</Desc>
-    <Cost>3</Cost>
+  <Passive ID="5">
+    <Name>吐き出した白煙</Name>
+    <Desc>攻撃的中時、煙1を付与する</Desc>
+    <Cost>4</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
-    <Rarity>Rare</Rarity>
+    <Rarity>Uncommon</Rarity>
     <Lock>false</Lock>
     <CanGivePassive>true</CanGivePassive>
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
-    <Script>TundraPassivePack_DrainSmoke</Script>
+    <Script>TundraPassivePack_ExhaleSmoke</Script>
   </Passive>
 
 </PassiveXmlRoot>
