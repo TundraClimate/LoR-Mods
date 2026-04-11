@@ -13,4 +13,17 @@
     <Cost>2</Cost>
     <Script>TundraPassivePack_SupplySmoke</Script>
   </Passive>
+  <Passive ID="2">
+    <Name>煙転化</Name>
+    <Desc>攻撃的中時、煙を3消耗してページを1枚引く。(1幕に1回)</Desc>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Uncommon</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>2</Cost>
+    <Script>TundraPassivePack_SupplySmoke</Script>
+  </Passive>
 </PassiveXmlRoot>
