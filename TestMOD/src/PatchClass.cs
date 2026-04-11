@@ -38,6 +38,52 @@ public static class PatchClass
         }
     }
 
+    [HarmonyPatch(typeof(BookModel), "get_ClassInfo")]
+    class PatchSuccession
+    {
+        static void Postfix(ref BookXmlInfo __result)
+        {
+            __result.SuccessionPossibleNumber = 18;
+        }
+    }
+
+    [HarmonyPatch(typeof(BookModel), "IsNotFullEquipPassiveBook")]
+    class PatchEquip
+    {
+        static void Postfix(BookModel __instance, ref bool __result)
+        {
+            if (__instance.reservedData.equipedBookIdListInPassive.Count < 8)
+            {
+                __result = true;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(BookInventoryModel), "LoadFromSaveData")]
+    class PatchOn
+    {
+        static void Postfix()
+        {
+            Hermes.Say("Load corepages");
+
+            var id = new LorId(TestMOD.packageId, 10000001);
+
+            if (BookInventoryModel.Instance.GetBookCount(id) == 0)
+            {
+                var bm = BookInventoryModel.Instance.CreateBook(id);
+
+                if (bm is not null)
+                {
+                    Hermes.Say(bm.GetName());
+                }
+            }
+            else
+            {
+                Hermes.Say($"Already added the {id}");
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(UI.UIStoryProgressPanel), "SetStoryLine")]
     class PatchTemp
     {

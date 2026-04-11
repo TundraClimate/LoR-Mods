@@ -2,7 +2,7 @@
 <BookXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Version>1.1</Version>
   <Book ID="10000001">
-    <Name>Test Page</Name>
+    <Name>PassivePack v1</Name>
     <TextId>-1</TextId>
     <BookIcon />
     <EquipEffect>
@@ -22,14 +22,15 @@
       <MaxPlayPoint>3</MaxPlayPoint>
       <StartPlayPoint>3</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
+      <Passive>1</Passive>
     </EquipEffect>
-    <Rarity>Unique</Rarity>
+    <Rarity>Common</Rarity>
     <CharacterSkin>ClassOneFixer</CharacterSkin>
     <CharacterSkinType>Lor</CharacterSkinType>
     <SkinGender>N</SkinGender>
     <Chapter>1</Chapter>
     <Episode>-1</Episode>
-    <RangeType>Hybrid</RangeType>
+    <RangeType>Melee</RangeType>
     <NotEquip>false</NotEquip>
     <RandomFace>false</RandomFace>
     <SpeedDiceNum>1</SpeedDiceNum>

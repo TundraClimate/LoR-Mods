@@ -182,7 +182,17 @@ public class TestMOD : ModInitializer
         {
             UnityEngine.Debug.Log("Keeps");
 
-            return false;
+            return true;
+        }
+
+        public override ParryingResult GetParryingResult(ParryingResult origin)
+        {
+            if (origin == ParryingResult.Lose)
+            {
+                return ParryingResult.Win;
+            }
+
+            return base.GetParryingResult(origin);
         }
     }
 
