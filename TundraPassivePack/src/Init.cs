@@ -1,3 +1,4 @@
+global using DeviceOfHermes;
 global using DeviceOfHermes.AdvancedBase;
 using HarmonyLib;
 

@@ -24,6 +24,22 @@
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
     <Cost>2</Cost>
-    <Script>TundraPassivePack_SupplySmoke</Script>
+    <Script>TundraPassivePack_DrawSmoke</Script>
+  </Passive>
+  <Passive ID="3">
+    <Name>脳を狂わせる煙</Name>
+    <Desc>幕の開始時、煙が7以上あればパワーとクイックを3得る
+7未満ならば、虚弱を2得て10の混乱ダメージを受ける
+
+舞台開始時、煙を保有していないならば5得る</Desc>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>6</Cost>
+    <Script>TundraPassivePack_BrainSmoke</Script>
   </Passive>
 </PassiveXmlRoot>

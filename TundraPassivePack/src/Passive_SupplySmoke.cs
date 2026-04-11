@@ -1,5 +1,3 @@
-using DeviceOfHermes;
-
 public class PassiveAbility_TundraPassivePack_SupplySmoke : AdvancedPassiveBase
 {
     public override void OnRoundEnd_before()

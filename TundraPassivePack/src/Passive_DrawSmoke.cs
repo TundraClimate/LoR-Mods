@@ -1,5 +1,3 @@
-using DeviceOfHermes;
-
 public class PassiveAbility_TundraPassivePack_DrawSmoke : AdvancedPassiveBase
 {
     public override void OnRoundStart()
