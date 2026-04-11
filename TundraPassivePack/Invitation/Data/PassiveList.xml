@@ -76,4 +76,22 @@
     <Script>TundraPassivePack_ExhaleSmoke</Script>
   </Passive>
 
+  <Passive ID="6">
+    <Name>現実不全症</Name>
+    <Desc>幕の開始時、煙が9以上なら以下の効果から1つをランダムに有効化する
+- 幕の開始時、パワー3・クイック5を得る
+- 攻撃ダイスの最小値・最大値が4増加
+- 回避ダイスの最小値が3減少・最大値が12増加
+- この幕の間、威力の影響を受けない</Desc>
+    <Cost>10</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_UnrealSmoke</Script>
+  </Passive>
+
 </PassiveXmlRoot>
