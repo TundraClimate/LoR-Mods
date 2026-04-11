@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
   <Passive ID="1">
     <Name>煙供給</Name>
     <Desc>幕の終了時、煙を1得る</Desc>
+    <Cost>2</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
     <Rarity>Uncommon</Rarity>
@@ -10,12 +12,13 @@
     <CanGivePassive>true</CanGivePassive>
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
-    <Cost>2</Cost>
     <Script>TundraPassivePack_SupplySmoke</Script>
   </Passive>
+
   <Passive ID="2">
     <Name>煙転化</Name>
     <Desc>攻撃的中時、煙を3消耗してページを1枚引く。(1幕に1回)</Desc>
+    <Cost>2</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
     <Rarity>Uncommon</Rarity>
@@ -23,15 +26,16 @@
     <CanGivePassive>true</CanGivePassive>
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
-    <Cost>2</Cost>
     <Script>TundraPassivePack_DrawSmoke</Script>
   </Passive>
+
   <Passive ID="3">
     <Name>脳を狂わせる煙</Name>
     <Desc>幕の開始時、煙が7以上あればパワーとクイックを3得る
 7未満ならば、虚弱を2得て10の混乱ダメージを受ける
 
 舞台開始時、煙を保有していないならば5得る</Desc>
+    <Cost>6</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
     <Rarity>Rare</Rarity>
@@ -39,7 +43,39 @@
     <CanGivePassive>true</CanGivePassive>
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
-    <Cost>6</Cost>
     <Script>TundraPassivePack_BrainSmoke</Script>
   </Passive>
+
+  <Passive ID="4">
+    <Name>呼吸器直通</Name>
+    <Desc>攻撃的中時、相手の煙を1消耗し、自身の煙を1増加
+自身の煙が10なら、代わりにダメージ量増加を次の幕に1得る
+(1幕に3回)</Desc>
+    <Cost>3</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_DrainSmoke</Script>
+  </Passive>
+
+  <Passive ID="4">
+    <Name>呼吸器直通</Name>
+    <Desc>攻撃的中時、相手の煙を1消耗し、自身の煙を1増加
+自身の煙が10なら、代わりにダメージ量増加を次の幕に1得る
+(1幕に3回)</Desc>
+    <Cost>3</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_DrainSmoke</Script>
+  </Passive>
+
 </PassiveXmlRoot>
