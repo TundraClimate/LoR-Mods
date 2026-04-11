@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Passive ID="1">
-    <Name>Passive1</Name>
-    <Desc>TODO</Desc>
+    <Name>煙供給</Name>
+    <Desc>幕の終了時、煙を1得る</Desc>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
-    <Rarity>Common</Rarity>
+    <Rarity>Uncommon</Rarity>
     <Lock>false</Lock>
     <CanGivePassive>true</CanGivePassive>
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
-    <Cost>1</Cost>
-    <Script>TestAdvPassive</Script>
+    <Cost>2</Cost>
+    <Script>TundraPassivePack_SupplySmoke</Script>
   </Passive>
 </PassiveXmlRoot>

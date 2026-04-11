@@ -1,3 +1,4 @@
+global using DeviceOfHermes.AdvancedBase;
 using HarmonyLib;
 
 public class TundraPassivePack : ModInitializer
