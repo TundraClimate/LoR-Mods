@@ -94,4 +94,35 @@
     <Script>TundraPassivePack_UnrealSmoke</Script>
   </Passive>
 
+  <Passive ID="7">
+    <Name>順応するための呼気</Name>
+    <Desc>幕の終了時、煙を全て消耗する。消耗した数値に応じて、次の幕に効果を得る(小数点切り捨て)
+- (消耗した数値 ÷ 2)だけパワーと忍耐を得る。(最大2)
+- (消耗した数値 ÷ 3)だけ光を回復する。(最大3)
+- (消耗した数値 ÷ 5)だけページを引く。(最大2)</Desc>
+    <Cost>2</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_AdaptSmoke</Script>
+  </Passive>
+
+  <Passive ID="8">
+    <Name>持っていけ！</Name>
+    <Desc>幕の開始時、煙を10まで獲得する。(新たに獲得した値 × 5)だけ体力にダメージを受ける</Desc>
+    <Cost>3</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Uncommon</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_TakehereSmoke</Script>
+  </Passive>
+
 </PassiveXmlRoot>
