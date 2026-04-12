@@ -153,4 +153,18 @@
     <Script>TundraPassivePack_InvadeSmoke</Script>
   </Passive>
 
+  <Passive ID="11">
+    <Name>あの日の記憶の幻視</Name>
+    <Desc>幕の開始時、全ての敵と味方に煙を1-3付与する。煙3を付与しようとした場合、追加で麻痺を1付与する</Desc>
+    <Cost>12</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_ImagineSmoke</Script>
+  </Passive>
+
 </PassiveXmlRoot>
