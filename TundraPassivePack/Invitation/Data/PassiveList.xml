@@ -139,4 +139,18 @@
     <Script>TundraPassivePack_BHealSmoke</Script>
   </Passive>
 
+  <Passive ID="10">
+    <Name>浸透する煙</Name>
+    <Desc>(自身の保有する煙 × 2)%だけ与ダメージ量が増加</Desc>
+    <Cost>2</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Uncommon</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_InvadeSmoke</Script>
+  </Passive>
+
 </PassiveXmlRoot>
