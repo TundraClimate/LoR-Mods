@@ -276,6 +276,16 @@ public class TestMOD : ModInitializer
 
             return base.IsAllowRoundEnd();
         }
+
+        public override void OnActivatedBuf(BattleUnitBuf activate)
+        {
+            Hermes.Say($"Buf activated: {activate.ToPrettyString()}");
+        }
+
+        public override void OnChangeBufStack(BattleUnitBuf changed, int last)
+        {
+            Hermes.Say($"Buf stack changed: {changed.bufType} {last} -> {changed.stack}");
+        }
     }
 
     public class TestAmmoBuf : BattleAmmoBuf

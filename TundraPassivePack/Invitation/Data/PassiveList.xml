@@ -127,7 +127,7 @@
 
   <Passive ID="9">
     <Name>つかの間の安息</Name>
-    <Desc>ページ効果により煙を獲得時、(獲得した値 × 3)だけ混乱抵抗値を回復する</Desc>
+    <Desc>煙を獲得時、(獲得した値 × 3)だけ混乱抵抗値を回復する</Desc>
     <Cost>4</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
