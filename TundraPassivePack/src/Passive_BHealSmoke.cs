@@ -7,9 +7,14 @@ public class PassiveAbility_TundraPassivePack_BHealSmoke : AdvancedPassiveBase
             return;
         }
 
+        if (0 > last)
+        {
+            last = 0;
+        }
+
         if (changed.stack > last)
         {
-            base.owner?.breakDetail?.RecoverBreak((changed.stack - last.Max(0)) * 3);
+            base.owner?.breakDetail?.RecoverBreak((changed.stack - last) * 3);
         }
     }
 }
