@@ -1,4 +1,5 @@
 using HarmonyLib;
+using HarmonyExtension;
 using UnityEngine;
 
 public static class PatchClass

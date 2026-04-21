@@ -194,6 +194,16 @@ public class TestMOD : ModInitializer
 
             return base.GetParryingResult(origin);
         }
+
+        public override int GetDiceFinalResultValue(int origin)
+        {
+            return origin - 1;
+        }
+
+        public override int GetFinalResultBreakDamageValue(int origin)
+        {
+            return origin + 100;
+        }
     }
 
     public class DiceCardAbility_Unbreakable : UnbreakableDice
