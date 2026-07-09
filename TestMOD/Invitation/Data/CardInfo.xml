@@ -10,10 +10,11 @@
     <Script>TestAdvCard</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Unbreakable" ActionScript="" Desc="" />
-      <Behaviour Min="1" Dice="10" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Unbreakable" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="5" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Unbreakable" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="5" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Unbreakable" ActionScript="" Desc="" />
       <Behaviour Min="1" Dice="1" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="TestAdvDice" ActionScript="" Desc="" />
       <Behaviour Min="1" Dice="12" Type="Standby" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="" Script="Revenge" ActionScript="" Desc="" />
+      <Behaviour Min="99" Dice="99" Type="Standby" Detail="Evasion" Motion="E" MotionDefault="N" EffectRes="" Script="Secondly" ActionScript="" Desc="" />
     </BehaviourList>
     <Chapter>1</Chapter>
     <SpecialEffect />
@@ -26,5 +27,19 @@
     <Category>None</Category>
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
     <MaxNum>150</MaxNum>
+  </Card>
+
+  <Card ID="2">
+    <Name>Test FarArea</Name>
+    <Artwork />
+    <Rarity>Unique</Rarity>
+    <Spec Range="FarAreaEach" Cost="0" Affection ="Team"/>
+    <Script></Script>
+    <ScriptDesc></ScriptDesc>
+    <BehaviourList>
+      <Behaviour Min="5" Dice="9" Type="Atk" Detail="Slash" Motion="Z" EffectRes="" Script="" ActionScript="Test" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <Priority>0</Priority>
   </Card>
 </DiceCardXmlRoot>

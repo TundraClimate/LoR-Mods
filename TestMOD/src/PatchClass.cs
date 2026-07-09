@@ -1,6 +1,9 @@
+using System.Reflection;
+using System.Reflection.Emit;
 using HarmonyLib;
 using HarmonyExtension;
 using UnityEngine;
+using DeviceOfHermes;
 
 public static class PatchClass
 {
@@ -60,6 +63,108 @@ public static class PatchClass
         }
     }
 
+    [HarmonyPatch(typeof(BattleCamManager), "UpdateManual")]
+    class PatchMouseCam
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.End()
+                .MatchEndBackwards(CodeMatch.Calls(typeof(BattleCamManager).Method("CheckBoundary")))
+                .SetInstruction(new CodeInstruction(OpCodes.Call, typeof(PatchMouseCam).Method("InjectMethod")));
+
+            matcher.MatchEndBackwards(CodeMatch.IsLdfld(), CodeMatch.Calls(typeof(Vector3).Method("op_Multiply", [typeof(Vector3), typeof(float)])))
+                .Advance(1)
+                .Insert(CodeInstruction.Literal<float>(10f), CodeInstruction.Call(typeof(Vector3).Method("op_Multiply", [typeof(Vector3), typeof(float)])));
+
+            return matcher.Instructions();
+        }
+
+        static Vector3 InjectMethod(BattleCamManager __instance, Vector3 pos)
+        {
+            return pos;
+        }
+    }
+
+    [HarmonyPatch]
+    class PatchDelegate
+    {
+        static MethodBase TargetMethod()
+        {
+            return typeof(UI.UIInvenCardListScroll)
+                .GetNestedTypes(AccessTools.all)
+                .First(t => t.Name.Contains("DisplayClass49_0"))
+                .Method("<ApplyFilterAll>b__7");
+        }
+
+        static bool Prefix(ref bool __result, DiceCardItemModel x)
+        {
+            if (x.GetID() == 608008)
+            {
+                __result = true;
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(UI.UIInvenCardSlot), "SetSlotState")]
+    class PatchLockState
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.MatchStartForward(
+                CodeMatch.IsLdarg(),
+                new CodeMatch(i => i.opcode == OpCodes.Ldfld && i.OperandIs(AccessTools.Field(typeof(UI.UIInvenCardSlot), "deckLimitRoot")))
+            )
+                .Insert(
+                    CodeInstruction.Nop.MoveLabelsFrom(matcher.Instruction),
+                    CodeInstruction.Instance,
+                    CodeInstruction.Instance,
+                    CodeInstruction.Field(typeof(UI.UIInvenCardSlot).Field("_cardModel")),
+                    CodeInstruction.Instance,
+                    CodeInstruction.Field(typeof(UI.UIInvenCardSlot).Field("slotState")),
+                    CodeInstruction.Call(typeof(PatchLockState).Method("InjectMethod")),
+                    CodeInstruction.SetField(typeof(UI.UIInvenCardSlot).Field("slotState"))
+                );
+
+            return matcher.Instructions();
+        }
+
+        static UIINVENCARD_STATE InjectMethod(DiceCardItemModel cardModel, UIINVENCARD_STATE state)
+        {
+            if (cardModel.GetID() == 608008)
+            {
+                return UIINVENCARD_STATE.None;
+            }
+
+            return state;
+        }
+    }
+
+    [HarmonyPatch(typeof(BookModel), "AddCardFromInventoryToCurrentDeck")]
+    class PatchOnAddDeck
+    {
+        static void Postfix(DeckModel ____deck, ref CardEquipState __result, LorId cardId)
+        {
+            if (__result is CardEquipState.FarTypeLimit && cardId == 608008)
+            {
+                var card = ItemXmlDataList.instance.GetCardItem(cardId);
+
+                if (InventoryModel.Instance.RemoveCard(card.id))
+                {
+                    ____deck.GetCardList_nocopy().Add(card);
+                    __result = CardEquipState.Equippable;
+                }
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(BookInventoryModel), "LoadFromSaveData")]
     class PatchOn
     {
@@ -67,7 +172,7 @@ public static class PatchClass
         {
             Hermes.Say("Load corepages");
 
-            var id = new LorId(TestMOD.packageId, 10000001);
+            var id = new LorId(PackageInfo<TestMOD>.Id, 10000001);
 
             if (BookInventoryModel.Instance.GetBookCount(id) == 0)
             {
@@ -81,69 +186,6 @@ public static class PatchClass
             else
             {
                 Hermes.Say($"Already added the {id}");
-            }
-        }
-    }
-
-    [HarmonyPatch(typeof(UI.UIStoryProgressPanel), "SetStoryLine")]
-    class PatchTemp
-    {
-        static void Postfix()
-        {
-            var center = (UI.UIController.Instance?.GetUIPanel(UI.UIPanelType.Invitation) as UI.UIInvitationPanel)?
-                .InvCenterStoryPanel;
-
-            if (center is null)
-            {
-                Hermes.Say("center is null");
-                return;
-            }
-
-            var iconList = (List<UI.UIStoryProgressIconSlot>)center.GetType().Field("iconList").GetValue(center);
-
-            if (iconList is null)
-            {
-                Hermes.Say("iconList is null");
-                return;
-            }
-
-            foreach (var icon in iconList)
-            {
-                if (icon is null)
-                {
-                    continue;
-                }
-
-                if (icon.currentStory == UI.UIStoryLine.YunsOffice)
-                {
-                    var conLines = (List<GameObject>)icon.GetType().Field("connectLineList").GetValue(icon);
-
-                    if (conLines.Count == 0)
-                    {
-                        continue;
-                    }
-
-                    var lineBase = conLines[0];
-
-                    var ofsy = 250;
-
-                    (float, float) posA = (-1400f, 5420f + ofsy);
-                    (float, float) posB = (1460f, 6000f + ofsy);
-
-                    var createAt = ((posA.Item1 + posB.Item1) / 2, (posA.Item2 + posB.Item2) / 2);
-                    var dx = posB.Item1 - posA.Item1;
-                    var dy = posB.Item2 - posA.Item2;
-                    var rotate = Math.Atan2(dy, dx) * 180f / Math.PI;
-                    var scale = (Math.Sqrt(dx * dx + dy * dy) / 150f);
-
-                    var newLine = UnityEngine.Object.Instantiate(lineBase, lineBase.transform.parent);
-
-                    newLine.transform.localPosition = new Vector3(createAt.Item1, createAt.Item2);
-                    newLine.transform.localRotation = Quaternion.Euler(1f, 1f, ((float)rotate));
-                    newLine.transform.localScale = new Vector3(((float)scale), 1f, 1f);
-
-                    conLines.Add(newLine);
-                }
             }
         }
     }

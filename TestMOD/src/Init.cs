@@ -2,13 +2,35 @@ using System.Reflection;
 using HarmonyLib;
 using LOR_XML;
 using DeviceOfHermes;
+using DeviceOfHermes.UI;
 using DeviceOfHermes.AdvancedBase;
 using DeviceOfHermes.CustomDice;
 using DeviceOfHermes.Resource;
+using UnityEngine;
 
-public class TestMOD : ModInitializer
+class UITest : BattleUIBehaviour
 {
-    public static string packageId
+    void Awake()
+    {
+        InitUI(1003);
+    }
+
+    void Start()
+    {
+        gameObject.AddContainer(head =>
+        {
+            head.Also(s => s.name = "DonHead")
+                .MoveTo(new Vector2(0.51f, 0.95f))
+                .SetImage(TestMOD.DonHead);
+        });
+    }
+}
+
+public class TestMOD : ModInitializer, ModPackage
+{
+    public static Sprite DonHead = Artwork.CreateSprite(Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Artwork", "DonHead.png"));
+
+    public string packageId
     {
         get
         {
@@ -24,12 +46,56 @@ public class TestMOD : ModInitializer
 
         /* ModResource.LoadAdditionals(); */
 
+        StoryLineMaker.EnableUnrestrictedMap();
+
+        StoryLineMaker.RegisterLine(-1350f, 7830f, -1350f, 7130f);
+        StoryLineMaker.RegisterLine(-1350f, 7570f, -920f, 7540f);
+        StoryLineMaker.RegisterLine(-980f, 7840f, -920f, 7800f);
+        StoryLineMaker.RegisterLine(-940, 7940f, -860f, 7860f);
+
+        StoryLineMaker.RegisterLine(-770, 7700f, -660f, 7620f);
+        StoryLineMaker.RegisterLine(-700, 7200f, -150f, 7840f);
+
+        StoryLineMaker.RegisterSpecialIcon("TestMOD_Test", -660f, 750f, DonHead, () => "シン・ドンファンを本にしますか？");
+
+        var container = EnvContainer.Register<TestMOD>();
+
+        var crate = container.AddCrate("Crate1");
+
+        crate["Value1"] = "Text";
+        crate["Value2"] = 2;
+
+        crate.SetData("Image1", "Image1.png", new byte[0]);
+
+        Hermes.Say($"Value1: {crate["Value1"]}");
+        Hermes.Say($"Value2: {crate["Value2"]}");
+        Hermes.Say($"Image1: {crate.GetData("Image1")}");
+
+        container.Save();
+
+        ScheduleRunner.AddSchedule(ScheduleTiming.RoundStart, () =>
+        {
+            Faction.Player.AliveUnits.ForEach(unit => unit.allyCardDetail.AddTempCard(new LorId(packageId, 1)));
+        });
+
+        DynamicAbilityCfg.AddBattleUnitBufRoute<BattleUnitBuf_TestCustomBuf>("TestMOD_TestCustomBuf");
+
+        AssemblyManager.Instance.CreateInstance_DiceCardSelfAbility("Card-TestAdvCard-UseCard(estatbonus('power', -5), takedmg(1), allgain('KeywordBuf_Burn', 99), cardexhaust('', 505007))-Desc('このページは444回使用する')-Debug()");
+
         new AdditonalOnlyCard(new LorId(260004)).AddCards(new LorId(705011));
         var path = Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Artwork", "BattleUnitBuf", "TestCustomBuf.png");
 
         Artwork.SetBattleUnitBufSprite(path);
         Artwork.SetBattleUnitBufSprite("Strength", path, true);
         Artwork.SetStoryIconSprite("MolarOffice", HermesConstants.RevengeDiceHit, replace: true);
+        Artwork.SetStoryIconSprite("TestMOD_Test", DonHead, replace: true);
+
+        Artwork.LoadBattleUnitBufSprites(Path.GetDirectoryName(Path.GetDirectoryName(path)));
+
+        VannilaUnitBuf.AddAltId<BattleUnitBuf_bleeding>("DonHead", (_, _) => true);
+
+        StageLibrarianList.SetUnit(new LorId(packageId, 1), 4, new LorId(packageId, 1), "野ドン");
+        BattleManagerUI.Instance.AddBehaviour<UITest>("testUI");
 
         TextModel.OnLoadLocalize += lang =>
         {
@@ -128,7 +194,12 @@ public class TestMOD : ModInitializer
 
                 var tmp = Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Temp.xml");
 
-                var eff = ReadXmlParser.Read<BattleEffectText>(tmp);
+                var eff = Serde.FromXmlFile<BattleEffectText>(tmp);
+
+                Hermes.Say(Serde.ToXmlStr(eff));
+                Hermes.Say(Serde.ToJsonStr(eff));
+
+                eff = Serde.FromJsonStr<BattleEffectText>(Serde.ToJsonStr(eff));
 
                 eff?.Let(eff => TextModel.SetBattleEffectText(eff, true));
             }
@@ -137,7 +208,7 @@ public class TestMOD : ModInitializer
 
     private static void ApplyHarmonyPatch()
     {
-        Harmony harmony = new Harmony(TestMOD.packageId);
+        Harmony harmony = new Harmony(PackageInfo<TestMOD>.Id);
         foreach (Type type in typeof(PatchClass).GetNestedTypes(AccessTools.all))
         {
             harmony.CreateClassProcessor(type).Patch();
@@ -146,7 +217,7 @@ public class TestMOD : ModInitializer
 
     private static void MutePatch()
     {
-        Harmony harmony = new Harmony(TestMOD.packageId + ".MutePatch");
+        Harmony harmony = new Harmony(PackageInfo<TestMOD>.Id + ".MutePatch");
 
         MethodInfo postfix = typeof(TestMOD).GetMethod("MuteSameAssembly", BindingFlags.Static | BindingFlags.NonPublic);
 
@@ -199,11 +270,6 @@ public class TestMOD : ModInitializer
         {
             return origin - 1;
         }
-
-        public override int GetFinalResultBreakDamageValue(int origin)
-        {
-            return origin + 100;
-        }
     }
 
     public class DiceCardAbility_Unbreakable : UnbreakableDice
@@ -234,12 +300,17 @@ public class TestMOD : ModInitializer
 
         public override void OnBeforeRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
         {
+            base.owner.AddRencounterEvent(RencounterEvent.TakeDamaged, () => base.owner.view.Say("てめぇ...", 1f));
         }
 
         public override void OnRevenge(BattlePlayingCardDataInUnitModel card)
         {
             base.owner.view.Say("は、ルール違反ということか....", 1f);
         }
+    }
+
+    public class DiceCardAbility_Secondly : SecondlyDice
+    {
     }
 
     public class DiceCardSelfAbility_TestAdvCard : AdvancedCardBase
@@ -254,8 +325,69 @@ public class TestMOD : ModInitializer
         }
     }
 
+    class SpeedDiceBuf_Test : SpeedDiceBuf
+    {
+        public override string keywordId => "TestCustomBuf";
+
+        public override string keywordIconId => "BurnSpread";
+
+        public override void OnUseCard()
+        {
+            Hermes.Say("OnUseCard by SpeedDiceBuf");
+        }
+
+        public override void OnRoundEnd()
+        {
+            Destroy();
+        }
+    }
+
     public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
     {
+        public override int? HealthStopperLine => -50;
+
+        public override int DrawCardAddr => 0;
+
+        public override void OnClickUnit(ClickType ty)
+        {
+            Hermes.Say($"A unit clicked: {ty}");
+        }
+
+        public override void OnDropCard(BattlePlayingCardDataInUnitModel playcard)
+        {
+            if (playcard.target is null || playcard.target.IsDead())
+            {
+                var t = BattleObjectManager.instance.GetAliveList_random(playcard.owner.faction.FaceTo(), 1);
+
+                if (t.Count != 0)
+                {
+                    playcard.target = t[0];
+
+                    StageController.Instance.GetAllCards().Insert(0, playcard);
+                }
+            }
+        }
+
+        public override void OnWaveStart()
+        {
+            BattleMapChanger.SetMap(DonHead, DonHead, null, [
+                "C_roland_Oz_1",
+                "C_roland_Oz_2",
+                "C_roland_Oz_3",
+                "C_roland_Oz_4",
+                "C_roland_Oz_5",
+                "C_roland_Oz_6",
+                "C_roland_Oz_7",
+                "C_roland_Oz_8",
+                "C_roland_Oz_9",
+            ], Color.blue);
+        }
+
+        public override void OnUseCard(BattlePlayingCardDataInUnitModel curCard)
+        {
+            curCard.target.view.AddEffect(TestMOD.DonHead, new Vector2(0.5f, 0.52f), 0f, 3f);
+        }
+
         public override void OnRoundStartFirst()
         {
             UnityEngine.Debug.Log("RoundStartFirst");
@@ -263,6 +395,8 @@ public class TestMOD : ModInitializer
 
         public override void OnRoundStart()
         {
+            base.owner?.speedDiceBufDetail?.AddBuf(0, new SpeedDiceBuf_Test());
+
             UnityEngine.Debug.Log("RoundStart");
 
             var buf = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_TestCustomBuf());
@@ -282,9 +416,49 @@ public class TestMOD : ModInitializer
 
         public override bool IsAllowRoundEnd()
         {
-            UnityEngine.Debug.Log("Allow end");
+            if (_elapsed < Mathf.Epsilon)
+            {
+                base.owner.view.Say("は、解禁ということか...", 3f);
+            }
 
-            return base.IsAllowRoundEnd();
+            _elapsed += Time.deltaTime;
+
+            if (_elapsed > 5f)
+            {
+                _elapsed = 0f;
+                f1 = f2 = f3 = false;
+
+                return true;
+            }
+
+            if (_elapsed > 3f && !f3)
+            {
+                f3 = true;
+
+                base.owner.view.AddEffect(TestMOD.DonHead, new Vector2(0.5f, 0.52f), 0f, 0.9f, sizeScale: 5f);
+
+                return false;
+            }
+
+            if (_elapsed > 2f && !f2)
+            {
+                f2 = true;
+
+                base.owner.view.AddEffect(TestMOD.DonHead, new Vector2(0.5f, 0.52f), 0f, 0.9f, sizeScale: 3f);
+
+                return false;
+            }
+
+            if (_elapsed > 1f && !f1)
+            {
+                f1 = true;
+
+                base.owner.view.AddEffect(TestMOD.DonHead, new Vector2(0.5f, 0.52f), 0f, 0.9f, sizeScale: 1f);
+
+                return false;
+            }
+
+            return false;
         }
 
         public override void OnActivatedBuf(BattleUnitBuf activate)
@@ -296,6 +470,12 @@ public class TestMOD : ModInitializer
         {
             Hermes.Say($"Buf stack changed: {changed.bufType} {last} -> {changed.stack}");
         }
+
+        private float _elapsed;
+
+        private bool f1;
+        private bool f2;
+        private bool f3;
     }
 
     public class TestAmmoBuf : BattleAmmoBuf
@@ -304,7 +484,7 @@ public class TestMOD : ModInitializer
 
         public override int DefaultStack => 6;
 
-        public override bool DiceBlockWithNotConsumable => true;
+        public override bool DiceBlockWithNotConsumable => false;
 
         public override void OnBeforeConsume(ref int require)
         {

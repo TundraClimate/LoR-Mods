@@ -22,6 +22,7 @@
       <MaxPlayPoint>3</MaxPlayPoint>
       <StartPlayPoint>3</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
+      <Passive>1</Passive>
     </EquipEffect>
     <Rarity>Unique</Rarity>
     <CharacterSkin>ClassOneFixer</CharacterSkin>
