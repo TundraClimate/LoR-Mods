@@ -2,12 +2,12 @@ public class PassiveAbility_TundraPassivePack_DrainSmoke : AdvancedPassiveBase
 {
     public override void OnRoundStart()
     {
-        _count = 0;
+        _remainder.Reset();
     }
 
     public override void OnSucceedAttack(BattleDiceBehavior behavior)
     {
-        if (_count >= 3)
+        if (!_remainder.Remains)
         {
             return;
         }
@@ -28,17 +28,15 @@ public class PassiveAbility_TundraPassivePack_DrainSmoke : AdvancedPassiveBase
 
         if (selfSmoke.stack == 10)
         {
-            var dmgUp = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_dmgUp());
-
-            dmgUp.stack += 1;
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.DmgUp, 1, base.owner);
         }
         else
         {
-            selfSmoke.stack += 1;
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, 1, base.owner);
         }
 
-        _count += 1;
+        _remainder.Lose();
     }
 
-    private int _count = 0;
+    private Remainder _remainder = new(3);
 }

@@ -26,6 +26,29 @@ class UITest : BattleUIBehaviour
     }
 }
 
+class WithCursor : MonoBehaviour
+{
+    public void Init(GameObject ob)
+    {
+        card = ob;
+    }
+
+    void Update()
+    {
+        if (active)
+        {
+            card.MoveTo(new Vector2(
+                Mathf.Clamp01(Input.mousePosition.x / Screen.width),
+                Mathf.Clamp01(Input.mousePosition.y / Screen.height)
+            ));
+        }
+    }
+
+    public GameObject card;
+
+    public bool active;
+}
+
 public class TestMOD : ModInitializer, ModPackage
 {
     public static Sprite DonHead = Artwork.CreateSprite(Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Artwork", "DonHead.png"));
@@ -95,7 +118,9 @@ public class TestMOD : ModInitializer, ModPackage
         VannilaUnitBuf.AddAltId<BattleUnitBuf_bleeding>("DonHead", (_, _) => true);
 
         StageLibrarianList.SetUnit(new LorId(packageId, 1), 4, new LorId(packageId, 1), "野ドン");
+
         BattleManagerUI.Instance.AddBehaviour<UITest>("testUI");
+        BattleManagerUI.Instance.AddBehaviour<BattleFloatingDiceCardListUI>("cards");
 
         TextModel.OnLoadLocalize += lang =>
         {
@@ -368,8 +393,22 @@ public class TestMOD : ModInitializer, ModPackage
             }
         }
 
+        private BattleFloatingDiceCardUI _card;
+
         public override void OnWaveStart()
         {
+            _card = BattleManagerUI.Instance.GetBehaviour<BattleFloatingDiceCardListUI>("cards")
+                .AddCard(BattleDiceCardModel.CreatePlayingCard(ItemXmlDataList.instance.GetCardItem(701001)), new(0.5f, 0.75f));
+
+            var wc = _card.gameObject.AddComponent<WithCursor>();
+
+            wc.Init(_card.gameObject);
+
+            _card.OnClickCallBack += _ =>
+            {
+                wc.active = !wc.active;
+            };
+
             BattleMapChanger.SetMap(DonHead, DonHead, null, [
                 "C_roland_Oz_1",
                 "C_roland_Oz_2",
@@ -381,6 +420,11 @@ public class TestMOD : ModInitializer, ModPackage
                 "C_roland_Oz_8",
                 "C_roland_Oz_9",
             ], Color.blue);
+        }
+
+        public override void OnEndBattlePhase()
+        {
+            UnityEngine.Object.Destroy(_card.gameObject);
         }
 
         public override void OnUseCard(BattlePlayingCardDataInUnitModel curCard)
@@ -402,6 +446,17 @@ public class TestMOD : ModInitializer, ModPackage
             var buf = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_TestCustomBuf());
             var ammo = base.owner.GetBufAndInitIfNull(() => new TestAmmoBuf());
             var reload = base.owner.GetBufAndInitIfNull(() => new ReloadAmmoBuf<TestAmmoBuf>());
+
+            /* StorySerializer.isMod = true;
+            StorySerializer.curModPath = "";
+            StorySerializer.curScenario = StorySerializer.chapters[1];
+            StorySerializer.curChapter = StorySerializer.chapters[1].chapter;
+            StorySerializer.curEpisode = StorySerializer.chapters[1].groups[1 - 1].episodes[1 - 1];
+            StorySerializer.curEpisodeIdx = 1 - 1;
+            StorySerializer.curEpisodeNum = 1;
+            StorySerializer.curgroupidx = 1;
+
+            SingletonBehavior<BattleManagerUI>.Instance.ui_battleStory.OpenStory(null, false, false); */
         }
 
         public override void OnRoundStartAfter()

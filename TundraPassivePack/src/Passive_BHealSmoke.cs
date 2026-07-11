@@ -1,20 +1,10 @@
 public class PassiveAbility_TundraPassivePack_BHealSmoke : AdvancedPassiveBase
 {
-    public override void OnChangeBufStack(BattleUnitBuf changed, int last)
+    public override void OnAddBuf(BattleUnitBuf buf, int addedStack)
     {
-        if (changed.bufType is not KeywordBuf.Smoke)
+        if (buf is BattleUnitBuf_smoke)
         {
-            return;
-        }
-
-        if (0 > last)
-        {
-            last = 0;
-        }
-
-        if (changed.stack > last)
-        {
-            base.owner?.breakDetail?.RecoverBreak((changed.stack - last) * 3);
+            base.owner?.breakDetail?.RecoverBreak(addedStack * 3);
         }
     }
 }

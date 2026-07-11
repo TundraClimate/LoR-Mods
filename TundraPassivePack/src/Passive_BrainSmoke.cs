@@ -5,7 +5,7 @@ public class PassiveAbility_TundraPassivePack_BrainSmoke : AdvancedPassiveBase
         base.owner?.GetBufAndInitIfNull<BattleUnitBuf_smoke>(() => new BattleUnitBuf_smoke() { stack = 5 });
     }
 
-    public override void OnRoundStart()
+    public override void OnRoundStartLast()
     {
         if (base.owner?.GetBufStack<BattleUnitBuf_smoke>()?.Let(stack => stack >= 7) == true)
         {

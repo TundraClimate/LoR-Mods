@@ -11,11 +11,10 @@ public class PassiveAbility_TundraPassivePack_TakehereSmoke : AdvancedPassiveBas
 
         if (10 > lastStack)
         {
-            var smoke = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_smoke());
+            var needs = (10 - lastStack);
 
-            smoke.stack = 10;
-
-            base.owner.TakeDamage((10 - lastStack) * 5, DamageType.Passive, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Smoke, needs, base.owner);
+            base.owner.TakeDamage(needs * 5, DamageType.Passive, base.owner);
         }
     }
 }
