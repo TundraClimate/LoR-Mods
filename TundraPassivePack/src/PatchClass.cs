@@ -32,9 +32,12 @@ public static class PatchClass
     {
         static void Postfix()
         {
-            var id = new LorId(TundraPassivePack.packageId, 10000001);
+            AddBook(new LorId(TundraPassivePack.packageId, 10000001), 5);
+        }
 
-            for (int i = BookInventoryModel.Instance.GetBookCount(id); 5 > i; i++)
+        static void AddBook(LorId id, int needs)
+        {
+            for (int i = BookInventoryModel.Instance.GetBookCount(id); needs > i; i++)
             {
                 BookInventoryModel.Instance.CreateBook(id);
             }
