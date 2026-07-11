@@ -33,6 +33,7 @@ public static class PatchClass
         static void Postfix()
         {
             AddBook(new LorId(TundraPassivePack.packageId, 10000001), 5);
+            AddBook(new LorId(TundraPassivePack.packageId, 10000002), 5);
         }
 
         static void AddBook(LorId id, int needs)

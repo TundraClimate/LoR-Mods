@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+  <!-- v1 -->
+
   <Passive ID="1">
     <Name>煙供給</Name>
     <Desc>幕の終了時、煙を1得る</Desc>
@@ -167,4 +169,38 @@
     <Script>TundraPassivePack_ImagineSmoke</Script>
   </Passive>
 
+  <!-- v2 -->
+
+  <Passive ID="12">
+    <Name>攻撃は最大の防御</Name>
+    <Desc>舞台の開始時、デッキ内のページに以下の効果を同時に適用する(広域ページを除く)
+- 反撃ダイスには効果を適用しない。
+- 全ての攻撃ダイスを防御ダイスに変更する。
+- 全ての防御ダイスを貫通ダイスに変更する。</Desc>
+    <Cost>3</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_ChangeAtkAndDef</Script>
+  </Passive>
+
+  <Passive ID="13">
+    <Name>余剰なし</Name>
+    <Desc>幕の終了時、充電を全て消耗する。消耗した値によって以下の効果を得る(小数点切り捨て)
+- (消耗した値 ÷ 3)だけ光を回復する。(最大6)
+- (消耗した値 ÷ 5)だけ次の幕始めのページ抽出量が増加。(最大3)</Desc>
+    <Cost>5</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_ExCharge</Script>
+  </Passive>
 </PassiveXmlRoot>
