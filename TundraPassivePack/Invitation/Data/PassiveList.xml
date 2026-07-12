@@ -415,4 +415,24 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Ignite</Script>
   </Passive>
+
+  <Passive ID="28">
+    <Name>災い転じて福となす</Name>
+    <Desc>自分が生存しているのなら、自分以外の味方が毎幕開始時に以下の効果を得る(この効果は重複しない)
+- 混乱ダメージを8受ける。
+- 虚弱2・束縛1を得る。
+
+自分が死亡しているのなら、代わりに以下の効果を得る。
+- ページを1枚引いて光を1回復。
+- パワー1・クイック1を得る。</Desc>
+    <Cost>8</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Poverty</Script>
+  </Passive>
 </PassiveXmlRoot>
