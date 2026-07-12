@@ -9,6 +9,8 @@ public class TundraPassivePack : ModInitializer
     public override void OnInitializeMod()
     {
         ApplyHarmonyPatch();
+
+        VannilaUnitBuf.AddMaxIf<BattleUnitBuf_warpCharge>(80, (_, owner) => owner?.passiveDetail?.HasPassive<PassiveAbility_TundraPassivePack_HeavyBattery>() == true);
     }
 
     private static void ApplyHarmonyPatch()
