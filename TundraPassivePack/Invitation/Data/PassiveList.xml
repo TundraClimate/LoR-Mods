@@ -295,4 +295,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_EfficientCharge</Script>
   </Passive>
+
+  <Passive ID="20">
+    <Name>生体充電 充填</Name>
+    <Desc>舞台の開始時、充電を最大値まで得る。充電最大値だけダメージを受ける</Desc>
+    <Cost>3</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Uncommon</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_ChargeGainFirst</Script>
+  </Passive>
 </PassiveXmlRoot>
