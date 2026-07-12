@@ -435,4 +435,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Poverty</Script>
   </Passive>
+
+  <Passive ID="29">
+    <Name>死んでよかったヤツ</Name>
+    <Desc>死亡時、味方全員が混乱抵抗値を全快する</Desc>
+    <Cost>2</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Common</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Hated</Script>
+  </Passive>
 </PassiveXmlRoot>
