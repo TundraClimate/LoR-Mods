@@ -70,6 +70,7 @@
       <AddedStartDraw>0</AddedStartDraw>
       <Passive>12</Passive>
       <Passive>13</Passive>
+      <Passive>14</Passive>
     </EquipEffect>
     <Rarity>Common</Rarity>
     <CharacterSkin>ClassOneFixer</CharacterSkin>
