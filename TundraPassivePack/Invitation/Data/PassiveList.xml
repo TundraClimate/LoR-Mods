@@ -401,4 +401,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Boom</Script>
   </Passive>
+
+  <Passive ID="27">
+    <Name>着火</Name>
+    <Desc>味方を攻撃できる。味方に的中時、火傷15を付与(1人につき1度まで)</Desc>
+    <Cost>1</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Ignite</Script>
+  </Passive>
 </PassiveXmlRoot>
