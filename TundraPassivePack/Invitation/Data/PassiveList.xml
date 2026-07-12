@@ -323,4 +323,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_RegainCharge</Script>
   </Passive>
+
+  <Passive ID="22">
+    <Name>自律保護</Name>
+    <Desc>幕の開始時、充電を5得る。幕の終了時、最大3回"充電を3消耗し、次の幕に忍耐1・保護1を得る"を繰り返す</Desc>
+    <Cost>3</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_EnduGainThree</Script>
+  </Passive>
 </PassiveXmlRoot>
