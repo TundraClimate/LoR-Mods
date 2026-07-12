@@ -309,4 +309,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_ChargeGainFirst</Script>
   </Passive>
+
+  <Passive ID="21">
+    <Name>揮発充電 回収</Name>
+    <Desc>消耗した充電を蓄積する。合計蓄積量が99を超過したのなら、蓄積を初期化して充電を50得る</Desc>
+    <Cost>2</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Uncommon</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_RegainCharge</Script>
+  </Passive>
 </PassiveXmlRoot>
