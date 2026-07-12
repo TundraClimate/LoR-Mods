@@ -373,4 +373,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Discharge</Script>
   </Passive>
+
+  <Passive ID="25">
+    <Name>頑健</Name>
+    <Desc>全ての耐性が"耐性"になる</Desc>
+    <Cost>12</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Common</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Resist</Script>
+  </Passive>
 </PassiveXmlRoot>
