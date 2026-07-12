@@ -337,4 +337,25 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_EnduGainThree</Script>
   </Passive>
+
+  <Passive ID="23">
+    <Name>自己アップグレード:リミッター解除</Name>
+    <Desc>消耗した充電を蓄積する。蓄積量に応じて以下の強化を得る。
+- 50以上: 幕の開始時、体力を10回復。
+- 100以上: 幕の開始時、充電を10獲得して5消耗する。
+- 150以上: ページ使用時、パワー1を得る。
+- 200以上: ページ使用時、忍耐1を得る。
+- 300以上: 幕の開始時、クイック5を得る。
+- 400以上: 全ダイスの最小値・最大値が5増加。
+- 500以上: マッチ敗北時、マッチに引き分ける。</Desc>
+    <Cost>8</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Unlimit</Script>
+  </Passive>
 </PassiveXmlRoot>
