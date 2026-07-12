@@ -387,4 +387,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Resist</Script>
   </Passive>
+
+  <Passive ID="26">
+    <Name>導火線に火を</Name>
+    <Desc>戦闘開始時、自身に火傷が10以上あるなら自爆し、全ての敵と味方に火傷20・ダメージ20を与えて死亡する</Desc>
+    <Cost>1</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Boom</Script>
+  </Passive>
 </PassiveXmlRoot>
