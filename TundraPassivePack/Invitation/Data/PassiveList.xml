@@ -262,4 +262,23 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Cheat</Script>
   </Passive>
+
+  <Passive ID="18">
+    <Name>放電-肉体強化</Name>
+    <Desc>前の幕に消耗した充電量に応じて強化を得る
+- 10以上: ダメージ量増加を3得る。
+- 20以上: 保護2、混乱保護8を得る。
+- 30以上: パワー2、忍耐5を得る。
+- 40以上: 保護6、混乱保護12を得る。
+- 50以上: パワー3、忍耐7を得る。</Desc>
+    <Cost>5</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Uncommon</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_ChargeToPow</Script>
+  </Passive>
 </PassiveXmlRoot>
