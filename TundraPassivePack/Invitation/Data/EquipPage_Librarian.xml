@@ -73,13 +73,14 @@
       <Passive>14</Passive>
       <Passive>15</Passive>
       <Passive>16</Passive>
-      <Passive>17</Passive>
+      <!-- <Passive>17</Passive> -->
       <Passive>18</Passive>
       <Passive>19</Passive>
       <Passive>20</Passive>
       <Passive>21</Passive>
       <Passive>22</Passive>
       <Passive>23</Passive>
+      <Passive>24</Passive>
     </EquipEffect>
     <Rarity>Common</Rarity>
     <CharacterSkin>ClassOneFixer</CharacterSkin>
