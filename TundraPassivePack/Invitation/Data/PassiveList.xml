@@ -449,4 +449,21 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Hated</Script>
   </Passive>
+
+  <Passive ID="30">
+    <Name>死屍累累</Name>
+    <Desc>味方を攻撃することが出来る。殺害した味方の数に応じて以下の効果を得る
+- 1名ごとに速度ダイスが1つ増加
+- 2名ごとに幕開始時のページ抽出量が1枚増加
+- 4名ごとに光の最大値・幕開始時の光回復量が3増加</Desc>
+    <Cost>4</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Murderer</Script>
+  </Passive>
 </PassiveXmlRoot>
