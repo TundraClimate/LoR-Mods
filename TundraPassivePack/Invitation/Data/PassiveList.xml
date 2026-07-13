@@ -466,4 +466,25 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Murderer</Script>
   </Passive>
+
+  <Passive ID="31">
+    <Name>乖離: 孤独な復讐者</Name>
+    <Desc>味方を攻撃することが出来る。味方殺害時、以下の効果を得る
+- 混乱抵抗値の最大値の30%だけ混乱ダメージを受ける。
+- 恒常的に保護を1得る。
+
+味方がいない状態で混乱した場合、混乱を即座に解除して恒常的に以下の効果を得る(舞台につき1回)
+- パワーを殺害した味方の数だけ得る。
+- ダメージ量増加を殺害した味方の数だけ得る。
+- 脆弱を(殺害した味方の数 × 2)だけ得る。</Desc>
+    <Cost>4</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_Psycho</Script>
+  </Passive>
 </PassiveXmlRoot>
