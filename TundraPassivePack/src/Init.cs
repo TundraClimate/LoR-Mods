@@ -1,6 +1,7 @@
 global using DeviceOfHermes;
 global using DeviceOfHermes.AdvancedBase;
 using HarmonyLib;
+using DeviceOfHermes.Resource;
 
 public class TundraPassivePack : ModInitializer
 {
@@ -8,6 +9,8 @@ public class TundraPassivePack : ModInitializer
 
     public override void OnInitializeMod()
     {
+        Artwork.LoadBattleUnitBufSprites(Path.Combine(typeof(TundraPassivePack).GetAsmDirectory(), "Artwork", "BattleUnitBuf"));
+
         ApplyHarmonyPatch();
 
         VannilaUnitBuf.AddMaxIf<BattleUnitBuf_warpCharge>(80, (_, owner) => owner?.passiveDetail?.HasPassive<PassiveAbility_TundraPassivePack_HeavyBattery>() == true);
