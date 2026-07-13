@@ -1,8 +1,29 @@
+using System.Reflection;
 using HarmonyLib;
 using UI;
 
 public static class PatchClass
 {
+    [HarmonyPatch]
+    class PatchMaxCost
+    {
+        static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(BattleUnitCostUI), "SetCurrentMaxCost");
+            yield return AccessTools.Method(typeof(BattleUnitCostUI), "SetCurrentCost");
+        }
+
+        static Exception? Finalizer(Exception __exception)
+        {
+            if (__exception is ArgumentOutOfRangeException)
+            {
+                return null;
+            }
+
+            return __exception;
+        }
+    }
+
     [HarmonyPatch(typeof(BookModel), "get_ClassInfo")]
     class PatchSuccession
     {
