@@ -315,6 +315,11 @@ public class TestMOD : ModInitializer, ModPackage
         }
     }
 
+    public class DiceCardAbility_Equal : EqualDice
+    {
+        public static string Desc = "公平ダイス".Blue();
+    }
+
     public class DiceCardAbility_Revenge : RevengeDice
     {
         public static string Desc = "復讐ダイス".Purple();
@@ -373,6 +378,16 @@ public class TestMOD : ModInitializer, ModPackage
 
         public override int DrawCardAddr => 0;
 
+        public override void OnWaveStartBefore()
+        {
+            Hermes.Say("Before WaveStart");
+        }
+
+        public override void OnWaveStartAfter()
+        {
+            Hermes.Say("After WaveStart");
+        }
+
         public override void OnClickUnit(ClickType ty)
         {
             Hermes.Say($"A unit clicked: {ty}");
@@ -397,6 +412,8 @@ public class TestMOD : ModInitializer, ModPackage
 
         public override void OnWaveStart()
         {
+            Hermes.Say("On WaveStart");
+
             _card = BattleManagerUI.Instance.GetBehaviour<BattleFloatingDiceCardListUI>("cards")
                 .AddCard(BattleDiceCardModel.CreatePlayingCard(ItemXmlDataList.instance.GetCardItem(701001)), new(0.5f, 0.75f));
 
@@ -446,17 +463,6 @@ public class TestMOD : ModInitializer, ModPackage
             var buf = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_TestCustomBuf());
             var ammo = base.owner.GetBufAndInitIfNull(() => new TestAmmoBuf());
             var reload = base.owner.GetBufAndInitIfNull(() => new ReloadAmmoBuf<TestAmmoBuf>());
-
-            /* StorySerializer.isMod = true;
-            StorySerializer.curModPath = "";
-            StorySerializer.curScenario = StorySerializer.chapters[1];
-            StorySerializer.curChapter = StorySerializer.chapters[1].chapter;
-            StorySerializer.curEpisode = StorySerializer.chapters[1].groups[1 - 1].episodes[1 - 1];
-            StorySerializer.curEpisodeIdx = 1 - 1;
-            StorySerializer.curEpisodeNum = 1;
-            StorySerializer.curgroupidx = 1;
-
-            SingletonBehavior<BattleManagerUI>.Instance.ui_battleStory.OpenStory(null, false, false); */
         }
 
         public override void OnRoundStartAfter()

@@ -42,4 +42,22 @@
     <Chapter>7</Chapter>
     <Priority>0</Priority>
   </Card>
+
+  <Card ID="3">
+    <Name>Test Page 2</Name>
+    <Artwork />
+    <Rarity>Common</Rarity>
+    <Spec Range="Near" Cost="0" Affection ="One"/>
+    <Script>TestAdvCard</Script>
+    <ScriptDesc></ScriptDesc>
+    <BehaviourList>
+      <Behaviour Min="1" Dice="3" Type="Atk" Detail="Slash" Motion="J" EffectRes="" Script="Equal" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="3" Type="Atk" Detail="Penetrate" Motion="Z" EffectRes="" Script="Equal" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="3" Type="Atk" Detail="Hit" Motion="H" EffectRes="" Script="Equal" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="3" Type="Def" Detail="Guard" Motion="G" EffectRes="" Script="Equal" ActionScript="" Desc="" />
+      <Behaviour Min="1" Dice="3" Type="Def" Detail="Evasion" Motion="E" EffectRes="" Script="Equal" ActionScript="" Desc="" />
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <Priority>0</Priority>
+  </Card>
 </DiceCardXmlRoot>
