@@ -1,3 +1,4 @@
+global using DeviceOfHermes;
 using HarmonyLib;
 
 public class DeathThumb : ModInitializer
@@ -7,6 +8,8 @@ public class DeathThumb : ModInitializer
     public override void OnInitializeMod()
     {
         ApplyHarmonyPatch();
+
+        Ontick.Init();
     }
 
     private static void ApplyHarmonyPatch()
