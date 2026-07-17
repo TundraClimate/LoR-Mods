@@ -63,6 +63,28 @@ public static class PatchClass
         }
     }
 
+    [HarmonyPatch(typeof(BattleFarAreaPlayManager), "StartFarAreaPlay")]
+    class PatchStartFarAreaPlay
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.MatchStartForward(CodeMatch.Calls(typeof(List<BattlePlayingCardDataInUnitModel>).Method("get_Item")))
+                .SetInstruction(CodeInstruction.Call(typeof(PatchStartFarAreaPlay).Method("InjectMethod")));
+
+            matcher.MatchStartForward(CodeMatch.Calls(typeof(List<BattlePlayingCardDataInUnitModel>).Method("get_Item")))
+                .SetInstruction(CodeInstruction.Call(typeof(PatchStartFarAreaPlay).Method("InjectMethod")));
+
+            return matcher.Instructions();
+        }
+
+        static BattlePlayingCardDataInUnitModel InjectMethod(List<BattlePlayingCardDataInUnitModel> list, int index)
+        {
+            return list?.Count > index && index >= 0 ? list?[index] : null;
+        }
+    }
+
     [HarmonyPatch(typeof(BattleCamManager), "UpdateManual")]
     class PatchMouseCam
     {

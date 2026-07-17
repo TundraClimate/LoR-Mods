@@ -487,4 +487,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Psycho</Script>
   </Passive>
+
+  <Passive ID="32">
+    <Name>誰かの予知眼</Name>
+    <Desc>舞台開始時、予知眼を得る</Desc>
+    <Cost>4</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_OdinEye</Script>
+  </Passive>
 </PassiveXmlRoot>
