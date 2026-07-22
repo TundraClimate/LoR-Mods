@@ -529,4 +529,19 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Lucky</Script>
   </Passive>
+
+  <Passive ID="35">
+    <Name>自己犠牲</Name>
+    <Desc>&lt;mark=#FF000080&gt;舞台開始時、即死する&lt;/mark&gt;
+その後、自分以外の味方の感情レベルが1増加する(NEを獲得して増加したものと扱う)</Desc>
+    <Cost>0</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_UltimateSacrifice</Script>
+  </Passive>
 </PassiveXmlRoot>
