@@ -98,7 +98,7 @@ public class TestMOD : ModInitializer, ModPackage
 
         ScheduleRunner.AddSchedule(ScheduleTiming.RoundStart, () =>
         {
-            Faction.Player.AliveUnits.ForEach(unit => unit.allyCardDetail.AddTempCard(new LorId(packageId, 1)));
+            Faction.Player.AliveUnits.ForEach(unit => unit.allyCardDetail.AddTempCard(new LorId(packageId, 4)));
         });
 
         DynamicAbilityCfg.AddBattleUnitBufRoute<BattleUnitBuf_TestCustomBuf>("TestMOD_TestCustomBuf");
@@ -555,6 +555,19 @@ public class TestMOD : ModInitializer, ModPackage
         public override void OnConsume(int consumed)
         {
             Hermes.Say($"Wowow consumed {consumed} stack");
+        }
+    }
+
+    public class DiceCardSelfAbility_TestInstanceCard : AdvancedCardBase
+    {
+        public override void OnUseInstance(BattleUnitModel unit, BattleDiceCardModel self, BattleUnitModel targetUnit)
+        {
+            CustomLevelUpUI.OpenLevelUpUI(new PersonalLevelUpUI(unit) { name = "1級ページ選択" }, 0, () =>
+            [
+                EmotionCard.Get(PackageInfo<TestMOD>.Id, 0),
+                EmotionCard.Get(PackageInfo<TestMOD>.Id, 0),
+                EmotionCard.Get(PackageInfo<TestMOD>.Id, 0),
+            ]);
         }
     }
 }

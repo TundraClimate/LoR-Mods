@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EmotionCardXmlRoot>
+    <EmotionCard ID="0">
+        <Name>TestMOD_TEST</Name>
+        <State>Positive</State>
+        <Sephirah>ETC</Sephirah>
+        <Level>1</Level>
+        <EmotionLevel>1</EmotionLevel>
+        <EmotionRate>0</EmotionRate>
+
+        <TargetType>SelectOne</TargetType>
+
+        <Script>bossbird6</Script>
+    </EmotionCard>
+</EmotionCardXmlRoot>

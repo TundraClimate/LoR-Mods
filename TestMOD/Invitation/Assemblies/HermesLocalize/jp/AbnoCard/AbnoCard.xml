@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbnormalityCardsRoot>
+  <Sephirah SephirahType="ETC">
+    <AbnormalityCard ID="TestMOD_TEST">
+      <Abnormality>テスト</Abnormality>
+      <CardName>テスト</CardName>
+      <AbilityDesc>ここDesc</AbilityDesc>
+      <FlaborText>ここフレーバー</FlaborText>
+      <Dialogues>
+        <Dialogue ID="1">Dialogue</Dialogue>
+      </Dialogues>
+    </AbnormalityCard>
+  </Sephirah>
+</AbnormalityCardsRoot>

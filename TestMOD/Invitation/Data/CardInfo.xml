@@ -60,4 +60,17 @@
     <Chapter>7</Chapter>
     <Priority>0</Priority>
   </Card>
+
+  <Card ID="4">
+    <Name>Test Page 3</Name>
+    <Artwork />
+    <Rarity>Common</Rarity>
+    <Spec Range="Instance" Cost="0" Affection ="One"/>
+    <Script>TestInstanceCard</Script>
+    <ScriptDesc></ScriptDesc>
+    <BehaviourList>
+    </BehaviourList>
+    <Chapter>7</Chapter>
+    <Priority>0</Priority>
+  </Card>
 </DiceCardXmlRoot>

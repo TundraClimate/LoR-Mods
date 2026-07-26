@@ -56,6 +56,7 @@ public static class PatchClass
             AddBook(new LorId(TundraPassivePack.packageId, 10000001), 5);
             AddBook(new LorId(TundraPassivePack.packageId, 10000002), 5);
             AddBook(new LorId(TundraPassivePack.packageId, 10000003), 5);
+            AddBook(new LorId(TundraPassivePack.packageId, 10000004), 5);
         }
 
         static void AddBook(LorId id, int needs)
