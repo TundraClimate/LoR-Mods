@@ -42,6 +42,15 @@ public class TundraPassivePack : ModInitializer
 最大値: 30
 """
             },
+            new BattleEffectText {
+                ID = "Tundra_EqualDice",
+                Name = "公平ダイス",
+                Desc =
+"""
+マッチ中の互いのダイス最小値・最大値がそれぞれ平均化される
+この効果は既存のダイス最低値・最大値を変更する効果適用後に適用される
+"""
+            },
         ]);
 
         VannilaUnitBuf.AddMaxIf<BattleUnitBuf_warpCharge>(80, (_, owner) => owner?.passiveDetail?.HasPassive<PassiveAbility_TundraPassivePack_HeavyBattery>() == true);
