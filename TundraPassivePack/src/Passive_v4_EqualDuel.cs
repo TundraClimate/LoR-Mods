@@ -12,7 +12,7 @@ public class DiceCardAbility_TundraPassivePack_EqualDuel_1 : EqualDice
 {
     public override string[] Keywords => ["Tundra_EqualDice"];
 
-    public static string Desc = "公平ダイス".SizeAbs(60).Blue() + "\n[マッチ開始] 威力が10増加";
+    public static string Desc = "公平ダイス".SizeAbs(60).Hex("#9696FF") + "\n[マッチ開始] 威力が10増加";
 
     public override void BeforeRollDice()
     {
@@ -27,5 +27,5 @@ public class DiceCardAbility_TundraPassivePack_EqualDuel_Etc : EqualDice
 {
     public override string[] Keywords => ["Tundra_EqualDice"];
 
-    public static string Desc = "公平ダイス".SizeAbs(60).Blue();
+    public static string Desc = "公平ダイス".SizeAbs(60).Hex("#9696FF");
 }
