@@ -164,6 +164,7 @@
       <StartPlayPoint>3</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
       <Passive>36</Passive>
+      <Passive>37</Passive>
     </EquipEffect>
     <Rarity>Common</Rarity>
     <CharacterSkin>ClassOneFixer</CharacterSkin>
