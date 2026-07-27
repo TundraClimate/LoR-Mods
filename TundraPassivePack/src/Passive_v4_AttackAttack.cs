@@ -1,4 +1,6 @@
 using LOR_DiceSystem;
+using HarmonyLib;
+using HarmonyExtension;
 
 public class PassiveAbility_TundraPassivePack_AttackAttack : AdvancedPassiveBase
 {
@@ -9,10 +11,14 @@ public class PassiveAbility_TundraPassivePack_AttackAttack : AdvancedPassiveBase
 
         foreach (var card in cards)
         {
-            var behList = card.XmlData.DiceBehaviourList;
+            ref var data = ref _xmlInfoRef(card);
+
+            data = data.Copy(true);
+
+            var behList = data.DiceBehaviourList;
             List<DiceBehaviour> bin = new();
 
-            foreach (ref var beh in behList.AsRef())
+            foreach (var beh in behList)
             {
                 if (beh.Type is BehaviourType.Def)
                 {
@@ -27,4 +33,7 @@ public class PassiveAbility_TundraPassivePack_AttackAttack : AdvancedPassiveBase
             behList.Add(new DiceBehaviour { Min = 4, Dice = 6, Type = BehaviourType.Atk, Detail = BehaviourDetail.Slash, MotionDetail = MotionDetail.J, MotionDetailDefault = MotionDetail.N });
         }
     }
+
+    static AccessTools.FieldRef<BattleDiceCardModel, DiceCardXmlInfo> _xmlInfoRef
+        = typeof(BattleDiceCardModel).FieldRefAccess<DiceCardXmlInfo>("_xmlData");
 }

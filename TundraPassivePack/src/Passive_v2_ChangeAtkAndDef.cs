@@ -1,4 +1,6 @@
 using LOR_DiceSystem;
+using HarmonyLib;
+using HarmonyExtension;
 
 public class PassiveAbility_TundraPassivePack_ChangeAtkAndDef : AdvancedPassiveBase
 {
@@ -9,7 +11,11 @@ public class PassiveAbility_TundraPassivePack_ChangeAtkAndDef : AdvancedPassiveB
 
         foreach (var card in cards)
         {
-            var behList = card.XmlData.DiceBehaviourList;
+            ref var data = ref _xmlInfoRef(card);
+
+            data = data.Copy(true);
+
+            var behList = data.DiceBehaviourList;
 
             for (var i = 0; behList.Count > i; i++)
             {
@@ -45,4 +51,7 @@ public class PassiveAbility_TundraPassivePack_ChangeAtkAndDef : AdvancedPassiveB
             }
         }
     }
+
+    static AccessTools.FieldRef<BattleDiceCardModel, DiceCardXmlInfo> _xmlInfoRef
+        = typeof(BattleDiceCardModel).FieldRefAccess<DiceCardXmlInfo>("_xmlData");
 }
