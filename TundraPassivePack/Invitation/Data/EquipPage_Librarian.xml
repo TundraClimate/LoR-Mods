@@ -165,6 +165,7 @@
       <AddedStartDraw>0</AddedStartDraw>
       <Passive>36</Passive>
       <Passive>37</Passive>
+      <Passive>38</Passive>
     </EquipEffect>
     <Rarity>Common</Rarity>
     <CharacterSkin>ClassOneFixer</CharacterSkin>

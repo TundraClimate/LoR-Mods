@@ -504,7 +504,7 @@
 
   <Passive ID="33">
     <Name>1.5撃</Name>
-    <Desc>反撃を除いてダイスが1つのページを使用した時、追撃する確率が50%増加</Desc>
+    <Desc>反撃を除いてダイスが1つのページを使用した時、攻撃が連続ヒットする確率が50%増加</Desc>
     <Cost>3</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
@@ -571,5 +571,19 @@
     <CanReceivePassive>false</CanReceivePassive>
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_AttackAttack</Script>
+  </Passive>
+
+  <Passive ID="38">
+    <Name>ほどほどにもつれた時間</Name>
+    <Desc>攻撃が連続ヒットする回数が1増加</Desc>
+    <Cost>7</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_SecondAttack</Script>
   </Passive>
 </PassiveXmlRoot>

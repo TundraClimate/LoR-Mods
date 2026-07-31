@@ -437,6 +437,83 @@ public class TestMOD : ModInitializer, ModPackage
                 "C_roland_Oz_8",
                 "C_roland_Oz_9",
             ], Color.blue);
+
+            var supplies = 10;
+
+            var manager = BattleManagerUI.Instance.ui_unitListInfoSummary;
+            var yAdder = 64;
+            var originSize = manager.enemyProfileArray.Length;
+
+            if (supplies > originSize)
+            {
+                var pref = manager.enemyProfileArray.Last();
+
+                Array.Resize(ref manager.enemyProfileArray, supplies);
+
+                for (var i = originSize; supplies > i; i++)
+                {
+                    var cloned = UnityEngine.Object.Instantiate(pref, pref.gameObject.transform.parent);
+
+                    cloned.gameObject.name = $"[DoH] Enemy Added +{yAdder}";
+                    cloned.transform.localPosition += new Vector3(0, yAdder, 0);
+
+                    yAdder += 64;
+
+                    manager.enemyProfileArray[i] = cloned;
+                }
+            }
+
+            yAdder = 64;
+            originSize = manager.allyProfileArray.Length;
+
+            if (supplies > originSize)
+            {
+                var pref = manager.allyProfileArray.Last();
+
+                Array.Resize(ref manager.allyProfileArray, supplies);
+
+                for (var i = originSize; supplies > i; i++)
+                {
+                    var cloned = UnityEngine.Object.Instantiate(pref, pref.gameObject.transform.parent);
+
+                    cloned.gameObject.name = $"[DoH] Librarian Added +{yAdder}";
+                    cloned.transform.localPosition += new Vector3(0, yAdder, 0);
+
+                    yAdder += 64;
+
+                    manager.allyProfileArray[i] = cloned;
+                }
+            }
+
+            var coin = BattleManagerUI.Instance.ui_battleEmotionCoinUI;
+
+            originSize = coin.enermy.Length;
+
+            if (supplies > originSize)
+            {
+                var pref = coin.enermy[4];
+
+                Array.Resize(ref coin.enermy, supplies);
+
+                for (var i = originSize; supplies > i; i++)
+                {
+                    coin.enermy[i] = new() { target = pref.target };
+                }
+            }
+
+            originSize = coin.librarian.Length;
+
+            if (supplies > originSize)
+            {
+                var pref = coin.librarian[4];
+
+                Array.Resize(ref coin.librarian, supplies);
+
+                for (var i = originSize; supplies > i; i++)
+                {
+                    coin.librarian[i] = new() { target = pref.target };
+                }
+            }
         }
 
         public override void OnEndBattlePhase()
@@ -537,6 +614,33 @@ public class TestMOD : ModInitializer, ModPackage
         private bool f1;
         private bool f2;
         private bool f3;
+
+        public override void OnRoundEnd()
+        {
+            try
+            {
+                NewCharacter(1);
+                NewCharacter(2);
+                NewCharacter(3);
+                NewCharacter(4);
+                NewCharacter(5);
+                NewCharacter(6);
+                NewCharacter(7);
+                NewCharacter(8);
+                NewCharacter(9);
+
+                BattleObjectManager.instance.InitUI();
+            }
+            catch (Exception e)
+            {
+                Hermes.Say($"{e}", MessageLevel.Warn);
+            }
+        }
+
+        void NewCharacter(int idx)
+        {
+            UI.UICharacterRenderer.Instance.SetCharacter(StageController.Instance.AddNewUnit(Faction.Enemy, new LorId(43005), idx).UnitData.unitData, idx);
+        }
     }
 
     public class TestAmmoBuf : BattleAmmoBuf

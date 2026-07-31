@@ -16,5 +16,21 @@
         <Position>
             <Vector x="17" y="-12"/>
         </Position>
+
+        <Position>
+            <Vector x="13" y="0"/>
+        </Position>
+        <Position>
+            <Vector x="14" y="0"/>
+        </Position>
+        <Position>
+            <Vector x="15" y="0"/>
+        </Position>
+        <Position>
+            <Vector x="16" y="0"/>
+        </Position>
+        <Position>
+            <Vector x="17" y="0"/>
+        </Position>
     </Formation>
 </FormationXmlRoot>
