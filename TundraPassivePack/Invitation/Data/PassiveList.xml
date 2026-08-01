@@ -586,4 +586,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_SecondAttack</Script>
   </Passive>
+
+  <Passive ID="39">
+    <Name>同化-カーリー</Name>
+    <Desc>舞台開始時、「カーリー」と同化する</Desc>
+    <Cost>12</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_FusionRedMist</Script>
+  </Passive>
 </PassiveXmlRoot>

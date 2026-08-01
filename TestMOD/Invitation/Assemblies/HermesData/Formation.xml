@@ -33,4 +33,38 @@
             <Vector x="17" y="0"/>
         </Position>
     </Formation>
+
+    <Formation ID="101">
+        <Position>
+            <Vector x="0" y="0"/>
+        </Position>
+        <Position>
+            <Vector x="1" y="1"/>
+        </Position>
+        <Position>
+            <Vector x="2" y="2"/>
+        </Position>
+        <Position>
+            <Vector x="3" y="3"/>
+        </Position>
+        <Position>
+            <Vector x="4" y="4"/>
+        </Position>
+
+        <Position>
+            <Vector x="5" y="5"/>
+        </Position>
+        <Position>
+            <Vector x="6" y="6"/>
+        </Position>
+        <Position>
+            <Vector x="7" y="7"/>
+        </Position>
+        <Position>
+            <Vector x="8" y="8"/>
+        </Position>
+        <Position>
+            <Vector x="9" y="9"/>
+        </Position>
+    </Formation>
 </FormationXmlRoot>
