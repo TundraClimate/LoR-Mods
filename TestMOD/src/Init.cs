@@ -440,15 +440,6 @@ public class TestMOD : ModInitializer, ModPackage
                 "C_roland_Oz_9",
             ], Color.blue);
 
-            while (StageController.Instance.TryAddNewEnemy(new LorId(43005)))
-            {
-                Hermes.Say($"Add id=43005 unit");
-            }
-
-            StageController.Instance.TryAddNewLibrarian(new LorId(50051), 0);
-            StageController.Instance.TryAddNewLibrarian(new LorId(50039), 1);
-            StageController.Instance.TryAddNewLibrarian(new LorId(50040), 2);
-
             BattleObjectManager.instance.InitUI();
         }
 

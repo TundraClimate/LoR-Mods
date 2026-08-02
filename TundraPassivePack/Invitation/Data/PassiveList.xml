@@ -600,4 +600,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_FusionRedMist</Script>
   </Passive>
+
+  <Passive ID="40">
+    <Name>緊急HPアンプル</Name>
+    <Desc>死亡時、その幕の終了前に体力最大・混乱を解除して蘇生する(舞台ごとに1回)</Desc>
+    <Cost>11</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Common</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_HpAmpoule</Script>
+  </Passive>
 </PassiveXmlRoot>
