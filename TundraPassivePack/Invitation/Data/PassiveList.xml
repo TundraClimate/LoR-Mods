@@ -561,7 +561,7 @@
 
   <Passive ID="37">
     <Name>攻撃は最大の攻撃</Name>
-    <Desc>舞台開始時、手札の全ての守備ダイスを除去して斬撃ダイス(4-6)を追加する(広域を除く)</Desc>
+    <Desc>舞台開始時、デッキ内の全ての守備ダイスを除去して斬撃ダイス(4-6)を追加する(広域を除く)</Desc>
     <Cost>3</Cost>
     <Negative>false</Negative>
     <IsHide>false</IsHide>
