@@ -1,12 +1,20 @@
+using System;
 using HarmonyLib;
 
 public class UltraSandBagMOD : ModInitializer
 {
-    public static string packageId => "UltraSandBagMOD";
+    public static string packageId
+    {
+        get
+        {
+            return "UltraSandBagMOD";
+        }
+    }
 
     public override void OnInitializeMod()
     {
-        ApplyHarmonyPatch();
+        UltraSandBagMOD.ApplyHarmonyPatch();
+        ModResource.LoadAdditionals();
     }
 
     private static void ApplyHarmonyPatch()
