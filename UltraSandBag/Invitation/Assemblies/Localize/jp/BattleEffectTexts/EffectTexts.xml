@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BattleEffectTextRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <effectTextList>
-        <BattleEffectText ID="DamageCount">
+        <BattleEffectText ID="UltraSandBagMOD_DamageCount">
             <Name>体力減少量</Name>
             <Desc>前の幕で減少した体力</Desc>
         </BattleEffectText>
-        <BattleEffectText ID="DamageShow">
+        <BattleEffectText ID="UltraSandBagMOD_DamageShow">
             <Name>体力減少量</Name>
             <Desc>この幕で減少した体力</Desc>
         </BattleEffectText>

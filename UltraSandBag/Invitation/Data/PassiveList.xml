@@ -1,2 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <Passive ID="1">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>UltraSandBagMOD_DamageCount</Script>
+    <Name>サンドバッグ-計測</Name>
+    <Desc>受けたダメージを表示する</Desc>
+  </Passive>
+
+  <Passive ID="2">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>UltraSandBagMOD_RepairBody</Script>
+    <Name>サンドバッグ-修復</Name>
+    <Desc>毎幕体力を全回復する
+混乱ダメージを受けない
+体力が0以下に減少しない</Desc>
+  </Passive>
+
+  <Passive ID="3">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>UltraSandBagMOD_DeckAddForEnemy</Script>
+    <Name>サンドバッグ-提供</Name>
+    <Desc>敵の個人ページリストに特殊なページを追加する</Desc>
+  </Passive>
+
+  <Passive ID="4">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>UltraSandBagMOD_End</Script>
+    <Name>サンドバッグ-終了</Name>
+    <Desc>このユニットを3回右クリックすると接待が終了する</Desc>
+  </Passive>
+
+</PassiveXmlRoot>
