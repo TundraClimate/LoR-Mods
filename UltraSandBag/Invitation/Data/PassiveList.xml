@@ -59,4 +59,18 @@
     <Desc>このユニットを3回右クリックすると接待が終了する</Desc>
   </Passive>
 
+  <Passive ID="5">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>UltraSandBagMOD_UnitBuf</Script>
+    <Name>サンドバッグ-調整</Name>
+    <Desc>クリック可能である特殊なバフ効果を得る</Desc>
+  </Passive>
+
 </PassiveXmlRoot>

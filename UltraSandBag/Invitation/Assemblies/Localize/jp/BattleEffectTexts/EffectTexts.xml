@@ -9,5 +9,10 @@
             <Name>体力減少量</Name>
             <Desc>この幕で減少した体力</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="UltraSandBagMOD_Resist">
+            <Name>耐性調整</Name>
+            <Desc>このバフを左クリックすると、全ての耐性が1段階強化される
+このバフを右クリックすると、全ての耐性が1段階弱化される</Desc>
+        </BattleEffectText>
     </effectTextList>
 </BattleEffectTextRoot>
