@@ -5,6 +5,7 @@ public class PassiveAbility_UltraSandBagMOD_UnitBuf : AdvancedPassiveBase
     public override void OnWaveStart()
     {
         base.owner.GetBufAndInitIfNull<BattleUnitBuf_Resist>(() => new());
+        base.owner.GetBufAndInitIfNull<BattleUnitBuf_Break>(() => new());
     }
 
     class BattleUnitBuf_Resist : AdvancedUnitBuf
@@ -63,5 +64,15 @@ public class PassiveAbility_UltraSandBagMOD_UnitBuf : AdvancedPassiveBase
         }
 
         private AtkResist res = AtkResist.Normal;
+    }
+
+    class BattleUnitBuf_Break : AdvancedUnitBuf
+    {
+        protected override string keywordId => "UltraSandBagMOD_Break";
+
+        public override void OnClick(ClickType ty)
+        {
+            base._owner.breakDetail.nextTurnBreak = true;
+        }
     }
 }

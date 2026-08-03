@@ -14,5 +14,9 @@
             <Desc>このバフを左クリックすると、全ての耐性が1段階強化される
 このバフを右クリックすると、全ての耐性が1段階弱化される</Desc>
         </BattleEffectText>
+        <BattleEffectText ID="UltraSandBagMOD_Break">
+            <Name>混乱</Name>
+            <Desc>このバフをクリックすると、次の幕に混乱する</Desc>
+        </BattleEffectText>
     </effectTextList>
 </BattleEffectTextRoot>
