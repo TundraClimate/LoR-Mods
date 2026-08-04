@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<PassiveDescRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <PassiveDesc ID="1">
+    <Name>時間差の攻撃</Name>
+    <Desc>戦闘終了前、残っている全ての反撃ダイスをランダムな敵に全て攻撃ダイスとして使用する</Desc>
+  </PassiveDesc>
+  <PassiveDesc ID="2">
+    <Name>時間差の被撃</Name>
+    <Desc>体力・混乱抵抗値が減少した時、代わりにダメージをストックする
+
+幕の開始時、前の幕にてストックしたダメージを受ける</Desc>
+  </PassiveDesc>
+</PassiveDescRoot>

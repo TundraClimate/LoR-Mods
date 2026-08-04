@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<BattleCardAbilityDescRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BattleCardAbility ID="RevengeNormal">
+    <Desc />
+  </BattleCardAbility>
+  <BattleCardAbility ID="RevengeDebuf">
+    <Desc>[的中] 次の幕に麻痺3と出血2を付与</Desc>
+  </BattleCardAbility>
+</BattleCardAbilityDescRoot>

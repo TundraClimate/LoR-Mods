@@ -1,4 +1,3 @@
-using System.Reflection;
 using HarmonyLib;
 using LOR_XML;
 using DeviceOfHermes;
@@ -53,21 +52,11 @@ public class TestMOD : ModInitializer, ModPackage
 {
     public static Sprite DonHead = Artwork.CreateSprite(Path.Combine(typeof(TestMOD).GetAsmDirectory(), "Artwork", "DonHead.png"));
 
-    public string packageId
-    {
-        get
-        {
-            return "TestMOD";
-        }
-    }
+    public string packageId => "TestMOD";
 
     public override void OnInitializeMod()
     {
-        TestMOD.MutePatch();
-        TestMOD.ApplyHarmonyPatch();
         DebugConsole.Open();
-
-        /* ModResource.LoadAdditionals(); */
 
         StoryLineMaker.EnableUnrestrictedMap();
 
@@ -242,30 +231,18 @@ public class TestMOD : ModInitializer, ModPackage
         }
     }
 
-    private static void MutePatch()
+    [HarmonyPatch(typeof(Mod.ModContentManager), "GetErrorLogs")]
+    class PatchMuteError
     {
-        Harmony harmony = new Harmony(PackageInfo<TestMOD>.Id + ".MutePatch");
-
-        MethodInfo postfix = typeof(TestMOD).GetMethod("MuteSameAssembly", BindingFlags.Static | BindingFlags.NonPublic);
-
-        harmony.Patch(typeof(Mod.ModContentManager).GetMethod("GetErrorLogs"), postfix: new HarmonyMethod(postfix));
-    }
-
-    private static void MuteSameAssembly(ref List<string> __result)
-    {
-        List<string> bin = new List<string>();
-
-        foreach (string err in __result)
+        static void Postfix(ref List<string> __result)
         {
-            if (err.Contains("The same assembly name already exists."))
+            foreach (var err in __result.AsDefer(out var bin))
             {
-                bin.Add(err);
+                if (err.Contains("The same assembly name already exists."))
+                {
+                    bin.Remove(err);
+                }
             }
-        }
-
-        foreach (string trash in bin)
-        {
-            __result.Remove(trash);
         }
     }
 
