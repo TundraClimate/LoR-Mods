@@ -5,7 +5,27 @@ using DeviceOfHermes.UI;
 using DeviceOfHermes.AdvancedBase;
 using DeviceOfHermes.CustomDice;
 using DeviceOfHermes.Resource;
+using LimbufOfHermes;
 using UnityEngine;
+
+[KeywordBufExtend]
+public class MyKeywordBuf
+{
+    [KeywordBuf(typeof(TestTremor))]
+    public KeywordBuf TestTremor { get; set; }
+}
+
+class TestTremor : BattleUnitBuf_Limbuf_Tremor
+{
+    protected override string keywordId => "DonHead";
+
+    public override KeywordBuf bufType => KeywordBuf.None;
+
+    public override void OnTremorBurst(int stack)
+    {
+        base._owner.TakeDamage(stack / 10);
+    }
+}
 
 class UITest : BattleUIBehaviour
 {
@@ -108,6 +128,7 @@ public class TestMOD : ModInitializer, ModPackage
 
         VannilaUnitBuf.AddAltId<BattleUnitBuf_bleeding>("DonHead", (_, _) => true);
 
+        StageLibrarianList.AddUnit(new LorId(60002), new LorId(packageId, 1), "野ドン");
         StageLibrarianList.SetUnit(new LorId(packageId, 1), 4, new LorId(packageId, 1), "野ドン");
 
         BattleManagerUI.Instance.AddBehaviour<UITest>("testUI");
@@ -351,7 +372,7 @@ public class TestMOD : ModInitializer, ModPackage
         }
     }
 
-    public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase
+    public class PassiveAbility_TestAdvPassive : AdvancedPassiveBase, ILimbuf.OnBreakBarrier
     {
         public override int? HealthStopperLine => -50;
 
@@ -370,6 +391,22 @@ public class TestMOD : ModInitializer, ModPackage
         public override void OnClickUnit(ClickType ty)
         {
             Hermes.Say($"A unit clicked: {ty}");
+
+            if (ty is ClickType.Right)
+            {
+                base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorBurst, 1, base.owner);
+                base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.ConsumeTremor, 10, base.owner);
+
+                base.owner.bufListDetail.RemoveBufAll(typeof(BattleUnitBuf_Limbuf_Shin));
+            }
+            else if (ty is ClickType.Middle)
+            {
+                base.owner.bufListDetail.AddBuf(new TestTremor());
+                base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorConversion, 1, base.owner);
+                base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorEntangle, 1, base.owner);
+
+                base.owner.bufListDetail.AddBuf(new BattleUnitBuf_Limbuf_Shin());
+            }
         }
 
         public override void OnDropCard(BattlePlayingCardDataInUnitModel playcard)
@@ -392,6 +429,9 @@ public class TestMOD : ModInitializer, ModPackage
         public override void OnWaveStart()
         {
             Hermes.Say("On WaveStart");
+
+            StageBufListDetail.ActivateStageBuf(StageBuf.Bloodfeast);
+            StageBufListDetail.ActivateStageBuf(StageBuf.Scorchfield);
 
             _card = BattleManagerUI.Instance.GetBehaviour<BattleFloatingDiceCardListUI>("cards")
                 .AddCard(BattleDiceCardModel.CreatePlayingCard(ItemXmlDataList.instance.GetCardItem(701001)), new(0.5f, 0.75f));
@@ -428,6 +468,11 @@ public class TestMOD : ModInitializer, ModPackage
         public override void OnUseCard(BattlePlayingCardDataInUnitModel curCard)
         {
             curCard.target.view.AddEffect(TestMOD.DonHead, new Vector2(0.5f, 0.52f), 0f, 3f);
+
+            if (StageBufListDetail.TryConsume(StageBuf.Bloodfeast, 30, base.owner))
+            {
+                Hermes.Say($"Consumes {30} bloodfeast");
+            }
         }
 
         public override void OnRoundStartFirst()
@@ -444,6 +489,53 @@ public class TestMOD : ModInitializer, ModPackage
             var buf = base.owner.GetBufAndInitIfNull(() => new BattleUnitBuf_TestCustomBuf());
             var ammo = base.owner.GetBufAndInitIfNull(() => new TestAmmoBuf());
             var reload = base.owner.GetBufAndInitIfNull(() => new ReloadAmmoBuf<TestAmmoBuf>());
+
+            base.owner.allyCardDetail.GetAllDeck().ForEach(card => card.AddBuf(new Debug()));
+
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.Rupture, 1, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.Tremor, 100, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.Sinking, 100, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.Poise, 10, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.SlashVulnerable, 1, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.PenetrateVulnerable, 1, base.owner);
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.HitVulnerable, 1, base.owner);
+
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.Barrier, 50, base.owner);
+
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(KeywordBuf.Bleeding, 30, base.owner);
+        }
+
+        public void OnBreakBarrier()
+        {
+            base.owner.AddRencounterEvent(RencounterEvent.TakeDamaged, () =>
+            {
+                base.owner.view.AddEffect(TestMOD.DonHead, new Vector2(0.5f, 0.52f), 0f, 0.9f, sizeScale: 3f);
+
+                base.owner.view.StartCoroutine(EffectRoutine());
+            });
+        }
+
+        System.Collections.IEnumerator EffectRoutine()
+        {
+            yield return null;
+
+            var tick = 0f;
+
+            while (tick < 0.5f)
+            {
+                base.owner.view.AddEffect(TestMOD.DonHead, new Vector2(RandomUtil.RangeFloat(0.3f, 0.7f), RandomUtil.RangeFloat(0.3f, 0.7f)), 0f, 0.9f, sizeScale: 1f);
+
+                tick += Time.deltaTime;
+
+                yield return new WaitForSeconds(0.02f);
+            }
+        }
+
+        class Debug : AdvancedCardBuf
+        {
+            protected override string keywordId => "Debug";
+
+            protected override string keywordIconId => "Strength";
         }
 
         public override void OnRoundStartAfter()

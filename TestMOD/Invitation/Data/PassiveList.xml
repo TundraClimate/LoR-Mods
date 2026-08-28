@@ -11,6 +11,6 @@
     <Cost>1</Cost>
     <Script>TestAdvPassive</Script>
     <Name>TestPassive</Name>
-    <Desc>test</Desc>
+    <Desc>test &lt;sprite name="don"&gt;</Desc>
   </Passive>
 </PassiveXmlRoot>
