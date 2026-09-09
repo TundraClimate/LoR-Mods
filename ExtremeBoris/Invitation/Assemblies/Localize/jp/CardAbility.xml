@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <BattleCardAbilityDescRoot>
+
+    <!-- Card -->
+
     <BattleCardAbility ID="ExtremeBoris_Boris">
         <Desc>このページを使用する間、互いのダイスは威力の効果を受けない</Desc>
         <Desc>[使用時] ダメージ量増加を2得る</Desc>
     </BattleCardAbility>
+
+    <BattleCardAbility ID="ExtremeBoris_IronFist">
+        <Desc>[使用時] ページを1枚引き、光を1回復する</Desc>
+    </BattleCardAbility>
+
+    <!-- Dice -->
 
     <BattleCardAbility ID="ExtremeBoris_BorisDecide">
         <Desc>&lt;size=70%&gt;&lt;color=#9999FF&gt;公平&lt;/color&gt;&lt;/size&gt;

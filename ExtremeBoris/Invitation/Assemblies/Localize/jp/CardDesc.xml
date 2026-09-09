@@ -4,5 +4,9 @@
         <BattleCardDesc ID="1">
             <LocalizedName>断罪</LocalizedName>
         </BattleCardDesc>
+
+        <BattleCardDesc ID="2">
+            <LocalizedName>アイアンフィスト</LocalizedName>
+        </BattleCardDesc>
     </cardDescList>
 </BattleCardDescRoot>

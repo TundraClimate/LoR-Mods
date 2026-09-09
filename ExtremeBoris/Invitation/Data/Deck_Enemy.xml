@@ -3,5 +3,6 @@
   <Version>1.1</Version>
   <Deck ID="1">
     <Card>1</Card>
+    <Card>2</Card>
   </Deck>
 </DeckXmlRoot>
