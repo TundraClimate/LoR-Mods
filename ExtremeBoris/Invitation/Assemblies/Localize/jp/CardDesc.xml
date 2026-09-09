@@ -8,5 +8,9 @@
         <BattleCardDesc ID="2">
             <LocalizedName>アイアンフィスト</LocalizedName>
         </BattleCardDesc>
+
+        <BattleCardDesc ID="3">
+            <LocalizedName>鋼鉄の防御</LocalizedName>
+        </BattleCardDesc>
     </cardDescList>
 </BattleCardDescRoot>

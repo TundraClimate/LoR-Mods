@@ -1,6 +1,7 @@
 global using DeviceOfHermes;
 global using DeviceOfHermes.AdvancedBase;
 global using DeviceOfHermes.CustomDice;
+global using LimbufOfHermes;
 using DeviceOfHermes.Resource;
 using LOR_XML;
 

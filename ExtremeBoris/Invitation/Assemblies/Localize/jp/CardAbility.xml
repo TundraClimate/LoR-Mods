@@ -12,6 +12,10 @@
         <Desc>[使用時] ページを1枚引き、光を1回復する</Desc>
     </BattleCardAbility>
 
+    <BattleCardAbility ID="ExtremeBoris_IronGuard">
+        <Desc>[使用時] 呼吸を8獲得</Desc>
+    </BattleCardAbility>
+
     <!-- Dice -->
 
     <BattleCardAbility ID="ExtremeBoris_BorisDecide">
@@ -27,5 +31,10 @@
     <BattleCardAbility ID="ExtremeBoris_BorisKill">
         <Desc>&lt;size=70%&gt;&lt;color=red&gt;破壊不能&lt;/color&gt;&lt;/size&gt;
 このダイスは3回使用する</Desc>
+    </BattleCardAbility>
+
+    <BattleCardAbility ID="ExtremeBoris_IronGuardBind">
+        <Desc>&lt;size=70%&gt;&lt;color=#9999FF&gt;公平&lt;/color&gt;&lt;/size&gt;
+[的中] 次の幕に束縛を1付与</Desc>
     </BattleCardAbility>
 </BattleCardAbilityDescRoot>
