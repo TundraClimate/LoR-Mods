@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleCardAbilityDescRoot>
+    <BattleCardAbility ID="ExtremeBoris_Boris">
+        <Desc>このページを使用する間、互いのダイスは威力の効果を受けない</Desc>
+        <Desc>[使用時] ダメージ量増加を2得る</Desc>
+    </BattleCardAbility>
+
+    <BattleCardAbility ID="ExtremeBoris_BorisDecide">
+        <Desc>&lt;size=70%&gt;&lt;color=#9999FF&gt;公平&lt;/color&gt;&lt;/size&gt;
+[マッチ敗北] 自身のダメージ量増加を除去する</Desc>
+    </BattleCardAbility>
+
+    <BattleCardAbility ID="ExtremeBoris_BorisPrepare">
+        <Desc>&lt;size=70%&gt;&lt;color=red&gt;破壊不能&lt;/color&gt;&lt;/size&gt;
+[的中] 自身のダメージ量増加の数値が2倍になる</Desc>
+    </BattleCardAbility>
+
+    <BattleCardAbility ID="ExtremeBoris_BorisKill">
+        <Desc>&lt;size=70%&gt;&lt;color=red&gt;破壊不能&lt;/color&gt;&lt;/size&gt;
+このダイスは3回使用する</Desc>
+    </BattleCardAbility>
+</BattleCardAbilityDescRoot>

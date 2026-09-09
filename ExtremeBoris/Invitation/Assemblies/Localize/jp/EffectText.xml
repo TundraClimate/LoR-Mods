@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BattleEffectTextRoot>
+    <effectTextList>
+        <BattleEffectText ID="ExtremeBoris_EqualDice">
+            <Name>公平ダイス</Name>
+            <Desc>マッチ中の互いのダイス最小値・最大値がそれぞれ平均化される
+この効果は既存のダイス最低値・最大値を変更する効果適用後に適用される</Desc>
+        </BattleEffectText>
+
+        <BattleEffectText ID="ExtremeBoris_UnbreakableDice">
+            <Name>破壊不能ダイス</Name>
+            <Desc>マッチ敗北時、同一ページ内でマッチ敗北した破壊不能ダイスと合わせてページ使用後に再使用する
+再使用したダイスは出目が最低値に固定される</Desc>
+        </BattleEffectText>
+    </effectTextList>
+</BattleEffectTextRoot>

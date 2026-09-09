@@ -4,17 +4,17 @@
   <Card ID="1">
     <Name>断罪</Name>
     <TextId>-1</TextId>
-    <Artwork />
+    <Artwork>Boris.png</Artwork>
     <Rarity>Unique</Rarity>
     <Option>OnlyPage</Option>
     <Spec Range="Near" Cost="4" Affection="One" EmotionLimit="0" />
-    <Script></Script>
+    <Script>ExtremeBoris_Boris</Script>
     <ScriptDesc />
     <BehaviourList>
-      <Behaviour Min="7" Dice="8" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="Thumb_G" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="3" Dice="7" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="Thumb_J" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="4" Dice="7" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="Thumb_H" Script="" ActionScript="" Desc="" />
-      <Behaviour Min="5" Dice="6" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="Boris_S1" Script="" ActionScript="borisAction" Desc="" />
+      <Behaviour Min="7" Dice="8" Type="Def" Detail="Guard" Motion="G" MotionDefault="N" EffectRes="Thumb_G" Script="ExtremeBoris_BorisDecide" ActionScript="" Desc="" />
+      <Behaviour Min="3" Dice="7" Type="Atk" Detail="Slash" Motion="J" MotionDefault="N" EffectRes="Thumb_J" Script="ExtremeBoris_BorisPrepare" ActionScript="" Desc="" />
+      <Behaviour Min="4" Dice="7" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="Thumb_H" Script="ExtremeBoris_BorisPrepare" ActionScript="" Desc="" />
+      <Behaviour Min="5" Dice="6" Type="Atk" Detail="Hit" Motion="H" MotionDefault="N" EffectRes="Boris_S1" Script="ExtremeBoris_BorisKill" ActionScript="borisAction" Desc="" />
     </BehaviourList>
     <Chapter>7</Chapter>
     <SpecialEffect />
@@ -22,7 +22,7 @@
     <SkinChangeType>EGO</SkinChangeType>
     <SkinHeight>0</SkinHeight>
     <MapChange />
-    <Priority>0</Priority>
+    <Priority>40</Priority>
     <PriorityScript />
     <Category>None</Category>
     <MaxCooltimeForEgo>9</MaxCooltimeForEgo>
