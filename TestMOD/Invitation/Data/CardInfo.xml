@@ -4,7 +4,7 @@
   <Card ID="1">
     <Name>Test Page</Name>
     <TextId>-1</TextId>
-    <Artwork />
+    <Artwork>DonHead.png</Artwork>
     <Rarity>Common</Rarity>
     <Spec Range="Near" Cost="0" Affection="One" EmotionLimit="0" />
     <Script>TestAdvCard</Script>
@@ -31,7 +31,7 @@
 
   <Card ID="2">
     <Name>Test FarArea</Name>
-    <Artwork />
+    <Artwork>DonHead.png</Artwork>
     <Rarity>Unique</Rarity>
     <Spec Range="FarAreaEach" Cost="0" Affection ="Team"/>
     <Script></Script>
@@ -45,7 +45,7 @@
 
   <Card ID="3">
     <Name>Test Page 2</Name>
-    <Artwork />
+    <Artwork>DonHead.png</Artwork>
     <Rarity>Common</Rarity>
     <Spec Range="Near" Cost="0" Affection ="One"/>
     <Script>TestAdvCard</Script>
@@ -63,7 +63,7 @@
 
   <Card ID="4">
     <Name>Test Page 3</Name>
-    <Artwork />
+    <Artwork>DonHead.png</Artwork>
     <Rarity>Common</Rarity>
     <Spec Range="Instance" Cost="0" Affection ="One"/>
     <Script>TestInstanceCard</Script>

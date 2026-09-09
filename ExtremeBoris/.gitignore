@@ -1,0 +1,8 @@
+publish.sh
+.env
+build.sh
+dev.sh
+init.sh
+usr.sh
+upload.sh
+update.sh

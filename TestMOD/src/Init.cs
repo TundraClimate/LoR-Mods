@@ -406,6 +406,7 @@ public class TestMOD : ModInitializer, ModPackage
                 base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorEntangle, 1, base.owner);
 
                 base.owner.bufListDetail.AddBuf(new BattleUnitBuf_Limbuf_Shin());
+                base.owner.bufListDetail.AddBuf(new ChainBattleRetreatBuf());
             }
         }
 
