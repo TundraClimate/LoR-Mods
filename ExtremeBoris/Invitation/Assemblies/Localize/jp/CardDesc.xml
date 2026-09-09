@@ -12,5 +12,9 @@
         <BattleCardDesc ID="3">
             <LocalizedName>鋼鉄の防御</LocalizedName>
         </BattleCardDesc>
+
+        <BattleCardDesc ID="4">
+            <LocalizedName>絶対的な規律</LocalizedName>
+        </BattleCardDesc>
     </cardDescList>
 </BattleCardDescRoot>

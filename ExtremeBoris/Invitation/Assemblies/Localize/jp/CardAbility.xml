@@ -16,6 +16,10 @@
         <Desc>[使用時] 呼吸を8獲得</Desc>
     </BattleCardAbility>
 
+    <BattleCardAbility ID="ExtremeBoris_Respect">
+        <Desc>[戦闘開始] 味方2名にダメージ量増加2をランダムに付与</Desc>
+    </BattleCardAbility>
+
     <!-- Dice -->
 
     <BattleCardAbility ID="ExtremeBoris_BorisDecide">
