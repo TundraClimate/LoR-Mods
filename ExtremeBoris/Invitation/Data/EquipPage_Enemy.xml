@@ -22,6 +22,7 @@
       <MaxPlayPoint>4</MaxPlayPoint>
       <StartPlayPoint>4</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
+      <Passive>1</Passive>
     </EquipEffect>
     <Rarity>Unique</Rarity>
     <CharacterSkin>Boris</CharacterSkin>

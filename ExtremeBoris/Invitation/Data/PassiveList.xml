@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+<PassiveXmlRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Passive ID="1">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>3</Cost>
+    <Script>ExtremeBoris_Resist</Script>
+    <Name>勝気/余裕</Name>
+    <Desc>受けるダメージ量が1減少。受ける混乱ダメージ量が1減少(効果によるダメージを含む)
+
+幕の開始時、最大体力に対する現在体力の割合10%ごとに呼吸1を得る(最大10)</Desc>
+  </Passive>
+</PassiveXmlRoot>

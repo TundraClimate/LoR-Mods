@@ -328,6 +328,11 @@ public class TestMOD : ModInitializer, ModPackage
         {
         }
 
+        public override void OnBeforeDecideRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
+        {
+            base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.Barrier, 1000);
+        }
+
         public override void OnBeforeRevenge(BattlePlayingCardDataInUnitModel card, BattleDiceBehavior revengeBy)
         {
             base.owner.AddRencounterEvent(RencounterEvent.TakeDamaged, () => base.owner.view.Say("てめぇ...", 1f));
