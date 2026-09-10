@@ -9,6 +9,7 @@
       <FormationType>Default</FormationType>
       <AvailableUnit>5</AvailableUnit>
       <emotionCardList />
+      <ManagerScript>ExtremeBoris</ManagerScript>
     </Wave>
     <StageType>Invitation</StageType>
     <FloorNum>1</FloorNum>

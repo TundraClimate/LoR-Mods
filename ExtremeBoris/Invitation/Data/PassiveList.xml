@@ -44,4 +44,18 @@
     <Name>絶好の機会</Name>
     <Desc>自身の保有するダメージ量増加1につきクリティカルダメージ量が5%増加(最大100%)</Desc>
   </Passive>
+
+  <Passive ID="100">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>0</Cost>
+    <Script>ExtremeBoris_Boris</Script>
+    <Name>揺らぎ</Name>
+    <Desc>毎幕ごとに手元とデッキにある全てのページを消去し、使用するページを手元に追加。全てのページのコストが0になる。</Desc>
+  </Passive>
 </PassiveXmlRoot>

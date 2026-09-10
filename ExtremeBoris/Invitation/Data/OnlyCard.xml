@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OnlyCardXmlRoot>
-    <OnlyCard ID="1">
+    <OnlyCard ID="10000001">
         <Card>1</Card>
     </OnlyCard>
 </OnlyCardXmlRoot>
