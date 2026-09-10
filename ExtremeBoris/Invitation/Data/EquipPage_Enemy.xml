@@ -23,6 +23,7 @@
       <StartPlayPoint>4</StartPlayPoint>
       <AddedStartDraw>0</AddedStartDraw>
       <Passive>1</Passive>
+      <Passive>2</Passive>
     </EquipEffect>
     <Rarity>Unique</Rarity>
     <CharacterSkin>Boris</CharacterSkin>

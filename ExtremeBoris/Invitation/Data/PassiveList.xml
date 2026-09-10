@@ -15,4 +15,19 @@
 
 幕の開始時、最大体力に対する現在体力の割合10%ごとに呼吸1を得る(最大10)</Desc>
   </Passive>
+
+  <Passive ID="2">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Rare</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>3</Cost>
+    <Script>ExtremeBoris_Tremor</Script>
+    <Name>頭蓋粉砕</Name>
+    <Desc>打撃ダイス的中時、振動を5付与
+ページの最終ダイスかつ打撃ダイスが的中時、振動爆発させて振動3を消耗</Desc>
+  </Passive>
 </PassiveXmlRoot>
