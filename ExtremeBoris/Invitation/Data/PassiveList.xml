@@ -30,4 +30,18 @@
     <Desc>打撃ダイス的中時、振動を5付与
 ページの最終ダイスかつ打撃ダイスが的中時、振動爆発させて振動3を消耗</Desc>
   </Passive>
+
+  <Passive ID="3">
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Cost>5</Cost>
+    <Script>ExtremeBoris_Power</Script>
+    <Name>絶好の機会</Name>
+    <Desc>自身の保有するダメージ量増加1につきクリティカルダメージ量が5%増加(最大100%)</Desc>
+  </Passive>
 </PassiveXmlRoot>
