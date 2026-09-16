@@ -51,6 +51,19 @@ public class TundraPassivePack : ModInitializer
 この効果は既存のダイス最低値・最大値を変更する効果適用後に適用される
 """
             },
+            new BattleEffectText {
+                ID = "Tundra_ShinFellVoid",
+                Name = "シン(心)-奈落",
+                Desc =
+"""
+敵に付与する火傷・振動・沈潜付与数が1増加
+
+自身の獲得する呼吸の値が1増加
+
+自身の呼吸3につき、与えるダメージ量が10%増加(端数切り捨て、最大50%)
+与えるダメージ量が(25 + 失った体力の比率)%だけ増加(最大50%)
+"""
+            },
         ]);
 
         VannilaUnitBuf.AddMaxIf<BattleUnitBuf_warpCharge>(80, (_, owner) => owner?.passiveDetail?.HasPassive<PassiveAbility_TundraPassivePack_HeavyBattery>() == true);

@@ -406,12 +406,7 @@ public class TestMOD : ModInitializer, ModPackage
             }
             else if (ty is ClickType.Middle)
             {
-                base.owner.bufListDetail.AddBuf(new TestTremor());
-                base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorConversion, 1, base.owner);
-                base.owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorEntangle, 1, base.owner);
-
-                base.owner.bufListDetail.AddBuf(new BattleUnitBuf_Limbuf_Shin());
-                base.owner.bufListDetail.AddBuf(new ChainBattleRetreatBuf());
+                OnMiddleClick(base.owner);
             }
         }
 
@@ -648,5 +643,19 @@ public class TestMOD : ModInitializer, ModPackage
                 EmotionCard.Get(PackageInfo<TestMOD>.Id, 0),
             ]);
         }
+    }
+
+    static void OnMiddleClick(BattleUnitModel owner)
+    {
+        owner.bufListDetail.AddBuf(new TestTremor());
+        owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorConversion, 1, owner);
+        owner.bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.TremorEntangle, 1, owner);
+
+        owner.bufListDetail.AddBuf(new BattleUnitBuf_Limbuf_Shin());
+        owner.bufListDetail.AddBuf(new ChainBattleRetreatBuf());
+
+        BattleObjectManager.instance.GetAliveList_random(Faction.Enemy, 1)[0].bufListDetail.AddKeywordBufThisRoundByEtc(LimKeywordBuf.PrescriptTarget, 1);
+
+        owner.view.Say("は..." + "都市の星".Red().Bold().SizeAbs(55) + "ということか...！", duration: 10f);
     }
 }

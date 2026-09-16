@@ -628,4 +628,18 @@
     <InnerType>-1</InnerType>
     <Script>TundraPassivePack_Critical</Script>
   </Passive>
+
+  <Passive ID="42">
+    <Name>天落</Name>
+    <Desc>舞台開始時、シン(心)-奈落を得る</Desc>
+    <Cost>5</Cost>
+    <Negative>false</Negative>
+    <IsHide>false</IsHide>
+    <Rarity>Unique</Rarity>
+    <Lock>false</Lock>
+    <CanGivePassive>true</CanGivePassive>
+    <CanReceivePassive>false</CanReceivePassive>
+    <InnerType>-1</InnerType>
+    <Script>TundraPassivePack_FellVoid</Script>
+  </Passive>
 </PassiveXmlRoot>
