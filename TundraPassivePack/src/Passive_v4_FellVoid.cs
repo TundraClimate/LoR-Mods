@@ -20,6 +20,7 @@ public class PassiveAbility_TundraPassivePack_FellVoid : AdvancedPassiveBase
                     if (origin.bufType == KeywordBuf.Burn || origin.bufType == LimKeywordBuf.Tremor || origin.bufType == LimKeywordBuf.Sinking)
                     {
                         res?.stack += 1;
+                        res?.OnAddBuf(1);
                     }
                 },
 
@@ -28,12 +29,14 @@ public class PassiveAbility_TundraPassivePack_FellVoid : AdvancedPassiveBase
             });
         }
 
-        public override void OnAddBufAll(BattleUnitBuf buf, int addedStack)
+        public override int OnAddKeywordBuf(BattleUnitBuf buf, int stack)
         {
             if (buf.bufType == LimKeywordBuf.Poise)
             {
-                buf.stack += 1;
+                return 1;
             }
+
+            return base.OnAddKeywordBuf(buf, stack);
         }
     }
 }
